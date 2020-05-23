@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import clsx from 'clsx'
 import {
     Container,
@@ -82,7 +82,11 @@ const useStyles = makeStyles(theme => ({
 
 const Toolbox = props => {
     const classes = useStyles()
-    const body = document.querySelector("html")
+    let body
+
+    useEffect(() => {
+        body = document.querySelector("html")
+    })
 
     // Create devSection to each developer section
     const devSection = toolboxData.reduce((acc, value) => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     Typography,
@@ -166,8 +166,9 @@ const Projects = () => {
         }
     }
 
-
-    addInfiniteScrollListener()
+    useEffect(() => {
+        addInfiniteScrollListener()
+    })
 
     return (
         <Layout>

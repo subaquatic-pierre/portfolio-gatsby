@@ -13,6 +13,28 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'assets',
+        path: `${__dirname}/static`
+      }
+    },
+    {
+      resolve: `gatsby-theme-material-ui`,
+      options: {
+        webFontsConfig: {
+          fonts: {
+            google: [
+              {
+                family: `Montserrat`,
+                variants: [`300`, `400`, `500`],
+              },
+            ],
+          },
+        },
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {

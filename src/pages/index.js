@@ -83,7 +83,7 @@ const useStyles = makeStyles(theme => ({
 const Home = () => {
     const classes = useStyles()
     return (
-        <Layout>
+        <Layout >
             <TopHero backgroundImage={coralImg} />
             <Container className={classes.featureSection} maxWidth='lg'>
                 {featureSection.map((section, index) => {

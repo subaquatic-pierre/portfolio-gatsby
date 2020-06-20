@@ -5,12 +5,14 @@ import {
     Typography,
     Container,
 } from '@material-ui/core';
+import path from 'path';
 
+import caps from '../utils/capitalize'
 import Layout from '../components/Layout';
 import contactBackground from '../../static/svg/contact-background.svg'
 import ContactForm from '../components/ContactForm'
 import FeatureColumn from '../components/FeatureColumn'
-import yodaAnimation from '../../static/animations/yoda-animation.json'
+import crabAnimation from '../../static/animations/crab.json'
 
 const useStyles = makeStyles(theme => ({
     contactPageBackground: {
@@ -57,11 +59,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
+const title = path.basename(__filename).split('.')[0]
+
 const Contact = props => {
     const classes = useStyles()
 
     return (
-        <Layout>
+        <Layout title={caps(title)}>
             <div className={classes.contactPageBackground}>
                 <Container className={classes.pageContainer} maxWidth='lg'>
                     <Grid container className={classes.headingSection} justify='center' alignItems='center'>
@@ -74,10 +78,10 @@ const Contact = props => {
                             <FeatureColumn
                                 heading='I would love to hear from you!'
                                 text='Send me a message if you would like to discuss your next project or just have a
-                            chat &#x1f60a; <br/> I will get back to you as soon as I can. In the mean time, check out bee-bop on his wheels!'
+                            chat &#x1f60a;'
                                 textShadow
                                 gutterBottom
-                                animation={yodaAnimation}
+                                animation={crabAnimation}
                             />
                         </Grid>
                         <Grid className={classes.rightColumn} container item sm={6}>

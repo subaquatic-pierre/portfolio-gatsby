@@ -6,11 +6,13 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core'
 
+import caps from '../utils/capitalize'
 import Layout from '../components/Layout';
 import AboutSidebar from '../components/AboutSidebar'
 import AboutMe from '../components/AboutMe'
 import Certifications from '../components/Certifications'
 import Experience from '../components/Experience'
+import path from 'path'
 
 export const drawerWidth = 240;
 export const mobileDrawerWidth = 60;
@@ -88,8 +90,10 @@ const About = (props) => {
         }
     }
 
+    const title = path.basename(__filename).split('.')[0]
+
     return (
-        <Layout>
+        <Layout title={caps(title)}>
             <div className={classes.root}>
                 <nav className={classes.drawer} aria-label="mailbox folders">
                     <Hidden smUp >

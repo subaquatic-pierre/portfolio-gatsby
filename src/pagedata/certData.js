@@ -5,11 +5,12 @@ import CS50Intro from '../../static/certs/CS50-intro.png'
 import CS50WebPro from '../../static/certs/CS50-web-pro.png'
 import CS50Web from '../../static/certs/CS50-web.png'
 import MITxPythonIntro from '../../static/certs/MITx-python-intro.png'
+import MITx6002 from '../../static/certs/MITx-6002.png'
 
 
 const certData = [
     {
-        title: 'Cloud Computing Micro Masters',
+        title: 'Cloud Computing Micro Masters (in progress)',
         type: 'program',
         organization: 'Marryland University Global Campus',
         image: CC605Enterprise,
@@ -45,7 +46,7 @@ const certData = [
                 link: 'https://courses.edx.org/certificates/7cca87f11a6e4d949cba0ebf3865e9ec'
             },
             {
-                title: 'Cloud Computing Security',
+                title: 'Cloud Computing Security (in progress)',
                 type: 'course',
                 organization: 'Marryland University Global Campus',
                 image: CC605Enterprise,
@@ -106,7 +107,7 @@ const certData = [
                 title: 'Introduction to Computational Thinking and Data Science',
                 type: 'course',
                 organization: 'MITx',
-                image: MITxPythonIntro,
+                image: MITx6002,
                 date: '30 December 2019',
                 code: '6.00.2x',
                 link: 'https://courses.edx.org/certificates/b501bd71053a4550a44a7d1880353734'

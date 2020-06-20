@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import clsx from 'clsx'
 import {
     Container,
@@ -10,8 +10,10 @@ import {
     Grid,
 } from '@material-ui/core'
 import { makeStyles, useScrollTrigger } from '@material-ui/core'
+import path from 'path'
 
 
+import caps from '../utils/capitalize'
 import Layout from '../components/Layout';
 import ScrollToTop from '../components/ScrollToTop';
 import ToolBoxCard from '../components/ToolBoxCard';
@@ -82,11 +84,6 @@ const useStyles = makeStyles(theme => ({
 
 const Toolbox = props => {
     const classes = useStyles()
-    let body
-
-    useEffect(() => {
-        body = document.querySelector("html")
-    })
 
     // Create devSection to each developer section
     const devSection = toolboxData.reduce((acc, value) => {
@@ -96,6 +93,7 @@ const Toolbox = props => {
 
     // side nav item click handler
     const handleNavClick = link => {
+        console.log(devSection)
         devSection[link].current.scrollIntoView({
             behavior: 'smooth',
             block: 'start',
@@ -103,8 +101,8 @@ const Toolbox = props => {
     };
 
     // Side nav Content heading click handler
-    const handleContentClick = (ref) => {
-        ref.scrollIntoView();
+    const handleScrollToTop = () => {
+        window.scroll({ top: 0, behavior: 'smooth' })
     };
 
     // shrink app bar on scroll
@@ -113,8 +111,10 @@ const Toolbox = props => {
         threshold: 100,
     });
 
+    const title = path.basename(__filename).split('.')[0]
+
     return (
-        <Layout>
+        <Layout title={caps(title)}>
             <div className={classes.toolboxRoot}>
                 <div className={classes.toolboxMain}>
                     <Container maxWidth='lg' className={classes.toolBoxContainer}>
@@ -152,7 +152,7 @@ const Toolbox = props => {
                 </div>
                 <nav className={clsx(classes.toolboxNav, shrinkTrigger ? classes.moveUp : null)}>
                     <List component="nav" aria-label="main mailbox folders">
-                        <ListItem onClick={() => { handleContentClick(body) }} button component='a'>
+                        <ListItem onClick={handleScrollToTop} button component='a'>
                             <ListItemText classes={{ primary: classes.navHeading }} primary='Contents' />
                         </ListItem>
                         <Divider />
@@ -165,7 +165,7 @@ const Toolbox = props => {
                         })}
                     </List>
                 </nav>
-                <ScrollToTop topRef={body} color='secondary' size='small' />
+                <ScrollToTop trigger={shrinkTrigger} color='secondary' size='small' />
             </div>
         </Layout>
     )

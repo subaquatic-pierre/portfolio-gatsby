@@ -1,8 +1,13 @@
+
+const siteConfig = require('./config.js')
 module.exports = {
   siteMetadata: {
-    title: `Pierre Portfolio`,
-    description: `Amazing Portfolio`,
-    author: `Pierre`,
+    title: siteConfig.title,
+    description: siteConfig.subtitle,
+    author: siteConfig.author,
+    url: siteConfig.url,
+    icon: siteConfig.icon,
+    menu: siteConfig.menu
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -10,7 +15,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${__dirname}/static/images`,
       },
     },
     {
@@ -30,6 +35,10 @@ module.exports = {
                 family: `Montserrat`,
                 variants: [`300`, `400`, `500`],
               },
+              {
+                family: `Patrick Hand`,
+                variants: [`400`],
+              },
             ],
           },
         },
@@ -46,11 +55,64 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `static/icon.png`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        trackingIds: ['aweseometrackingID'],
+        pluginConfig: {
+          head: true,
+        },
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: siteConfig.title,
+        short_name: siteConfig.title,
+        start_url: '/',
+        background_color: '#FFF',
+        theme_color: '#16a085',
+        display: 'standalone',
+        icon: siteConfig.icon
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-sitemap',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl: url
+              }
+            }
+            allSitePage(
+              filter: {
+                path: { regex: "/^(?!/404/|/404.html|/dev-404-page/)/" }
+              }
+            ) {
+              edges {
+                node {
+                  path
+                }
+              }
+            }
+          }
+        `,
+        output: '/sitemap.xml',
+        serialize: ({ site, allSitePage }) => allSitePage.edges.map((edge) => ({
+          url: site.siteMetadata.siteUrl + edge.node.path,
+          changefreq: 'daily',
+          priority: 0.7
+        }))
+      }
+    },
+    'gatsby-plugin-offline',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-react-helmet',
+    'gatsby-plugin-optimize-svgs',
   ],
 }

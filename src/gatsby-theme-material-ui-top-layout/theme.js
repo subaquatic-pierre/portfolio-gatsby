@@ -38,8 +38,10 @@ const theme = createMuiTheme({
             letterSpacing: '0.1rem',
             textTransform: 'uppercase',
             color: 'white',
-            opacity: '0.87'
-
+            opacity: '0.87',
+            '&:hover': {
+                opacity: '1'
+            }
         },
         ocean: {
             fontFamily: 'Patrick Hand',
@@ -51,12 +53,20 @@ const theme = createMuiTheme({
     overrides: {
         MuiButton: {
             root: {
-                padding: '0.5rem 2rem'
+                padding: '0.5rem 2rem',
+                '&:hover': {
+                    backgroundColor: 'none'
+                }
             }
         },
         MuiLink: {
             root: {
-                color: 'inherit'
+                color: 'inherit',
+            },
+            underlineHover: {
+                '&:hover': {
+                    textDecoration: 'none',
+                }
             }
         }
     }

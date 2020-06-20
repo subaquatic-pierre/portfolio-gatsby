@@ -8,11 +8,13 @@ import {
     FormGroup,
     FormControlLabel,
 } from '@material-ui/core';
+import path from 'path'
 
 import Layout from '../components/Layout';
 import ProjectsSwitch from '../components/ProjectsSwitch'
 import Divider from '../components/Divider'
 import Project from '../components/Project'
+import caps from '../utils/capitalize'
 
 import productionProjectsData from '../pagedata/productionProjectsData'
 import sideProjectsData from '../pagedata/sideProjectsData'
@@ -170,8 +172,10 @@ const Projects = () => {
         addInfiniteScrollListener()
     })
 
+    const title = path.basename(__filename).split('.')[0]
+
     return (
-        <Layout>
+        <Layout title={caps(title)}>
             <Container maxWidth='lg' >
                 <Grid container item xs={12} className={classes.pageContainer}>
                     <Grid container className={classes.headingSection} direction='column' justify='center' alignItems='center'>

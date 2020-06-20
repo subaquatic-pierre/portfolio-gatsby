@@ -1,49 +1,39 @@
-'use strict';
-
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://subaquatic-pierre.com',
   pathPrefix: '/',
-  title: 'Blog by John Doe',
-  subtitle: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+  icon: 'static/icon.png',
+  title: 'Pierre Porfolio',
+  subtitle: 'The home of subaquatic-pierre potfolio website.',
   copyright: '© All rights reserved.',
   disqusShortname: '',
   postsPerPage: 4,
   googleAnalyticsId: 'UA-73379983-2',
-  useKatex: false,
   menu: [
     {
-      label: 'Articles',
+      name: 'Home',
       path: '/'
     },
     {
-      label: 'About me',
-      path: '/pages/about'
+      name: 'Projects',
+      path: '/projects'
     },
     {
-      label: 'Contact me',
-      path: '/pages/contacts'
-    }
+      name: 'Toolbox',
+      path: '/toolbox'
+    },
+    {
+      name: 'About',
+      path: '/about'
+    },
   ],
   author: {
-    name: 'John Doe',
+    name: 'Pierre du Toit',
     photo: '/photo.jpg',
-    bio: 'Pellentesque odio nisi, euismod in, pharetra a, ultricies in, diam. Sed arcu.',
+    bio: 'Web Developer | Cloud Architect | Scuba Instructor',
     contacts: {
-      email: '',
-      facebook: '#',
-      telegram: '#',
-      twitter: '#',
+      email: 'subaquatic.pierre@gmail.com',
       github: '#',
-      rss: '',
-      vkontakte: '',
       linkedin: '#',
-      instagram: '#',
-      line: '',
-      gitlab: '',
-      weibo: '',
-      codepen: '',
-      youtube: '',
-      soundcloud: '',
     }
   }
 };

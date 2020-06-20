@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 const TopHero = props => {
-    const { backgroundImage, noText } = props
+    const { noText } = props
     const classes = useStyles()
     const data = useStaticQuery(graphql`
     query galleryImages {
@@ -44,7 +44,6 @@ const TopHero = props => {
       }
     `)
 
-    const image = data.allFile.edges[0].node.childImageSharp.fluid.src
     const orgImage = data.allFile.edges[0].node.childImageSharp.fluid.originalImg
 
     return (

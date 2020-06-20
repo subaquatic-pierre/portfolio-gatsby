@@ -6,6 +6,7 @@ import CS50WebPro from '../../static/certs/CS50-web-pro.png'
 import CS50Web from '../../static/certs/CS50-web.png'
 import MITxPythonIntro from '../../static/certs/MITx-python-intro.png'
 import MITx6002 from '../../static/certs/MITx-6002.png'
+import MITxSeries from '../../static/certs/MITx-x-series.png'
 
 
 const certData = [
@@ -89,10 +90,10 @@ const certData = [
         title: 'Computational Thinking using Python',
         type: 'program',
         organization: 'MITx',
-        image: MITxPythonIntro,
+        image: MITxSeries,
         date: '19 December 2019',
         code: 'MITxPython',
-        link: 'https://credentials.edx.org/credentials/4971455456ef41c7b3cfc5156c1b263a/',
+        link: 'https://credentials.edx.org/credentials/2b8befee43034974a71ebd3b18a0bb17/',
         courses: [
             {
                 title: 'Introduction to Computer Science and Programming Using Python',
@@ -101,7 +102,7 @@ const certData = [
                 image: MITxPythonIntro,
                 date: '30 December 2019',
                 code: '6.00.1x',
-                link: 'https://courses.edx.org/certificates/b501bd71053a4550a44a7d1880353734'
+                link: 'https://courses.edx.org/certificates/ac1ba2ce68f44dd89137e7d682c9abef'
             },
             {
                 title: 'Introduction to Computational Thinking and Data Science',
@@ -110,7 +111,7 @@ const certData = [
                 image: MITx6002,
                 date: '30 December 2019',
                 code: '6.00.2x',
-                link: 'https://courses.edx.org/certificates/b501bd71053a4550a44a7d1880353734'
+                link: 'https://courses.edx.org/certificates/ec8b24490438417690253d6174461cbf'
             },
         ]
     },

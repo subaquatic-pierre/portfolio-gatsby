@@ -34,7 +34,7 @@ export const featureSection = [
             backgroundImage: koiFishImg,
             animation: false,
             heading: 'Toolbox',
-            text: `Check out a list of all the tools I use most often, they include langues I am most competent in as well as their best sources of documentation. As a full stack developer I there are tools for both front end and backend technologies. Within the business development department I use tools to monitor and develop digital marketing campaigns.`,
+            text: `Check out a list of all the tools I use most often, included are the languages I am most competent in as well as their best sources of documentation. As a full stack developer, I use tools for frontend, backend and cloud computing technologies. Business development tools are used to develop and monitor digital marketing campaigns and application analytics.`,
             buttonText: 'More info',
             link: '/toolbox',
             align: 'center',
@@ -86,8 +86,7 @@ export const featureSection = [
             backgroundImage: koiFishImg,
             animation: false,
             heading: 'About Me',
-            text: `My name is Pierre, I'm a South African living in Dubai. I'm a full stack Web Developer currently working towards a Cloud Computing 
-            Masters degree with the University of Marryland Global Campus. As a PADI Master Instructor and Technical diving instructor, if I am not developing
+            text: `My name is Pierre, I'm a South African living in Dubai. I'm a full stack Web Developer and Cloud Architect. As a PADI Master Instructor and Technical diving instructor, if I am not developing
             awesome web applications I am underwater teaching scuba diving or taking awesome underwater pictures.`,
             buttonText: 'More Info',
             link: '/about',

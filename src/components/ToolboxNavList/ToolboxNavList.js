@@ -2,20 +2,11 @@ import React from 'react';
 import {
     List,
     ListItem,
-    Divider,
     ListItemText,
-    ListItemAvatar,
-    Avatar,
-    Typography,
-    Hidden,
-    Paper,
-    Grid,
 } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core'
 import InboxIcon from '@material-ui/icons/Inbox';
 import DraftsIcon from '@material-ui/icons/Drafts';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
-import { NavHashLink as NavLink } from 'react-router-hash-link';
 
 import { toolBoxNav } from '../../pagedata/toolBoxData'
 
@@ -24,14 +15,15 @@ function ListItemLink(props) {
 }
 
 const ToolboxNavList = () => {
+
     return (
         <>
             <List component="nav" aria-label="main mailbox folders">
                 {toolBoxNav.map((item, index) => {
                     return (
-                        <ListItemLink key={index} href={item.link}>
+                        <ListItem key={index} >
                             <ListItemText primary={item.title} />
-                        </ListItemLink>
+                        </ListItem>
                     )
                 })}
                 <ListItem button>

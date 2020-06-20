@@ -93,11 +93,13 @@ const Toolbox = props => {
 
     // side nav item click handler
     const handleNavClick = link => {
-        console.log(devSection)
-        devSection[link].current.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start',
-        })
+        console.log(devSection[link].current.scrollIntoView)
+        window.scrollTo(0, devSection[link].current.offsetTop)
+        devSection[link].current.scrollIntoView()
+        // devSection[link].current.scrollIntoView({
+        //     behavior: 'smooth',
+        //     block: 'start',
+        // })
     };
 
     // Side nav Content heading click handler
@@ -152,13 +154,13 @@ const Toolbox = props => {
                 </div>
                 <nav className={clsx(classes.toolboxNav, shrinkTrigger ? classes.moveUp : null)}>
                     <List component="nav" aria-label="main mailbox folders">
-                        <ListItem onClick={handleScrollToTop} button component='a'>
+                        <ListItem onClick={handleScrollToTop} button>
                             <ListItemText classes={{ primary: classes.navHeading }} primary='Contents' />
                         </ListItem>
                         <Divider />
                         {toolboxData.map((category, index) => {
                             return (
-                                <ListItem onClick={() => { handleNavClick(category.link) }} key={index} button component='a'>
+                                <ListItem onClick={() => { handleNavClick(category.link) }} key={index} button>
                                     <ListItemText primary={category.title} />
                                 </ListItem>
                             )

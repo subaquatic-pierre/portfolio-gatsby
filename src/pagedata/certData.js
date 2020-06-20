@@ -10,11 +10,11 @@ import MITx6002 from '../../static/certs/MITx-6002.png'
 
 const certData = [
     {
-        title: 'Cloud Computing Micro Masters (in progress)',
+        title: 'Cloud Computing Micro Masters',
         type: 'program',
         organization: 'Marryland University Global Campus',
         image: CC605Enterprise,
-        date: '15 July 2020',
+        date: 'in progress',
         code: 'CCMicroMasters',
         link: 'https://courses.edx.org/certificates/00544e1261fc45e889cd5d16ea73bc4d',
         courses: [
@@ -46,11 +46,11 @@ const certData = [
                 link: 'https://courses.edx.org/certificates/7cca87f11a6e4d949cba0ebf3865e9ec'
             },
             {
-                title: 'Cloud Computing Security (in progress)',
+                title: 'Cloud Computing Security',
                 type: 'course',
                 organization: 'Marryland University Global Campus',
                 image: CC605Enterprise,
-                date: '18 February 2020',
+                date: 'in progress',
                 code: 'CC617x',
                 link: 'https://courses.edx.org/certificates/196f1ed84ed44a6db9f6ae7e5c379258'
             },

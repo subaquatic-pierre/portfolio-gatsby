@@ -10,7 +10,10 @@ import {
 } from '@material-ui/core';
 
 import Divider from '../Divider'
-import sendEmail from '../../utils/sendEmail';
+import { handleEmailSuccess, handleEmailError, handleSendEmail } from '../../utils/sendEmail';
+
+const URL = 'https://lwh4eh6kk5.execute-api.us-east-1.amazonaws.com/dev/contact-me'
+
 
 const useStyles = makeStyles(theme => ({
     formPaper: {
@@ -50,19 +53,29 @@ const ContactForm = props => {
 
     const handleButtonClick = () => {
         const { name, email, message } = state
+
+        // Get form data, create data object
+        const data = {
+            'name': name,
+            'email': email,
+            'message': message
+        }
+
+        // Send email
+        handleSendEmail(URL, data)
+            .then(res => {
+                handleEmailSuccess(res)
+            }).catch(err => {
+                handleEmailError(err)
+            })
+
+        // Clear form data
         setState(state => ({
             ...state,
             message: '',
             name: '',
             email: ''
         }))
-        const data = {
-            'name': name,
-            'email': email,
-            'message': message
-        }
-        console.log(data)
-        sendEmail(data)
     }
 
     const handleInputChange = (event, field) => {

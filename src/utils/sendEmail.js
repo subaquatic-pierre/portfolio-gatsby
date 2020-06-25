@@ -1,30 +1,19 @@
-const url = 'https://lv0sa03oh6.execute-api.us-east-1.amazonaws.com/dev/contact-us'
-
-function post(url, body, callback) {
-    var req = new XMLHttpRequest();
-    req.open("POST", url, true);
-    req.setRequestHeader("Content-Type", "application/json");
-    req.addEventListener("load", function () {
-        if (req.status < 400) {
-            callback(null, JSON.parse(req.responseText));
-        } else {
-            callback(new Error("Request failed: " + req.statusText));
-        }
-    });
-    req.send(JSON.stringify(body));
+export const handleSendEmail = async function (url, data = {}) {
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        redirect: 'follow',
+        body: JSON.stringify(data)
+    })
+    return response.json()
 }
 
-function success() {
-    console.log('Success')
-}
-function error(err) {
+export const handleEmailError = (err) => {
     console.log(err)
 }
-const sendEmail = (data) => {
-    post(url, data, function (err, res) {
-        if (err) { return error(err) }
-        success()
-    })
-}
 
-export default sendEmail;
+export const handleEmailSuccess = (res) => {
+    console.log(res)
+}

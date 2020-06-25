@@ -93,13 +93,8 @@ const Toolbox = props => {
 
     // side nav item click handler
     const handleNavClick = link => {
-        console.log(devSection[link].current.scrollIntoView)
         window.scrollTo(0, devSection[link].current.offsetTop)
         devSection[link].current.scrollIntoView()
-        // devSection[link].current.scrollIntoView({
-        //     behavior: 'smooth',
-        //     block: 'start',
-        // })
     };
 
     // Side nav Content heading click handler

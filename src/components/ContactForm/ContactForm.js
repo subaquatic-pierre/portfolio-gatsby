@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 import {
     Grid,
@@ -10,6 +10,7 @@ import {
 } from '@material-ui/core';
 
 import Divider from '../Divider'
+import sendEmail from '../../utils/sendEmail';
 
 const useStyles = makeStyles(theme => ({
     formPaper: {
@@ -43,35 +44,34 @@ const ContactForm = props => {
     const [state, setState] = useState({
         name: '',
         email: '',
-        capturedName: null,
-        capturedEmail: null
+        message: '',
     })
     const classes = useStyles()
 
     const handleButtonClick = () => {
-        const { name, email } = state
+        const { name, email, message } = state
         setState(state => ({
             ...state,
-            capturedName: name,
-            capturedEmail: email,
+            message: '',
             name: '',
             email: ''
         }))
-        console.log(state)
+        const data = {
+            'name': name,
+            'email': email,
+            'message': message
+        }
+        console.log(data)
+        sendEmail(data)
     }
 
     const handleInputChange = (event, field) => {
         const value = event.target.value
-        console.log(field)
         setState(state => ({
             ...state,
             [field]: value
         }))
     }
-
-    useEffect(() => {
-        // console.log(state)
-    })
 
     return (
         <Paper className={classes.formPaper}>
@@ -102,8 +102,8 @@ const ContactForm = props => {
                     <TextField
                         id="email-input"
                         label="Enter a message"
-                        onChange={(event) => { handleInputChange(event, 'email') }}
-                        value={state.email}
+                        onChange={(event) => { handleInputChange(event, 'message') }}
+                        value={state.message}
                         multiline
                         variant='outlined'
                         rows={10}

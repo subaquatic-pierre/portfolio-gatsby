@@ -12,7 +12,8 @@ import Layout from '../components/Layout';
 import contactBackground from '../../static/svg/contact-background.svg'
 import ContactForm from '../components/ContactForm'
 import FeatureColumn from '../components/FeatureColumn'
-import crabAnimation from '../../static/animations/crab.json'
+import crabAnimation from '../../static/animations/crab.json';
+
 
 const useStyles = makeStyles(theme => ({
     contactPageBackground: {

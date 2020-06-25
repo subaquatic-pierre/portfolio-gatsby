@@ -1,4 +1,4 @@
-const url = 'https://39pbxuvhtb.execute-api.us-east-1.amazonaws.com/dev/email/send'
+const url = 'https://lv0sa03oh6.execute-api.us-east-1.amazonaws.com/dev/contact-us'
 
 function post(url, body, callback) {
     var req = new XMLHttpRequest();

@@ -12,7 +12,7 @@ import {
 import Divider from '../Divider'
 import { handleEmailSuccess, handleEmailError, handleSendEmail } from '../../utils/sendEmail';
 
-const URL = 'https://06hwq9qq89.execute-api.us-east-1.amazonaws.com/prod'
+const URL = 'https://06hwq9qq89.execute-api.us-east-1.amazonaws.com/prod/contact-me'
 
 
 const useStyles = makeStyles(theme => ({

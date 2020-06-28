@@ -4,6 +4,7 @@ export const handleSendEmail = async function (url, data = {}) {
         headers: {
             'Content-Type': 'application/json',
         },
+        mode: 'cors',
         redirect: 'follow',
         body: JSON.stringify(data)
     })

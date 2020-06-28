@@ -10,7 +10,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import CardMembershipIcon from '@material-ui/icons/CardMembership';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 
-import nasa from '../../../static/images/nasa.jpg';
+import profilePic from '../../../static/images/profile-pic.jpg';
 
 const useStyles = makeStyles(theme => ({
     main: {
@@ -96,7 +96,7 @@ const AboutSidebar = (props) => {
             <div className={classes.sidebarContent}>
                 {!mobile &&
                     <div className={classes.imageDiv}>
-                        <img alt='profile-pic' src={nasa} className={classes.image} />
+                        <img alt='profile-pic' src={profilePic} className={classes.image} />
                     </div>
                 }
                 <List className={classes.sidebarList}>

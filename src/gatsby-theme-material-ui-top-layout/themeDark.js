@@ -2,7 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const primaryColor = "#16a085"
 const secondaryColor = "#9b59b6"
-const teriairyColor = "#38ef7d"
+const tertiaryColor = "#38ef7d"
 
 
 export default createMuiTheme({
@@ -19,7 +19,7 @@ export default createMuiTheme({
             main: `${secondaryColor}`
         },
         gradients: {
-            primary: `linear-gradient(to left, ${primaryColor}, ${teriairyColor})`,
+            primary: `linear-gradient(to left, ${primaryColor}, ${tertiaryColor})`,
             secondary: 'this gradient'
         },
         shadows: {

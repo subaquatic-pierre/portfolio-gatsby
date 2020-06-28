@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
+import { Link } from 'gatsby-link';
+import { navigate } from 'gatsby'
 import {
     Grid,
     Typography,
@@ -10,7 +12,7 @@ import {
 } from '@material-ui/core';
 
 import Divider from '../Divider'
-import { handleEmailSuccess, handleEmailError, handleSendEmail } from '../../utils/sendEmail';
+import { handleSendEmail } from '../../utils/sendEmail';
 
 const URL = 'https://06hwq9qq89.execute-api.us-east-1.amazonaws.com/prod/contact-me'
 
@@ -64,9 +66,21 @@ const ContactForm = props => {
         // Send email
         handleSendEmail(URL, data)
             .then(res => {
-                handleEmailSuccess(res)
+                navigate('/',
+                    {
+                        state: {
+                            'messages': ['Thank you for your contact request, I will get back to you ASAP!',]
+                        }
+                    }
+                )
             }).catch(err => {
-                handleEmailError(err)
+                navigate('/contact',
+                    {
+                        state: {
+                            'messages': ['There was an error!',]
+                        }
+                    }
+                )
             })
 
         // Clear form data
@@ -125,6 +139,8 @@ const ContactForm = props => {
             </Grid>
             <Grid container item justify='center'>
                 <Button
+                    component={Link}
+                    to='/'
                     disableFocusRipple
                     variant='contained'
                     color='secondary'

@@ -10,6 +10,7 @@ module.exports = {
     menu: siteConfig.menu
   },
   plugins: [
+    `gatsby-plugin-client-side-redirect`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

@@ -2,10 +2,37 @@ import scubadivedubai from '../../static/images/scubadivedubai-screanshot.png'
 import divesandybeachFlask from '../../static/images/divesandybeach-flask.png'
 import chatio from '../../static/images/chatio.png'
 import pizza from '../../static/images/pizza.png'
+import ballotonline from '../../static/images/ballot-online.png'
 
 
 
 const sideProjectsData = [
+    {
+        title: 'Ballot Online',
+        type: 'side',
+        date: '10 June 2020',
+        image: ballotonline,
+        text: 'This is an online voting platform, the project uses a Django back-end with an Apollo React Client front-end, JWT is used for user authentication. Models are defined with Django Models and transformed into a GraphQL schema with Graphene-Django. The infrastructure is hosted on AWS, using an Application Load Balancer with an Autoscale group and AWS RDS for the database',
+        github: 'https://github.com/subaquatic-pierre/ballot-online',
+        url: 'https://ballot-online.com',
+        tech: [
+            {
+                title: 'Django',
+            },
+            {
+                title: 'React',
+            },
+            {
+                title: 'GraphQL',
+            },
+            {
+                title: 'Material UI',
+            },
+            {
+                title: 'Apollo React',
+            },
+        ]
+    },
     {
         title: 'Scuba Dive Dubai E-commerce',
         type: 'side',
@@ -113,6 +140,11 @@ const sideProjectsData = [
             },
         ]
     },
+]
+
+export default sideProjectsData;
+
+const TBA = [
     {
         title: 'Planet Blog Node JS',
         type: 'side',
@@ -142,5 +174,3 @@ const sideProjectsData = [
         ]
     },
 ]
-
-export default sideProjectsData;

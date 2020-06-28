@@ -62,11 +62,14 @@ const useStyles = makeStyles(theme => ({
 
 const title = path.basename(__filename).split('.')[0]
 
-const Contact = props => {
+const Contact = ({ messages }) => {
     const classes = useStyles()
 
     return (
-        <Layout title={caps(title)}>
+        <Layout
+            title={caps(title)}
+            messages={messages}
+        >
             <div className={classes.contactPageBackground}>
                 <Container className={classes.pageContainer} maxWidth='lg'>
                     <Grid container className={classes.headingSection} justify='center' alignItems='center'>

@@ -85,7 +85,7 @@ const AboutMe = (props) => {
                             </Typography>
                         </div>
                         <Typography>
-                            A full stack web developer and Master Scuba Diving Instructor, I am from South Africa, living in the UAE. When I am not building awesome web applications
+                            A Full Stack Web Developer and Master Scuba Diving Instructor, I am from South Africa, living in the UAE. When I am not building awesome web applications
                             I am underwater.
                         </Typography>
                         <Typography>
@@ -96,11 +96,11 @@ const AboutMe = (props) => {
                             Doing IT in high school for 3 years exposed me to the programming language Delphi, and the first glimpse of AI with "Conway's Game of Life". After school hours I worked as a junior technician in a small computer shop.
                         </Typography>
                         <Typography>
-                            My web developer career started by setting up the digital presesence for Sandy Beach Dive Centre. We initially started with a Wordpress wedsite. Being small business owner I set up everything from social media and marketing accounts to the Google business platform, including Google Ads, Search Console and Analytics.
+                            My web developer career started by setting up the digital presence for Sandy Beach Dive Centre. We initially started with a Wordpress website. Being small business owner, I set up everything from social media and marketing accounts to the Google business platform (Google Ads, Search Console, Analytics)
                         </Typography>
                         <Typography>
                             As the business grew I found it more difficult to use Wordpress, with each new feature came a new cost as well as the rigid design constraints of page builders.
-                            This led me down the road of HTML and CSS, which progressed to Javascript, Python and Cloud Computing.
+                            This led me down the road of HTML and CSS, which progressed to Javascript, Python and Cloud Computing with AWS.
                         </Typography>
                         <Typography>
                             I enjoy building awesome web applications and learning the ever changing landscape of web development. By nature I am a person who loves learning and teaching.
@@ -108,7 +108,7 @@ const AboutMe = (props) => {
                         </Typography>
                         <Typography className={classes.title} color="textSecondary">
                             Updated:
-                            13 May 2020
+                            30 June 2020
                         </Typography>
                     </Card>
                 </Grid>

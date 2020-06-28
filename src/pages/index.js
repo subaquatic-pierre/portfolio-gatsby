@@ -9,6 +9,7 @@ import FeatureColumn from '../components/FeatureColumn';
 import { featureSection } from '../pagedata/homeFeatureData';
 import { coralImg } from '../pagedata/homeImgs';
 
+
 const featureSectionBreakpoint = 'sm'
 
 // MATERIAL COMPONENTS INSTEAD OF GATSBY
@@ -80,10 +81,12 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-const Home = () => {
+const Home = ({ location }) => {
     const classes = useStyles()
     return (
-        <Layout >
+        <Layout
+            location={location}
+        >
             <TopHero backgroundImage={coralImg} />
             <Container className={classes.featureSection} maxWidth='lg'>
                 {featureSection.map((section, index) => {

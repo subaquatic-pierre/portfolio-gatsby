@@ -7,6 +7,7 @@ import {
     Container,
     FormGroup,
     FormControlLabel,
+    useScrollTrigger
 } from '@material-ui/core';
 import path from 'path'
 
@@ -14,6 +15,8 @@ import Layout from '../components/Layout';
 import ProjectsSwitch from '../components/ProjectsSwitch'
 import Divider from '../components/Divider'
 import Project from '../components/Project'
+import ScrollToTop from '../components/ScrollToTop'
+
 import caps from '../utils/capitalize'
 
 import productionProjectsData from '../pagedata/productionProjectsData'
@@ -88,6 +91,12 @@ const Projects = () => {
         removeInifiteScrollListener()
         setexpandId(-1)
     };
+
+    // shrink app bar on scroll
+    const shrinkTrigger = useScrollTrigger({
+        disableHysteresis: true,
+        threshold: 100,
+    });
 
     const createData = () => {
         let data = []
@@ -205,6 +214,7 @@ const Projects = () => {
                     }
                 </Grid>
             </Container >
+            <ScrollToTop trigger={shrinkTrigger} color='secondary' size='small' />
         </Layout>
     );
 }

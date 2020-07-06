@@ -101,6 +101,14 @@ export const toolboxData = [
                     {
                         title: 'Official Docs',
                         link: 'https://reactjs.org/docs/getting-started.html'
+                    },
+                    {
+                        title: 'Jest Testing Framework',
+                        link: 'https://jestjs.io/docs/en/getting-started'
+                    },
+                    {
+                        title: 'Enzyme Testing Framework',
+                        link: 'https://enzymejs.github.io/enzyme/'
                     }
                 ]
             },

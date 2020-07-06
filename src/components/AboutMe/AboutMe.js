@@ -3,6 +3,8 @@ import { makeStyles } from '@material-ui/core';
 import { Grid, Typography, Fade, Card } from '@material-ui/core';
 import FormatQuoteIcon from '@material-ui/icons/FormatQuote';
 import { fadeEffect } from '../../pages/about'
+import PropTypes from 'prop-types';
+
 import Divider from '../Divider'
 
 const useStyles = makeStyles(theme => ({
@@ -61,10 +63,11 @@ const useStyles = makeStyles(theme => ({
 
 const AboutMe = (props) => {
     const { show } = props
+
     const classes = useStyles()
     return (
         <Fade timeout={fadeEffect} in={show}>
-            <Grid container justify='center' className={classes.content}>
+            <Grid data-test='component-AboutMe-container' container justify='center' className={classes.content}>
                 <Grid justify='center' container item xs={12} sm={8}>
                     <Typography variant='h4'>
                         About Me
@@ -113,9 +116,13 @@ const AboutMe = (props) => {
                     </Card>
                 </Grid>
             </Grid>
-        </Fade>
+        </Fade >
 
     )
+}
+
+AboutMe.propsTypes = {
+    show: PropTypes.bool.isRequired
 }
 
 export default AboutMe

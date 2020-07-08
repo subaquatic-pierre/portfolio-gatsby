@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
             display: 'block',
         },
         width: '250px',
-        top: '80px',
+        top: '90px',
         right: '0',
         display: 'none',
         minHeight: '100%',

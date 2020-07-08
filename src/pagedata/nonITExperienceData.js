@@ -1,7 +1,7 @@
 const nonITexperienceData = [
     {
         position: 'Small Business Owner',
-        organization: 'Sandy Beach Dive Center',
+        organization: 'Sandy Beach Dive Centre',
         period: 'March 2018 - Current'
     },
     {

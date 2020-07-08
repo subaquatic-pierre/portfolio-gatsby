@@ -121,7 +121,7 @@ const AboutMe = (props) => {
     )
 }
 
-AboutMe.propsTypes = {
+AboutMe.propTypes = {
     show: PropTypes.bool.isRequired
 }
 

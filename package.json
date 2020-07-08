@@ -9,6 +9,7 @@
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "^4.0.0-alpha.56",
     "@material-ui/styles": "^4.9.14",
+    "check-prop-types": "^1.1.2",
     "enzyme": "^3.11.0",
     "gatsby": "^2.21.37",
     "gatsby-image": "^2.4.4",

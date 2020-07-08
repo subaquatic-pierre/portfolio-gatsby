@@ -17,7 +17,7 @@ it('render successfully', () => {
     expect(wrapper.exists()).toBe(true)
 })
 
-describe('show prop', () => {
+describe('`show` property', () => {
     it('renders AboutMe component on true', () => {
         wrapper = setup({ show: true })
         expect(wrapper.find("[data-test='component-AboutMe-container']").exists()).toBe(true)

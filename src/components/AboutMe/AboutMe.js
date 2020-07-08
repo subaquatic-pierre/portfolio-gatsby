@@ -96,7 +96,7 @@ const AboutMe = (props) => {
                             spent more time playing games or troubleshooting network issues.
                         </Typography>
                         <Typography>
-                            Doing IT in high school for 3 years exposed me to the programming language Delphi, and the first glimpse of AI with "Conway's Game of Life". After school hours I worked as a junior technician in a small computer shop.
+                            Doing IT in high school for 3 years exposed me to the programming language Delphi, and the first glimpse of AI with "Conway's Game of Life". I'm a Test Driven Development practioner and advocate of well documented SOLID design principles.
                         </Typography>
                         <Typography>
                             My web developer career started by setting up the digital presence for Sandy Beach Dive Centre. We initially started with a Wordpress website. Being small business owner, I set up everything from social media and marketing accounts to the Google business platform (Google Ads, Search Console, Analytics)

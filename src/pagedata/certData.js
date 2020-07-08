@@ -1,6 +1,8 @@
 import CC605Enterprise from '../../static/certs/CC605-enterprise.png'
 import CC607Management from '../../static/certs/CC607-management.png'
 import CC615Infrastructure from '../../static/certs/CC615-infrastructure.png'
+import CC617Secutiry from '../../static/certs/CC617-security.png'
+import MicroMasters from '../../static/certs/UMGC-micro-masters.png'
 import CS50Intro from '../../static/certs/CS50-intro.png'
 import CS50WebPro from '../../static/certs/CS50-web-pro.png'
 import CS50Web from '../../static/certs/CS50-web.png'
@@ -14,10 +16,10 @@ const certData = [
         title: 'Cloud Computing Micro Masters',
         type: 'program',
         organization: 'Marryland University Global Campus',
-        image: CC605Enterprise,
-        date: 'in progress',
+        image: MicroMasters,
+        date: '2 July 2020',
         code: 'CCMicroMasters',
-        link: 'https://courses.edx.org/certificates/00544e1261fc45e889cd5d16ea73bc4d',
+        link: 'https://credentials.edx.org/credentials/e4ca0941373a41b590299ef8237a34c7',
         courses: [
             {
                 title: 'Cloud Computing for Enterprises',
@@ -50,10 +52,10 @@ const certData = [
                 title: 'Cloud Computing Security',
                 type: 'course',
                 organization: 'Marryland University Global Campus',
-                image: CC605Enterprise,
-                date: 'in progress',
+                image: CC617Secutiry,
+                date: '2 July 2020',
                 code: 'CC617x',
-                link: 'https://courses.edx.org/certificates/196f1ed84ed44a6db9f6ae7e5c379258'
+                link: 'https://courses.edx.org/certificates/8ff984623ed5424a8a6793ea8b6f0c10'
             },
         ]
     },

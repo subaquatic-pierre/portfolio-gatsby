@@ -109,7 +109,7 @@ export const toolboxData = [
                     {
                         title: 'Enzyme Testing Framework',
                         link: 'https://enzymejs.github.io/enzyme/'
-                    }
+                    },
                     {
                         title: 'JSS',
                         link: 'https://cssinjs.org/?v=v10.3.0'

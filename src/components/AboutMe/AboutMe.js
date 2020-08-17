@@ -107,7 +107,7 @@ const AboutMe = (props) => {
                             <div >
                                 <FormatQuoteIcon />
                                 <Typography variant='h6' >
-                                    If you cant explain something simply, you don't understand it well enough.
+                                    If you can't explain something simply, you don't understand it well enough.
                             </Typography>
                             </div>
                             <Typography variant='caption'>

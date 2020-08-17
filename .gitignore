@@ -46,7 +46,6 @@ __mocks__
 # gatsby files
 .cache/
 public
-secrets
 
 # serverless
 # Distribution / packaging

@@ -28,6 +28,8 @@ jspm_packages/
 
 # Optional npm cache directory
 .npm
+__mocks__
+.vscode
 
 # Optional eslint cache
 .eslintcache

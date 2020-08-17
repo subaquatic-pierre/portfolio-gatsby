@@ -1,13 +1,14 @@
 import divesandybeach from '../../static/images/divesandybeach-screanshot.png'
 import surettaventer from '../../static/images/surettaphotgraphy-screanshot.png'
 import ballotonline from '../../static/images/ballot-online.png'
+import portfolio from '../../static/images/portfolio.png'
 
 const productionProjectsData = [
     {
         title: 'Portfolio',
         type: 'production',
         date: '30 June 2020',
-        image: ballotonline,
+        image: portfolio,
         text: 'Home of my portfolio website, the site is built with Gatsby and Material UI. It is hosted on AWS, served using AWS CloudFront, it features a build-pipeline for automatic testing and deployment to the CloudFront distribution. A serverless web application which uses lambda functionality to send emails on for contact-me requests.',
         github: 'https://github.com/subaquatic-pierre/portfolio-gatsby-public',
         url: 'https://subaquatic-pierre.com',

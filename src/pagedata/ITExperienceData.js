@@ -5,7 +5,7 @@ const ITexperience = [
         period: 'March 2018 - Current'
     },
     {
-        position: 'Junior Computer Technician',
+        position: 'Computer Technician',
         organization: 'Computers Designed 4 U',
         period: 'January 2008 - December 2008'
     },

@@ -88,30 +88,35 @@ const AboutMe = (props) => {
                             </Typography>
                         </div>
                         <Typography>
-                            A Full Stack Web Developer and Master Scuba Diving Instructor, I am from South Africa, living in the UAE. When I am not building awesome web applications
-                            I am underwater.
+                            My name is Pierre, I'm a South African living in Dubai. I'm a full stack Web Developer and Cloud Architect. As a PADI Master Instructor and Technical diving instructor, if I am not developing awesome web applications I am underwater teaching scuba diving or taking awesome underwater pictures.
                         </Typography>
                         <Typography>
                             Naturally, my computing experience started with gaming, setting up LAN parties was an introduction to networking. I don't know if we
                             spent more time playing games or troubleshooting network issues.
                         </Typography>
                         <Typography>
-                            Doing IT in high school for 3 years exposed me to the programming language Delphi, and the first glimpse of AI with "Conway's Game of Life". I'm a Test Driven Development practioner and advocate of well documented SOLID design principles.
+                            Currently I enjoy exploring design patterns. I am an advocate of SOLID design principles, with the belief that the code should speak for itself with logical variable semantics and code structure.
                         </Typography>
                         <Typography>
-                            My web developer career started by setting up the digital presence for Sandy Beach Dive Centre. We initially started with a Wordpress website. Being small business owner, I set up everything from social media and marketing accounts to the Google business platform (Google Ads, Search Console, Analytics)
-                        </Typography>
-                        <Typography>
-                            As the business grew I found it more difficult to use Wordpress, with each new feature came a new cost as well as the rigid design constraints of page builders.
-                            This led me down the road of HTML and CSS, which progressed to Javascript, Python and Cloud Computing with AWS.
+                            My web developer career started by setting up the digital presence for Sandy Beach Dive Centre. We initially started with a Wordpress website. As the business grew I found it more difficult, with each new feature came a new cost, as well as the design constraints of page builders. This led to pursue HTML, CSS, and Javascript, which progressed to Python and Cloud Computing with AWS.
                         </Typography>
                         <Typography>
                             I enjoy building awesome web applications and learning the ever changing landscape of web development. By nature I am a person who loves learning and teaching.
-                            The internet is the future and its technologies are an enticing feature of the development of civilization.
                         </Typography>
+                        <div className={classes.quoteContainer} >
+                            <div >
+                                <FormatQuoteIcon />
+                                <Typography variant='h6' >
+                                    If you cant explain something simply, you don't understand it well enough.
+                            </Typography>
+                            </div>
+                            <Typography variant='caption'>
+                                - Albert Einstein
+                            </Typography>
+                        </div>
                         <Typography className={classes.title} color="textSecondary">
                             Updated:
-                            30 June 2020
+                            20 August 2020
                         </Typography>
                     </Card>
                 </Grid>

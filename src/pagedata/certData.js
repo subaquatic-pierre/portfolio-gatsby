@@ -13,11 +13,40 @@ import MITxSeries from '../../static/certs/MITx-x-series.png'
 
 const certData = [
     {
+        title: 'Computational Thinking using Python',
+        type: 'program',
+        organization: 'MITx',
+        image: MITxSeries,
+        date: 'June 2020',
+        code: 'MITxPython',
+        link: 'https://credentials.edx.org/credentials/2b8befee43034974a71ebd3b18a0bb17/',
+        courses: [
+            {
+                title: 'Introduction to Computer Science and Programming Using Python',
+                type: 'course',
+                organization: 'MITx',
+                image: MITxPythonIntro,
+                date: '30 December 2019',
+                code: '6.00.1x',
+                link: 'https://courses.edx.org/certificates/ac1ba2ce68f44dd89137e7d682c9abef'
+            },
+            {
+                title: 'Introduction to Computational Thinking and Data Science',
+                type: 'course',
+                organization: 'MITx',
+                image: MITx6002,
+                date: '30 December 2019',
+                code: '6.00.2x',
+                link: 'https://courses.edx.org/certificates/ec8b24490438417690253d6174461cbf'
+            },
+        ]
+    },
+    {
         title: 'Cloud Computing Micro Masters',
         type: 'program',
         organization: 'Marryland University Global Campus',
         image: MicroMasters,
-        date: '2 July 2020',
+        date: 'April 2020',
         code: 'CCMicroMasters',
         link: 'https://credentials.edx.org/credentials/e4ca0941373a41b590299ef8237a34c7',
         courses: [
@@ -64,7 +93,7 @@ const certData = [
         type: 'program',
         organization: 'HarvardX',
         image: CS50WebPro,
-        date: '19 December 2019',
+        date: 'December 2019',
         code: 'CS50WebPro',
         link: 'https://credentials.edx.org/credentials/4971455456ef41c7b3cfc5156c1b263a/',
         courses: [
@@ -88,36 +117,6 @@ const certData = [
             },
         ]
     },
-    {
-        title: 'Computational Thinking using Python',
-        type: 'program',
-        organization: 'MITx',
-        image: MITxSeries,
-        date: '19 December 2019',
-        code: 'MITxPython',
-        link: 'https://credentials.edx.org/credentials/2b8befee43034974a71ebd3b18a0bb17/',
-        courses: [
-            {
-                title: 'Introduction to Computer Science and Programming Using Python',
-                type: 'course',
-                organization: 'MITx',
-                image: MITxPythonIntro,
-                date: '30 December 2019',
-                code: '6.00.1x',
-                link: 'https://courses.edx.org/certificates/ac1ba2ce68f44dd89137e7d682c9abef'
-            },
-            {
-                title: 'Introduction to Computational Thinking and Data Science',
-                type: 'course',
-                organization: 'MITx',
-                image: MITx6002,
-                date: '30 December 2019',
-                code: '6.00.2x',
-                link: 'https://courses.edx.org/certificates/ec8b24490438417690253d6174461cbf'
-            },
-        ]
-    },
-
 ]
 
 export default certData;

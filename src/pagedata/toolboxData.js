@@ -4,6 +4,7 @@ import sass from '../../static/svg/sass-1.svg'
 import material from '../../static/svg/material-ui-1.svg'
 import bootstrap from '../../static/svg/bootstrap-4.svg'
 import react from '../../static/svg/react-2.svg'
+import apollo from '../../static/svg/apollo-graphql-compact.svg'
 // Back end
 import django from '../../static/svg/django-community.svg'
 import express from '../../static/svg/express-109.svg'
@@ -71,6 +72,33 @@ export const toolboxData = [
         title: 'Front End',
         link: 'frontEnd',
         tech: [
+
+            {
+                title: 'React',
+                image: react,
+                text: `React is a component based library, elements make up the most basic building blocks, written in JSX resembling HTML. Elements are JSX objects, a component is comprised of one or more elements. It is a powerful web app building paradigm, created by Facebook developers.`,
+                resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://reactjs.org/docs/getting-started.html'
+                    },
+                    {
+                        title: 'React Testing Library',
+                        link: 'https://testing-library.com/docs/react-testing-library/intro'
+                    }
+                ]
+            },
+            {
+                title: 'Apollo Client',
+                image: apollo,
+                text: `An awesome React client teachnology which allows easy integration with a GraphQL server. It provides an excellent API for connecting to the server as well as querying data. The client provider allows for client side caching as well as optimistic updates.`,
+                resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://www.apollographql.com/docs/react/'
+                    }
+                ]
+            },
             {
                 title: 'Gatsby',
                 image: gatsby,
@@ -83,36 +111,13 @@ export const toolboxData = [
                 ]
             },
             {
-                title: 'SASS',
-                image: sass,
-                text: `A CSS pre-processor, this language supercharges CSS, it offers features such as mixins or nesting to allow fast and structured CSS development. It is necessary to use a CSS pre-compiler when using SASS / SCSS.`,
+                title: 'Material-UI',
+                image: material,
+                text: `Material-UI is a react component framework developed by Google. It is a layout paradigm which encourages the latest web and mobile layout designs. It features a powerful theming system based on JSS. `,
                 resources: [
                     {
                         title: 'Official Docs',
-                        link: 'https://sass-lang.com/documentation'
-                    }
-                ]
-            },
-            {
-                title: 'React',
-                image: react,
-                text: `React is a component based library, elements make up the most basic building blocks, written in JSX resembling HTML. Elements are JSX objects, a component is comprised of one or more elements. It is a powerful web app building paradigm, created by Facebook developers.`,
-                resources: [
-                    {
-                        title: 'Official Docs',
-                        link: 'https://reactjs.org/docs/getting-started.html'
-                    },
-                    {
-                        title: 'Jest Testing Framework',
-                        link: 'https://jestjs.io/docs/en/getting-started'
-                    },
-                    {
-                        title: 'Enzyme Testing Framework',
-                        link: 'https://enzymejs.github.io/enzyme/'
-                    },
-                    {
-                        title: 'JSS',
-                        link: 'https://cssinjs.org/?v=v10.3.0'
+                        link: 'https://material-ui.com/'
                     }
                 ]
             },
@@ -128,13 +133,13 @@ export const toolboxData = [
                 ]
             },
             {
-                title: 'Material-UI',
-                image: material,
-                text: `Material-UI is a react component framework developed by Google. It is a layout paradigm which encourages the latest web and mobile layout designs. It features a powerful theming system based on JSS. `,
+                title: 'SASS',
+                image: sass,
+                text: `A CSS pre-processor, this language supercharges CSS, it offers features such as mixins or nesting to allow fast and structured CSS development. It is necessary to use a CSS pre-compiler when using SASS / SCSS.`,
                 resources: [
                     {
                         title: 'Official Docs',
-                        link: 'https://material-ui.com/'
+                        link: 'https://sass-lang.com/documentation'
                     }
                 ]
             },
@@ -180,10 +185,6 @@ export const toolboxData = [
                         link: 'https://www.postgresqltutorial.com/'
                     },
                     {
-                        title: 'Psycopg',
-                        link: 'https://www.psycopg.org/docs/'
-                    },
-                    {
                         title: 'SQLAlchemy',
                         link: 'https://docs.sqlalchemy.org/en/13/'
                     },
@@ -199,7 +200,7 @@ export const toolboxData = [
                         link: 'https://docs.mongodb.com/manual/'
                     },
                     {
-                        title: 'Mongoose ORM',
+                        title: 'Mongoose',
                         link: 'https://mongoosejs.com/docs/index.html'
                     },
                 ]

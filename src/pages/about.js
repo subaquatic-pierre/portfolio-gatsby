@@ -13,6 +13,7 @@ import AboutMe from '../components/AboutMe'
 import Certifications from '../components/Certifications'
 import Experience from '../components/Experience'
 import path from 'path'
+import Technologies from '../components/Technologies/Technologies';
 
 export const drawerWidth = 240;
 export const mobileDrawerWidth = 60;
@@ -81,6 +82,8 @@ const About = (props) => {
         switch (contentShow) {
             case ('About Me'):
                 return (<AboutMe show />)
+            case ('Technologies'):
+                return (<Technologies show />)
             case ('Certifications'):
                 return (<Certifications show />)
             case ('Experience'):

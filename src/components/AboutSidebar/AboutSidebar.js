@@ -9,6 +9,7 @@ import { makeStyles } from '@material-ui/core'
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import CardMembershipIcon from '@material-ui/icons/CardMembership';
 import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
 
 import profilePic from '../../../static/images/profile-pic.jpg';
 
@@ -79,8 +80,10 @@ const getIcon = (index, classes) => {
         case 0:
             return <AccountCircleIcon />
         case 1:
-            return <VerifiedUserIcon className={classes.middleIcon} />
+            return <ImportantDevicesIcon />
         case 2:
+            return <VerifiedUserIcon className={classes.middleIcon} />
+        case 3:
             return <CardMembershipIcon />
         default:
             break
@@ -100,7 +103,7 @@ const AboutSidebar = (props) => {
                     </div>
                 }
                 <List className={classes.sidebarList}>
-                    {['About Me', 'Certifications', 'Experience'].map((text, index) => (
+                    {['About Me', 'Technologies', 'Certifications', 'Experience'].map((text, index) => (
                         <ListItem button onClick={() => { handleAboutListClick(text) }} key={text}>
                             <ListItemIcon className={classes.icon}>{getIcon(index, classes)}</ListItemIcon>
                             <ListItemText primary={text} />

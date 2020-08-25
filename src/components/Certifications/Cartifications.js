@@ -65,13 +65,17 @@ const Row = (props) => {
     const { program } = props;
     const [open, setOpen] = React.useState(false);
 
+    const subcourse = program.courses && program.courses.length > 0 ? true : false
+
     return (
         <React.Fragment >
             <TableRow >
                 <TableCell>
-                    <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
-                        {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-                    </IconButton>
+                    {subcourse &&
+                        <IconButton aria-label="expand row" size="small" onClick={() => setOpen(!open)}>
+                            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+                        </IconButton>
+                    }
                 </TableCell>
                 <TableCell component="th" scope="row" className={classes.pos}>
                     <Typography variant='body1' component='h5'>

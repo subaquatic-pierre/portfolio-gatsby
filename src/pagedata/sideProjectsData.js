@@ -3,10 +3,40 @@ import divesandybeachFlask from '../../static/images/divesandybeach-flask.png'
 import chatio from '../../static/images/chatio.png'
 import pizza from '../../static/images/pizza.png'
 import ballotonline from '../../static/images/ballot-online.png'
+import recipes from '../../static/images/recipes.png'
 
 
 
 const sideProjectsData = [
+    {
+        title: 'React Apollo Recipes',
+        type: 'side',
+        date: '25 July 2020',
+        image: recipes,
+        text: 'This app is designed for users to create recipes and share them with their friends, leveraging the power of React, Apollo and GraphQL. While creating the app, emphasis was placed on testing React components with React Testing Library. All queries and mutations to the database are optimistically updated within the UI before being updated from server data',
+        github: 'https://github.com/subaquatic-pierre/react-apollo-recipes',
+        url: 'https://recipes.ballot-online.com',
+        tech: [
+            {
+                title: 'Mongo DB',
+            },
+            {
+                title: 'React',
+            },
+            {
+                title: 'GraphQL',
+            },
+            {
+                title: 'Material UI',
+            },
+            {
+                title: 'React Testing Library',
+            },
+            {
+                title: 'Apollo React',
+            },
+        ]
+    },
     {
         title: 'Ballot Online',
         type: 'side',

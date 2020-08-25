@@ -9,6 +9,8 @@ import CS50Web from '../../static/certs/CS50-web.png'
 import MITxPythonIntro from '../../static/certs/MITx-python-intro.png'
 import MITx6002 from '../../static/certs/MITx-6002.png'
 import MITxSeries from '../../static/certs/MITx-x-series.png'
+import cppcert from '../../static/certs/cppcert.png'
+import webdevbootcamp from '../../static/certs/webdevbootcamp.png'
 
 
 const certData = [
@@ -89,6 +91,15 @@ const certData = [
         ]
     },
     {
+        title: 'Object-Oriented Data Structures in C++',
+        type: 'course',
+        organization: 'University of Illinois at Urbana-Champaign',
+        image: cppcert,
+        date: 'March 2020',
+        code: 'CPP',
+        link: 'https://coursera.org/share/634cd16b985e35f5c6deb223419a7488',
+    },
+    {
         title: 'Computer Science for Web Programming',
         type: 'program',
         organization: 'HarvardX',
@@ -116,6 +127,15 @@ const certData = [
                 link: 'https://courses.edx.org/certificates/a972c2e83997445ba12437b402accb17'
             },
         ]
+    },
+    {
+        title: 'Web Developer Bootcamp',
+        type: 'course',
+        organization: 'Udemy',
+        image: webdevbootcamp,
+        date: 'August 2019',
+        code: 'WEBDEVBOOTCAMP',
+        link: 'https://www.udemy.com/certificate/UC-1RGBKDIA/',
     },
 ]
 

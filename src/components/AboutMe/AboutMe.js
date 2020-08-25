@@ -95,10 +95,7 @@ const AboutMe = (props) => {
                             spent more time playing games or troubleshooting network issues.
                         </Typography>
                         <Typography>
-                            Currently I enjoy exploring design patterns. I am an advocate of SOLID design principles, with the belief that the code should speak for itself with logical variable semantics and code structure.
-                        </Typography>
-                        <Typography>
-                            My web developer career started by setting up the digital presence for Sandy Beach Dive Centre. We initially started with a Wordpress website. As the business grew I found it more difficult, with each new feature came a new cost, as well as the design constraints of page builders. This led to pursue HTML, CSS, and Javascript, which progressed to Python and Cloud Computing with AWS.
+                            Currently I enjoy exploring Object Orientated design patterns to solve complex algorithmic problems. I am an advocate of SOLID design principles, I belief that the code should speak for itself, with the use of logical variable semantics and code structure.
                         </Typography>
                         <Typography>
                             I enjoy building awesome web applications and learning the ever changing landscape of web development. By nature I am a person who loves learning and teaching.

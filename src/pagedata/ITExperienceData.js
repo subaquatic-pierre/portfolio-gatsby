@@ -1,7 +1,7 @@
 const ITexperience = [
     {
         position: 'Freelance Web Developer',
-        organization: 'Sandy Beach Dive Center',
+        organization: 'Sandy Beach Dive Centre',
         period: 'March 2018 - Current'
     },
     {

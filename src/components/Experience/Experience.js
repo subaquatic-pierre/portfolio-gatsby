@@ -139,7 +139,7 @@ const Experience = props => {
                                     <TableCell align='left' className={classes.cursor} onClick={() => setOpen(!open)} component="th" scope="row">
                                         <Typography variant='body1'>
                                             <b>
-                                                Non-IT Experince
+                                                Other Experience
                                             </b>
                                         </Typography>
                                     </TableCell>

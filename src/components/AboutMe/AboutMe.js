@@ -91,11 +91,7 @@ const AboutMe = (props) => {
                             My name is Pierre, I'm a South African living in Dubai. I'm a full stack Web Developer and Cloud Architect. As a PADI Master Instructor and Technical diving instructor, if I am not developing awesome web applications I am underwater teaching scuba diving or taking awesome underwater pictures.
                         </Typography>
                         <Typography>
-                            Naturally, my computing experience started with gaming, setting up LAN parties was an introduction to networking. I don't know if we
-                            spent more time playing games or troubleshooting network issues.
-                        </Typography>
-                        <Typography>
-                            Currently I enjoy exploring Object Orientated design patterns to solve complex algorithmic problems. I am an advocate of SOLID design principles, I belief that the code should speak for itself, with the use of logical variable semantics and code structure.
+                            Currently I am honing my OOP skills with a focus on design patterns. I am an advocate of SOLID design principles, I belief that the code should speak for itself, with the use of logical variable semantics and code structure.
                         </Typography>
                         <Typography>
                             I enjoy building awesome web applications and learning the ever changing landscape of web development. By nature I am a person who loves learning and teaching.

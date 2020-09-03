@@ -85,6 +85,7 @@ const AboutMe = (props) => {
                             </div>
                             <Typography variant='caption'>
                                 - Albert Einstein
+                                
                             </Typography>
                         </div>
                         <Typography>

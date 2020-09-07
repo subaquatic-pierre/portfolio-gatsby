@@ -11,9 +11,19 @@ import MITx6002 from '../../static/certs/MITx-6002.png'
 import MITxSeries from '../../static/certs/MITx-x-series.png'
 import cppcert from '../../static/certs/cppcert.png'
 import webdevbootcamp from '../../static/certs/webdevbootcamp.png'
+import algorithmicToolbox from '../../static/certs/algorithmic-toolbox.png'
 
 
 const certData = [
+    {
+        title: 'Algorithmic Toolbox',
+        type: 'course',
+        organization: 'Coursera',
+        image: algorithmicToolbox,
+        date: 'September 2020',
+        code: 'ALGTOOLBOX',
+        link: 'https://www.coursera.org/account/accomplishments/certificate/RFARM37YPDGH',
+    },
     {
         title: 'Computational Thinking using Python',
         type: 'program',

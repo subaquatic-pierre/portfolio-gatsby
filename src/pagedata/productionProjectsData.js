@@ -1,6 +1,5 @@
 import divesandybeach from '../../static/images/divesandybeach-screanshot.png'
-import surettaventer from '../../static/images/surettaphotgraphy-screanshot.png'
-import ballotonline from '../../static/images/ballot-online.png'
+import surettaventer from '../../static/images/surettaventer-com.png'
 import portfolio from '../../static/images/portfolio.png'
 
 const productionProjectsData = [
@@ -61,9 +60,9 @@ const productionProjectsData = [
         type: 'production',
         date: '30 March 2020',
         image: surettaventer,
-        text: 'This is a photography portfolio website. built with React and Gatsby. It features React photo gallery, it is styled with Bootstrap 4',
+        text: 'A portfolio website for photographers, it is built with React and Gatsby. It features React photo gallery, it is styled with Bootstrap 4. The site is hosted on an AWS S3 bucket with a CD pipeline controlled with AWS Pipeline.',
         github: undefined,
-        url: 'https://scubadivedubai.com',
+        url: 'https://surettaventer.com',
         tech: [
             {
                 title: 'Gatsby',

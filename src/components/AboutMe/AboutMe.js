@@ -92,25 +92,14 @@ const AboutMe = (props) => {
                             My name is Pierre, I'm a South African living in Dubai. I'm a full stack Web Developer and Cloud Architect. As a PADI Master Instructor and Technical diving instructor, if I am not developing awesome web applications I am underwater teaching scuba diving or taking awesome underwater pictures.
                         </Typography>
                         <Typography>
-                            Currently I am honing my OOP skills with a focus on design patterns. I am an advocate of SOLID design principles, I belief that the code should speak for itself, with the use of logical variable semantics and code structure.
+                            Currently I am honing my OOP skills with a focus on design patterns. I am an advocate of SOLID design principles, code should speak for itself with the use of logical variable semantics and code structure.
                         </Typography>
                         <Typography>
-                            I enjoy building awesome web applications and learning the ever changing landscape of web development. By nature I am a person who loves learning and teaching.
+                            The internet is the future and its technologies are an enticing feature of the development of civilization. I am intrigued by the ever changing landscape of internet technologies, check out some of my current favorites in the "Technologies" tab.
                         </Typography>
-                        <div className={classes.quoteContainer} >
-                            <div >
-                                <FormatQuoteIcon />
-                                <Typography variant='h6' >
-                                    If you can't explain something simply, you don't understand it well enough.
-                            </Typography>
-                            </div>
-                            <Typography variant='caption'>
-                                - Albert Einstein
-                            </Typography>
-                        </div>
                         <Typography className={classes.title} color="textSecondary">
                             Updated:
-                            20 August 2020
+                            7 September 2020
                         </Typography>
                     </Card>
                 </Grid>

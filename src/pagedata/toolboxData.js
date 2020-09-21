@@ -244,8 +244,12 @@ export const toolboxData = [
             {
                 title: 'GitHub',
                 image: github,
-                text: `Version control web application based on Git technology.`,
+                text: `Version control web application, based on Git technology.`,
                 resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://git-scm.com/doc'
+                    },
                     {
                         title: 'Profile',
                         link: 'https://github.com/subaquatic-pierre'

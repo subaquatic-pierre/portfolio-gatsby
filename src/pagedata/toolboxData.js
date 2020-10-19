@@ -21,7 +21,11 @@ import linux from '../../static/svg/linux-tux.svg'
 import googleads from '../../static/svg/google-ads-2.svg'
 import facebook from '../../static/svg/facebook.svg'
 import analytics from '../../static/svg/google-analytics-4.svg'
-
+// DevOps
+import terraform from '../../static/svg/terraformio-icon.svg'
+import selenium from '../../static/svg/selenium-logo.svg'
+import postman from '../../static/svg/postman-icon.svg'
+import jmeter from '../../static/svg/jmeter-logo'
 // Cloud
 import cloudformation from '../../static/svg/aws-cloudformation.svg'
 import codedeploy from '../../static/svg/aws-codedeploy.svg'
@@ -30,6 +34,7 @@ import s3 from '../../static/svg/aws-s3.svg'
 // Languages
 import javascript from '../../static/svg/javascript.svg'
 import python from '../../static/svg/python-5.svg'
+import typescript from '../../static/svg/typescriptlang-icon.svg'
 
 export const toolboxData = [
     {
@@ -64,6 +69,17 @@ export const toolboxData = [
                         title: 'Jest Testing framework',
                         link: 'https://jestjs.io/'
                     },
+                ]
+            }
+            {
+                title: 'TypeScript',
+                image: typescript,
+                text: `A javascript super set, the language has all the features of Javascript with the added benefit of static type checking. The language enforces strict type rules which encourage good programming techniques with the use of interfaces and abstract classes.`,
+                resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://www.typescriptlang.org/docs'
+                    }
                 ]
             }
         ]

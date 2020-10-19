@@ -24,8 +24,8 @@ import analytics from '../../static/svg/google-analytics-4.svg'
 // DevOps
 import terraform from '../../static/svg/terraformio-icon.svg'
 import selenium from '../../static/svg/selenium-logo.svg'
-import postman from '../../static/svg/postman-icon.svg'
-import jmeter from '../../static/svg/jmeter-logo'
+import postman from '../../static/svg/getpostman-icon.svg'
+import jmeter from '../../static/svg/jmeter-logo.svg'
 // Cloud
 import cloudformation from '../../static/svg/aws-cloudformation.svg'
 import codedeploy from '../../static/svg/aws-codedeploy.svg'
@@ -70,11 +70,11 @@ export const toolboxData = [
                         link: 'https://jestjs.io/'
                     },
                 ]
-            }
+            },
             {
                 title: 'TypeScript',
                 image: typescript,
-                text: `A javascript super set, the language has all the features of Javascript with the added benefit of static type checking. The language enforces strict type rules which encourage good programming techniques with the use of interfaces and abstract classes.`,
+                text: `A Javascript super set, the language has all the features of Javascript with the added benefit of static type checking. The language enforces strict type rules which encourage good programming techniques with the use of a long list of language features which include abstract classes, interfaces, union types, enums and many more.`,
                 resources: [
                     {
                         title: 'Official Docs',
@@ -237,6 +237,23 @@ export const toolboxData = [
                 ],
             },
             {
+                title: 'Node JS',
+                image: node,
+                text: `A Javascript runtime environment enables the use of Javascript outside of the browser. Node JS comes with NPM which is a package manager. Along with Node comes a huge ecosystem of packages which include development tools such as Grunt or Node SASS, as well as web frameworks such as Express.`,
+                resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://nodejs.org/en/docs/'
+                    },
+                ],
+            }
+        ]
+    },
+    {
+        title: 'DevOps',
+        link: 'DevOps',
+        tech: [
+            {
                 title: 'Docker',
                 image: docker,
                 text: `Docker is a containerization software, it allows for the creation of isolated environments enabling among other things a powerful micro-service web application environment. This containing of applications creates an environment in which apps can run independant of OS's or hardware configurations.`,
@@ -251,60 +268,17 @@ export const toolboxData = [
                     },
                 ],
             },
-        ]
-    },
-    {
-        title: 'Dev Tools',
-        link: 'devTools',
-        tech: [
             {
-                title: 'GitHub',
-                image: github,
-                text: `Version control web application, based on Git technology.`,
+                title: 'Terraform',
+                image: terraform,
+                text: `Irure culpa laboris minim laboris tempor ullamco deserunt culpa laboris.Non laboris ex esse velit cillum nisi.Sunt adipisicing magna irure laboris minim voluptate.Ex labore laborum aliquip cillum sunt nulla et minim proident excepteur in officia.`,
                 resources: [
                     {
                         title: 'Official Docs',
-                        link: 'https://git-scm.com/doc'
-                    },
-                    {
-                        title: 'Profile',
-                        link: 'https://github.com/subaquatic-pierre'
+                        link: 'https://docs.docker.com/engine/reference/commandline/docker/'
                     },
                 ],
             },
-            {
-                title: 'VS Code',
-                image: visual,
-                text: `A Powerful IDE which supports many languages through its vast ecosystem of extensions.`,
-                resources: [
-                    {
-                        title: 'VS Code Extensions',
-                        link: 'https://marketplace.visualstudio.com/'
-                    },
-                ],
-            },
-            {
-                title: 'Linux',
-                image: linux,
-                text: `Linux is an open source UNIX operating system. Linux features powerful packages which enhance development, it also powers most web infrastructure in the cloud. Linux has a variety of flavours all with their unique specializations. Ubuntu is one of the best flavours to use for development because of its comprehensive package base.`,
-                resources: [
-                    {
-                        title: 'Linux Cheatsheat',
-                        link: 'https://github.com/subaquatic-pierre/linux-tools'
-                    },
-                ],
-            },
-            {
-                title: 'Node JS',
-                image: node,
-                text: `A Javascript runtime environment enables the use of Javascript outside of the browser. Node JS comes with NPM which is a package manager. Along with Node comes a huge ecosystem of packages which include development tools such as Grunt or Node SASS, as well as web frameworks such as Express.`,
-                resources: [
-                    {
-                        title: 'Official Docs',
-                        link: 'https://nodejs.org/en/docs/'
-                    },
-                ],
-            }
         ]
     },
     {
@@ -362,7 +336,50 @@ export const toolboxData = [
         ]
     },
     {
-        title: 'Biz Dev',
+        title: 'Dev Tools',
+        link: 'devTools',
+        tech: [
+            {
+                title: 'GitHub',
+                image: github,
+                text: `Version control web application, based on Git technology.`,
+                resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://git-scm.com/doc'
+                    },
+                    {
+                        title: 'Profile',
+                        link: 'https://github.com/subaquatic-pierre'
+                    },
+                ],
+            },
+            {
+                title: 'VS Code',
+                image: visual,
+                text: `A Powerful IDE which supports many languages through its vast ecosystem of extensions.`,
+                resources: [
+                    {
+                        title: 'VS Code Extensions',
+                        link: 'https://marketplace.visualstudio.com/'
+                    },
+                ],
+            },
+            {
+                title: 'Linux',
+                image: linux,
+                text: `Linux is an open source UNIX operating system. Linux features powerful packages which enhance development, it also powers most web infrastructure in the cloud. Linux has a variety of flavours all with their unique specializations. Ubuntu is one of the best flavours to use for development because of its comprehensive package base.`,
+                resources: [
+                    {
+                        title: 'Linux Cheatsheat',
+                        link: 'https://github.com/subaquatic-pierre/linux-tools'
+                    },
+                ],
+            },
+        ]
+    },
+    {
+        title: 'Business Development',
         link: 'bizDev',
         tech: [
             {

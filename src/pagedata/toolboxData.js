@@ -303,7 +303,7 @@ export const toolboxData = [
             },
             {
                 title: 'Selenium',
-                image: postman,
+                image: selenium,
                 text: `Front end testing framework, used to run integration tests. The framework can be used with a variety of languages, most comonly used is Python. It simulates a browser environment, this allows for real user interaction simulated events such as button clicks or text inputs`,
                 resources: [
                     {

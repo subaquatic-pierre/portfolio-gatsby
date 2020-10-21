@@ -282,7 +282,7 @@ export const toolboxData = [
             {
                 title: 'Apache Jmeter',
                 image: jmeter,
-                text: `A Java runtime application, it is used to perform load tests on applications in order to determine performance metrics. Developed by Apache and fully open source.`,
+                text: `A Java runtime application, it is used to perform load tests on applications in order to determine performance metrics. It is developed by Apache and fully open source.`,
                 resources: [
                     {
                         title: 'Official Docs',

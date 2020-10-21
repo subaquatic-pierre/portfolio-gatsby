@@ -279,6 +279,39 @@ export const toolboxData = [
                     },
                 ],
             },
+            {
+                title: 'Apache Jmeter',
+                image: jmeter,
+                text: `Irure culpa laboris minim laboris tempor ullamco deserunt culpa laboris.Non laboris ex esse velit cillum nisi.Sunt adipisicing magna irure laboris minim voluptate.Ex labore laborum aliquip cillum sunt nulla et minim proident excepteur in officia.`,
+                resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://docs.docker.com/engine/reference/commandline/docker/'
+                    },
+                ],
+            },
+            {
+                title: 'Postman',
+                image: postman,
+                text: `Irure culpa laboris minim laboris tempor ullamco deserunt culpa laboris.Non laboris ex esse velit cillum nisi.Sunt adipisicing magna irure laboris minim voluptate.Ex labore laborum aliquip cillum sunt nulla et minim proident excepteur in officia.`,
+                resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://docs.docker.com/engine/reference/commandline/docker/'
+                    },
+                ],
+            },
+            {
+                title: 'Selenium',
+                image: postman,
+                text: `Front end testing framework, used to run integration tests. The framework can be used with a variety of languages, most comonly used is Python. It simulates a browser environment, this allows for real user interaction simulated events such as button clicks or text inputs`,
+                resources: [
+                    {
+                        title: 'Official Docs',
+                        link: 'https://www.selenium.dev/documentation/en/'
+                    },
+                ],
+            },
         ]
     },
     {

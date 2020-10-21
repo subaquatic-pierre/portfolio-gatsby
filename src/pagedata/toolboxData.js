@@ -271,7 +271,7 @@ export const toolboxData = [
             {
                 title: 'Terraform',
                 image: terraform,
-                text: `A powerfull cloud agnostic Infrastructure as Code framework made by Hashicorp. Templates are bundled into modules which are grouped together to define a cloud infrastructure. Templates are written in HCL, IaC is a powerful tool in DevOps, it allows for infrastructure versioning and prevents configuration drift.`,
+                text: `A powerful cloud agnostic Infrastructure as Code framework made by Hashicorp. Templates are bundled into modules which are grouped together to define a cloud infrastructure. Templates are written in HCL, IaC is a powerful tool in DevOps, it allows for infrastructure versioning and prevents configuration drift.`,
                 resources: [
                     {
                         title: 'Official Docs',
@@ -282,7 +282,7 @@ export const toolboxData = [
             {
                 title: 'Apache Jmeter',
                 image: jmeter,
-                text: `A Java runtime application used for application stress testing, developed by Apache.`,
+                text: `A Java runtime application, it is used to perform load tests on applications in order to determine performance metrics. Developed by Apache and fully open source.`,
                 resources: [
                     {
                         title: 'Official Docs',
@@ -293,18 +293,18 @@ export const toolboxData = [
             {
                 title: 'Postman',
                 image: postman,
-                text: `Irure culpa laboris minim laboris tempor ullamco deserunt culpa laboris.Non laboris ex esse velit cillum nisi.Sunt adipisicing magna irure laboris minim voluptate.Ex labore laborum aliquip cillum sunt nulla et minim proident excepteur in officia.`,
+                text: `A tool which is used in end-to-end testing. It is used mainly to test and document API's. It provides a suite of request types, including GraphQL, to test API endpoint status response as well as body response.`,
                 resources: [
                     {
                         title: 'Official Docs',
-                        link: 'https://docs.docker.com/engine/reference/commandline/docker/'
+                        link: 'https://learning.postman.com/docs/publishing-your-api/documenting-your-api/'
                     },
                 ],
             },
             {
                 title: 'Selenium',
                 image: selenium,
-                text: `Front end testing framework, used to run integration tests. The framework can be used with a variety of languages, most comonly used is Python. It simulates a browser environment, this allows for real user interaction simulated events such as button clicks or text inputs`,
+                text: `Front end testing framework, used to run integration tests. The framework can be used with a variety of languages, most commonly used is Python. It simulates a browser environment, this allows for real user interaction simulated events such as button clicks or text inputs.`,
                 resources: [
                     {
                         title: 'Official Docs',

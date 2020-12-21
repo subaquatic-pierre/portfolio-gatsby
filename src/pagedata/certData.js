@@ -12,9 +12,29 @@ import MITxSeries from '../../static/certs/MITx-x-series.png'
 import cppcert from '../../static/certs/cppcert.png'
 import webdevbootcamp from '../../static/certs/webdevbootcamp.png'
 import algorithmicToolbox from '../../static/certs/algorithmic-toolbox.png'
+import awsCloudArchitect from '../../static/certs/Udacity-aws-cloud-architect'
+import azureDevOps from '../../static/certs/Udacity-DevOps-azure.png'
 
 
 const certData = [
+    {
+        title: 'AWS Cloud Architect',
+        type: 'course',
+        organization: 'Udacicty',
+        image: algorithmicToolbox,
+        date: 'October 2020',
+        code: 'AWSCLOUDARCHITECT',
+        link: 'https://graduation.udacity.com/nd063',
+    },
+    {
+        title: 'DevOps Engineer for Microsoft Azure',
+        type: 'course',
+        organization: 'Udacicty',
+        image: algorithmicToolbox,
+        date: 'September 2020',
+        code: 'AZUREDEVOPS',
+        link: 'https://graduation.udacity.com/nd082',
+    },
     {
         title: 'Algorithmic Toolbox',
         type: 'course',

@@ -34,7 +34,7 @@ export const featureSection = [
             backgroundImage: koiFishImg,
             animation: false,
             heading: 'Toolbox',
-            text: `Check out a list of all the tools I use most often, included are the languages I am most competent in as well as their best sources of documentation. As a full stack developer, I use tools for frontend, backend and cloud computing technologies. Business development tools are used to develop and monitor digital marketing campaigns and application analytics.`,
+            text: `Check out a list of my favorite tools and technologies, included are languages and their best sources of documentation. As a Cloud Engineer, I use frontend, backend and cloud computing technologies. I have included a few business development tools useful for marketing and analytics.`,
             buttonText: 'More info',
             link: '/toolbox',
             align: 'center',
@@ -60,7 +60,7 @@ export const featureSection = [
             backgroundImage: wolfImg,
             animation: false,
             heading: 'Projects',
-            text: `Check out my web application portfolio. All my web development projects are featured here, they range from production projects, live on the internet to non-production projects which have not yet been completed or are just side projects.`,
+            text: `Check out my project portfolio. The projects range from full stack production projects to small side projects.`,
             buttonText: 'More Info',
             link: '/projects',
             align: 'center',
@@ -86,7 +86,7 @@ export const featureSection = [
             backgroundImage: koiFishImg,
             animation: false,
             heading: 'About Me',
-            text: `My name is Pierre, I'm a South African living in Dubai. I'm a full stack Web Developer and Cloud Architect. As a PADI Master Instructor and Technical diving instructor, if I am not developing
+            text: `My name is Pierre, I'm a South African living in Dubai. As a PADI Master and Technical diving instructor, if I am not developing
             awesome web applications I am underwater teaching scuba diving or taking awesome underwater pictures.`,
             buttonText: 'More Info',
             link: '/about',

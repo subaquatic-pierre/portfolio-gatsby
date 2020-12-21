@@ -12,7 +12,7 @@ import MITxSeries from '../../static/certs/MITx-x-series.png'
 import cppcert from '../../static/certs/cppcert.png'
 import webdevbootcamp from '../../static/certs/webdevbootcamp.png'
 import algorithmicToolbox from '../../static/certs/algorithmic-toolbox.png'
-import awsCloudArchitect from '../../static/certs/Udacity-aws-cloud-architect'
+import awsCloudArchitect from '../../static/certs/Udacity-aws-cloud-architect.png'
 import azureDevOps from '../../static/certs/Udacity-DevOps-azure.png'
 
 

@@ -96,7 +96,7 @@ const Projects = () => {
     const handleProductionProjectSwitch = async (event) => {
         removeInfiniteScrollListener()
         setExpandId(-1)
-        setSideProjectPage(!sideProjectPage)
+        setSideProjectPage(sideProjectPage => !sideProjectPage)
     };
 
     // shrink app bar on scroll

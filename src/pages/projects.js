@@ -55,8 +55,14 @@ import sideProjectsData from '../pagedata/sideProjectsData'
 // }
 
 const useStyles = makeStyles((theme) => ({
+    layout: {
+        minHeight: '100vh'
+    },
     pageContainer: {
         paddingTop: '1.5rem',
+        paddingBottom: '2rem',
+    },
+    projectContainer: {
         paddingBottom: '2rem',
     },
     cardCol: {
@@ -110,8 +116,8 @@ const Projects = () => {
     const classes = useStyles();
     const [expandId, setExpandId] = useState(-1)
     const [loading, setLoading] = useState(false)
-    const [numProdProjects, setNumProdProjects] = useState(2)
-    const [numSideProjects, setNumSideProjects] = useState(2)
+    const [numProdProjects, setNumProdProjects] = useState(6)
+    const [numSideProjects, setNumSideProjects] = useState(3)
     const [sideProjectPage, setSideProjectPage] = useState(false)
     const [projectData, setProjectData] = useState([])
 
@@ -140,7 +146,7 @@ const Projects = () => {
         return window.removeEventListener('scroll', handleInfiniteScroll);
     }
 
-    const updateProjects = (event) => {
+    const updateProjects = () => {
         addInfiniteScrollListener()
         if (sideProjectPage) {
             setProjectData(sideProjectsData.slice(0, numSideProjects))
@@ -161,13 +167,17 @@ const Projects = () => {
                 // Check within data index
                 if (numSideProjects < sideProjectsData.length) {
                     setLoading(true)
-                    setNumSideProjects(numSideProjects + 1)
+                    setNumSideProjects(numSideProjects + 3)
+                } else {
+                    setLoading(false)
                 }
             } else {
                 // Check within data index
                 if (numProdProjects < productionProjectsData.length) {
                     setLoading(true)
-                    setNumProdProjects(numProdProjects + 1)
+                    setNumProdProjects(numProdProjects + 3)
+                } else {
+                    setLoading(false)
                 }
             }
         }
@@ -190,7 +200,7 @@ const Projects = () => {
 
     return (
         <Layout title={caps(title)}>
-            <Container maxWidth='lg' >
+            <Container className={classes.layout} maxWidth='lg' >
                 <Grid container item xs={12} className={classes.pageContainer}>
                     <Grid container className={classes.headingSection} direction='column' justify='center' alignItems='center'>
                         <Typography variant='h2' component='h1' align='center'>
@@ -210,6 +220,8 @@ const Projects = () => {
                             />
                         </FormGroup>
                     </Grid>
+                </Grid>
+                <Grid container spacing={3} className={classes.projectContainer} item>
                     {projectData && projectData.map((project, idx) => (
                         <Project
                             key={idx}

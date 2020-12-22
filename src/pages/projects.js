@@ -22,38 +22,6 @@ import caps from '../utils/capitalize'
 import productionProjectsData from '../pagedata/productionProjectsData'
 import sideProjectsData from '../pagedata/sideProjectsData'
 
-
-// const createData = () => {
-//     let data = []
-//     // Set project data to show depending on production switch
-//     // Check what data to show
-//     if (sideProjectPage) {
-//         for (let i = 0; i < numProdProjects; i++) {
-//             const item = productionProjectsData[i]
-//             data.push(<Project
-//                 key={i}
-//                 index={i}
-//                 item={item}
-//                 expandId={expandId}
-//                 handleExpandClick={handleExpandClick}
-//             />)
-//         }
-//         return data
-//     } else {
-//         for (let i = 0; i < numSideProjects; i++) {
-//             const item = sideProjectsData[i]
-//             data.push(<Project
-//                 key={i}
-//                 index={i}
-//                 item={item}
-//                 expandId={expandId}
-//                 handleExpandClick={handleExpandClick}
-//             />)
-//         }
-//         return data
-//     }
-// }
-
 const useStyles = makeStyles((theme) => ({
     layout: {
         minHeight: '100vh'

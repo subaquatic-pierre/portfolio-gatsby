@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     Typography,
@@ -21,6 +21,38 @@ import caps from '../utils/capitalize'
 
 import productionProjectsData from '../pagedata/productionProjectsData'
 import sideProjectsData from '../pagedata/sideProjectsData'
+
+
+// const createData = () => {
+//     let data = []
+//     // Set project data to show depending on production switch
+//     // Check what data to show
+//     if (sideProjectPage) {
+//         for (let i = 0; i < numProdProjects; i++) {
+//             const item = productionProjectsData[i]
+//             data.push(<Project
+//                 key={i}
+//                 index={i}
+//                 item={item}
+//                 expandId={expandId}
+//                 handleExpandClick={handleExpandClick}
+//             />)
+//         }
+//         return data
+//     } else {
+//         for (let i = 0; i < numSideProjects; i++) {
+//             const item = sideProjectsData[i]
+//             data.push(<Project
+//                 key={i}
+//                 index={i}
+//                 item={item}
+//                 expandId={expandId}
+//                 handleExpandClick={handleExpandClick}
+//             />)
+//         }
+//         return data
+//     }
+// }
 
 const useStyles = makeStyles((theme) => ({
     pageContainer: {
@@ -76,20 +108,21 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects = () => {
     const classes = useStyles();
-    const [expandId, setexpandId] = React.useState(-1)
-    const [loading, setLoading] = React.useState(false)
-    const [numProdProjects, setNumProdProjects] = React.useState(2)
-    const [numSideProjects, setNumSideProjects] = React.useState(2)
-    const [prodPage, setProdPage] = React.useState(true)
+    const [expandId, setExpandId] = useState(-1)
+    const [loading, setLoading] = useState(false)
+    const [numProdProjects, setNumProdProjects] = useState(2)
+    const [numSideProjects, setNumSideProjects] = useState(2)
+    const [sideProjectPage, setSideProjectPage] = useState(false)
+    const [projectData, setProjectData] = useState([])
 
     const handleExpandClick = (index) => {
-        setexpandId(expandId === index ? -1 : index)
+        setExpandId(expandId === index ? -1 : index)
     };
 
-    const handleProductionProjectSwitch = (event) => {
-        setProdPage(!event.target.checked);
-        removeInifiteScrollListener()
-        setexpandId(-1)
+    const handleProductionProjectSwitch = async (event) => {
+        removeInfiniteScrollListener()
+        setExpandId(-1)
+        setSideProjectPage(!sideProjectPage)
     };
 
     // shrink app bar on scroll
@@ -98,88 +131,60 @@ const Projects = () => {
         threshold: 100,
     });
 
-    const createData = () => {
-        let data = []
-        // Set project data to show depending on production switch
-        // Check what data to show
-        if (prodPage) {
-            for (let i = 0; i < numProdProjects; i++) {
-                const item = productionProjectsData[i]
-                data.push(<Project
-                    key={i}
-                    index={i}
-                    item={item}
-                    expandId={expandId}
-                    handleExpandClick={handleExpandClick}
-                />)
-            }
-            return data
-        } else {
-            for (let i = 0; i < numSideProjects; i++) {
-                const item = sideProjectsData[i]
-                data.push(<Project
-                    key={i}
-                    index={i}
-                    item={item}
-                    expandId={expandId}
-                    handleExpandClick={handleExpandClick}
-                />)
-            }
-            return data
-        }
-    }
-
-    // Call update projects on reaching bottom of screan
-    const updateProjects = (view) => {
-        // Check if production projects or side projects
-        if (view === 'prod') {
-            // Increment number of projects
-            const tmp = numProdProjects
-            setNumProdProjects(tmp + 1)
-        } else {
-            // Increment number of projects
-            const tmp = numSideProjects
-            setNumSideProjects(tmp + 1)
-        }
-        setLoading(false)
-    }
-
     // Add or remove event listener
     const addInfiniteScrollListener = () => {
         return window.addEventListener('scroll', handleInfiniteScroll);
     }
 
-    const removeInifiteScrollListener = () => {
+    const removeInfiniteScrollListener = () => {
         return window.removeEventListener('scroll', handleInfiniteScroll);
     }
 
+    const updateProjects = (event) => {
+        addInfiniteScrollListener()
+        if (sideProjectPage) {
+            setProjectData(sideProjectsData.slice(0, numSideProjects))
+        } else {
+            setProjectData(productionProjectsData.slice(0, numProdProjects))
+        }
+        setLoading(false)
+    }
+
+    const scrollUpdate = () => {
+        setTimeout(updateProjects, 2000)
+    }
+
     const handleInfiniteScroll = () => {
-        // Check if height of scroll
         if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight + 100) {
-            // Check production or sideprojects 
-            if (prodPage) {
+            removeInfiniteScrollListener()
+            if (sideProjectPage) {
                 // Check within data index
-                if (numProdProjects < productionProjectsData.length) {
-                    // Set timeout to simulate data fetch
+                if (numSideProjects < sideProjectsData.length) {
                     setLoading(true)
-                    setTimeout(() => { updateProjects('prod') }, 2000)
-                    removeInifiteScrollListener()
+                    setNumSideProjects(numSideProjects + 1)
                 }
             } else {
                 // Check within data index
-                if (numSideProjects < sideProjectsData.length) {
-                    // Set timeout to simulate data fetch
+                if (numProdProjects < productionProjectsData.length) {
                     setLoading(true)
-                    setTimeout(() => { updateProjects('side') }, 2000)
-                    removeInifiteScrollListener()
+                    setNumProdProjects(numProdProjects + 1)
                 }
             }
         }
     }
 
     useEffect(() => {
+        updateProjects()
+    }, [sideProjectPage])
+
+    useEffect(() => {
+        scrollUpdate()
+    }, [numSideProjects, numProdProjects])
+
+    useEffect(() => {
         addInfiniteScrollListener()
-    })
+        setProjectData(productionProjectsData.slice(0, numProdProjects))
+    }, [])
 
     const title = path.basename(__filename).split('.')[0]
 
@@ -195,18 +200,25 @@ const Projects = () => {
                     </Grid>
                     <Grid container className={classes.toggleSection} item xs={12} sm={8}>
                         <Typography variant='body1'>
-                            Toggle between production projects and non-production projects. Non-production are projects done
-                            for courses, practice or are not yet complete.
+                            Toggle between production projects and non-production projects. Non-production projects may not be live, all source code can be found in the GitHub repo.
                     </Typography>
                         <FormGroup>
                             <br />
                             <FormControlLabel
-                                control={<ProjectsSwitch checked={!prodPage} onChange={handleProductionProjectSwitch} />}
+                                control={<ProjectsSwitch checked={sideProjectPage} onChange={handleProductionProjectSwitch} />}
                                 label="Non-Production Projects"
                             />
                         </FormGroup>
                     </Grid>
-                    {createData()}
+                    {projectData && projectData.map((project, idx) => (
+                        <Project
+                            key={idx}
+                            index={idx}
+                            item={project}
+                            expandId={expandId}
+                            handleExpandClick={handleExpandClick}
+                        />
+                    ))}
                     {loading &&
                         <Grid container justify='center'>
                             <CircularProgress disableShrink />

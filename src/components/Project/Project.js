@@ -78,7 +78,7 @@ const Project = (props) => {
     const classes = useStyles()
 
     return (
-        <Grid key={index} container item xs={12} className={classes.cardCol}>
+        <Grid key={index} item sm={12} className={classes.cardCol}>
             <Card elevation={3} className={classes.cardRoot}>
                 <CardHeader
                     title={item.title}

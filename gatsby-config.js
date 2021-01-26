@@ -1,5 +1,4 @@
-
-const siteConfig = require('./config.js')
+const siteConfig = require("./config.js");
 module.exports = {
   siteMetadata: {
     title: siteConfig.title,
@@ -7,7 +6,7 @@ module.exports = {
     author: siteConfig.author,
     url: siteConfig.url,
     icon: siteConfig.icon,
-    menu: siteConfig.menu
+    menu: siteConfig.menu,
   },
   plugins: [
     `gatsby-plugin-client-side-redirect`,
@@ -20,28 +19,18 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-source-filesystem',
+      resolve: "gatsby-source-filesystem",
       options: {
-        name: 'assets',
-        path: `${__dirname}/static`
-      }
+        name: "assets",
+        path: `${__dirname}/static`,
+      },
     },
+    `gatsby-theme-material-ui`,
     {
-      resolve: `gatsby-theme-material-ui`,
+      resolve: "gatsby-plugin-web-font-loader",
       options: {
-        webFontsConfig: {
-          fonts: {
-            google: [
-              {
-                family: `Montserrat`,
-                variants: [`300`, `400`, `500`],
-              },
-              {
-                family: `Patrick Hand`,
-                variants: [`400`],
-              },
-            ],
-          },
+        google: {
+          families: ["Montserrat", "Patrick Hand", "Lato"],
         },
       },
     },
@@ -60,28 +49,28 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-gtag',
+      resolve: "gatsby-plugin-google-gtag",
       options: {
-        trackingIds: ['aweseometrackingID'],
+        trackingIds: ["aweseometrackingID"],
         pluginConfig: {
           head: true,
         },
       },
     },
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: "gatsby-plugin-manifest",
       options: {
         name: siteConfig.title,
         short_name: siteConfig.title,
-        start_url: '/',
-        background_color: '#FFF',
-        theme_color: '#16a085',
-        display: 'standalone',
-        icon: siteConfig.icon
+        start_url: "/",
+        background_color: "#FFF",
+        theme_color: "#16a085",
+        display: "standalone",
+        icon: siteConfig.icon,
       },
     },
     {
-      resolve: 'gatsby-plugin-sitemap',
+      resolve: "gatsby-plugin-sitemap",
       options: {
         query: `
           {
@@ -103,17 +92,18 @@ module.exports = {
             }
           }
         `,
-        output: '/sitemap.xml',
-        serialize: ({ site, allSitePage }) => allSitePage.edges.map((edge) => ({
-          url: site.siteMetadata.siteUrl + edge.node.path,
-          changefreq: 'daily',
-          priority: 0.7
-        }))
-      }
+        output: "/sitemap.xml",
+        serialize: ({ site, allSitePage }) =>
+          allSitePage.edges.map((edge) => ({
+            url: site.siteMetadata.siteUrl + edge.node.path,
+            changefreq: "daily",
+            priority: 0.7,
+          })),
+      },
     },
-    'gatsby-plugin-offline',
-    'gatsby-plugin-catch-links',
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-optimize-svgs',
+    "gatsby-plugin-offline",
+    "gatsby-plugin-catch-links",
+    "gatsby-plugin-react-helmet",
+    "gatsby-plugin-optimize-svgs",
   ],
-}
+};

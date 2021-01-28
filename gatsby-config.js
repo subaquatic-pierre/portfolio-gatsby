@@ -9,13 +9,18 @@ module.exports = {
     menu: siteConfig.menu,
   },
   plugins: [
-    `gatsby-plugin-client-side-redirect`,
-    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/static/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/content/blog`,
       },
     },
     {
@@ -25,7 +30,28 @@ module.exports = {
         path: `${__dirname}/static`,
       },
     },
-    `gatsby-theme-material-ui`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 630,
+            },
+          },
+          {
+            resolve: `gatsby-remark-responsive-iframe`,
+            options: {
+              wrapperStyle: `margin-bottom: 1.0725rem`,
+            },
+          },
+          `gatsby-remark-prismjs`,
+          `gatsby-remark-copy-linked-files`,
+          `gatsby-remark-smartypants`,
+        ],
+      },
+    },
     {
       resolve: "gatsby-plugin-web-font-loader",
       options: {
@@ -34,35 +60,10 @@ module.exports = {
         },
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
     {
-      resolve: `gatsby-plugin-typescript`,
+      resolve: `gatsby-plugin-google-analytics`,
       options: {
-        isTSX: true, // defaults to false
-        jsxPragma: `jsx`, // defaults to "React"
-        allExtensions: true, // defaults to false
-      },
-    },
-    {
-      resolve: `gatsby-plugin-manifest`,
-      options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
-        display: `minimal-ui`,
-        icon: `static/icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: "gatsby-plugin-google-gtag",
-      options: {
-        trackingIds: ["aweseometrackingID"],
-        pluginConfig: {
-          head: true,
-        },
+        //trackingId: `ADD YOUR TRACKING ID HERE`,
       },
     },
     {
@@ -109,6 +110,11 @@ module.exports = {
           })),
       },
     },
+    `gatsby-plugin-client-side-redirect`,
+    `gatsby-plugin-react-helmet`,
+    `gatsby-theme-material-ui`,
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     "gatsby-plugin-offline",
     "gatsby-plugin-catch-links",
     "gatsby-plugin-react-helmet",

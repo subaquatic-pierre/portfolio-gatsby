@@ -1,26 +1,40 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
+import { makeStyles } from "@material-ui/core/styles";
 
-import { Container } from "@material-ui/core";
+import { Container, Typography } from "@material-ui/core";
 
 import Layout from "../components/Layout";
 
+const useStyles = makeStyles((theme) => ({
+  blogContainer: {
+    "& h1": {
+      color: "red",
+    },
+  },
+  heading: {
+    marginTop: "1rem",
+  },
+}));
+
 const BlogPostTemplate = ({ data, location }) => {
+  const classes = useStyles();
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata?.title || `Title`;
   const { previous, next } = data;
 
   return (
     <Layout location={location} title={siteTitle}>
-      <Container maxWidth="sm">
-        {/* <Grid xs={10}> */}
+      <Container maxWidth="sm" className={classes.blogContainer}>
         <article
           className="blog-post"
           itemScope
           itemType="http://schema.org/Article"
         >
           <header>
-            <h1 itemProp="headline">{post.frontmatter.title}</h1>
+            <Typography className={classes.heading} variant="h4" component="h2">
+              {post.frontmatter.title}
+            </Typography>
             <p>{post.frontmatter.date}</p>
           </header>
           <section

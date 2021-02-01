@@ -86,7 +86,7 @@ const Project = (props) => {
           href={item.url}
           target="blank"
           className={classes.media}
-          image={item.image && item.image.childImageSharp.fluid.base64}
+          image={item.image && item.image.childImageSharp.fluid.srcWebp}
           title={item.title}
         />
         <CardContent>

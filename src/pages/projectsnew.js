@@ -235,12 +235,15 @@ const Projects = ({ data }) => {
 
 export const pageQuery = graphql`
   query ProjectQuery {
-    allMarkdownRemark(filter: { frontmatter: { type: { eq: "project" } } }) {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      filter: { frontmatter: { type: { eq: "project" } } }
+    ) {
       nodes {
         id
         frontmatter {
           title
-          date
+          date(formatString: "DD MMMM, YYYY")
           production
           text
           github
@@ -251,7 +254,7 @@ export const pageQuery = graphql`
           image {
             childImageSharp {
               fluid {
-                base64
+                srcWebp
               }
             }
           }

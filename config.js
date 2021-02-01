@@ -18,10 +18,6 @@ module.exports = {
       path: "/projects",
     },
     {
-      name: "Project New",
-      path: "/projectsnew",
-    },
-    {
       name: "Toolbox",
       path: "/toolbox",
     },

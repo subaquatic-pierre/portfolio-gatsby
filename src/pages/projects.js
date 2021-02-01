@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { graphql } from "gatsby";
 import {
   Typography,
   CircularProgress,

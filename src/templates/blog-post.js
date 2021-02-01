@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
 
-import { Container, Grid } from "@material-ui/core";
+import { Container } from "@material-ui/core";
 
 import Layout from "../components/Layout";
 

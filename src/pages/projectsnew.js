@@ -19,9 +19,6 @@ import ScrollToTop from "../components/ScrollToTop";
 
 import caps from "../utils/capitalize";
 
-import productionProjectsData from "../pagedata/productionProjectsData";
-import sideProjectsData from "../pagedata/sideProjectsData";
-
 const useStyles = makeStyles((theme) => ({
   layout: {
     minHeight: "100vh",
@@ -80,7 +77,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Projects = () => {
+const Projects = ({ data }) => {
+  const allProjects = data.allMarkdownRemark.nodes;
+  const prodProjects = allProjects.filter((project) => {
+    if (project.frontmatter.production === true) return project.frontmatter;
+  });
+  const sideProjects = allProjects.filter((project) => {
+    if (project.frontmatter.production === false) return project;
+  });
+
   const classes = useStyles();
   const [expandId, setExpandId] = useState(-1);
   const [loading, setLoading] = useState(false);
@@ -117,9 +122,9 @@ const Projects = () => {
   const updateProjects = () => {
     addInfiniteScrollListener();
     if (sideProjectPage) {
-      setProjectData(sideProjectsData.slice(0, numSideProjects));
+      setProjectData((prev) => sideProjects.slice(0, numSideProjects));
     } else {
-      setProjectData(productionProjectsData.slice(0, numProdProjects));
+      setProjectData((prev) => prodProjects.slice(0, numProdProjects));
     }
     setLoading(false);
   };
@@ -136,17 +141,17 @@ const Projects = () => {
       removeInfiniteScrollListener();
       if (sideProjectPage) {
         // Check within data index
-        if (numSideProjects < sideProjectsData.length) {
+        if (numSideProjects < sideProjects.length) {
           setLoading(true);
-          setNumSideProjects(numSideProjects + 3);
+          setNumSideProjects((prev) => prev + 3);
         } else {
           setLoading(false);
         }
       } else {
         // Check within data index
-        if (numProdProjects < productionProjectsData.length) {
+        if (numProdProjects < prodProjects.length) {
           setLoading(true);
-          setNumProdProjects(numProdProjects + 3);
+          setNumProdProjects((prev) => prev + 3);
         } else {
           setLoading(false);
         }
@@ -164,11 +169,10 @@ const Projects = () => {
 
   useEffect(() => {
     addInfiniteScrollListener();
-    setProjectData(productionProjectsData.slice(0, numProdProjects));
+    setProjectData(prodProjects.slice(0, numProdProjects));
   }, []);
 
   const title = path.basename(__filename).split(".")[0];
-
   return (
     <Layout title={caps(title)}>
       <Container className={classes.layout} maxWidth="lg">
@@ -212,7 +216,7 @@ const Projects = () => {
               <Project
                 key={idx}
                 index={idx}
-                item={project}
+                item={project.frontmatter}
                 expandId={expandId}
                 handleExpandClick={handleExpandClick}
               />
@@ -228,5 +232,33 @@ const Projects = () => {
     </Layout>
   );
 };
+
+export const pageQuery = graphql`
+  query ProjectQuery {
+    allMarkdownRemark(filter: { frontmatter: { type: { eq: "project" } } }) {
+      nodes {
+        id
+        frontmatter {
+          title
+          date
+          production
+          text
+          github
+          url
+          tech {
+            title
+          }
+          image {
+            childImageSharp {
+              fluid {
+                base64
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default Projects;

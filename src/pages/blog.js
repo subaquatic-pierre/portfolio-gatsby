@@ -6,6 +6,10 @@ import {
   CircularProgress,
   Grid,
   Container,
+  CardActions,
+  CardContent,
+  Card,
+  Button,
 } from "@material-ui/core";
 import path from "path";
 
@@ -17,6 +21,9 @@ import caps from "../utils/capitalize";
 const useStyles = makeStyles((theme) => ({
   layout: {
     minHeight: "100vh",
+    "& ul": {
+      padding: "0rem",
+    },
   },
   pageContainer: {
     paddingTop: "1.5rem",
@@ -25,38 +32,15 @@ const useStyles = makeStyles((theme) => ({
   blogContainer: {
     paddingBottom: "2rem",
   },
-  cardCol: {
-    [theme.breakpoints.up("md")]: {
-      padding: "2rem 0",
+  postHeading: {
+    textDecoration: "none",
+    color: theme.palette.secondary,
+  },
+  postListItem: {
+    marginBottom: "2rem",
+    "& > h2": {
+      textDecoration: "none",
     },
-    padding: "1.2rem 0",
-  },
-  cardRoot: {
-    width: "100%",
-    height: "100%",
-    display: "flex",
-    flexDirection: "column",
-  },
-  media: {
-    height: 0,
-    paddingTop: "56.25%", // 16:9
-  },
-  expand: {
-    transform: "rotate(0deg)",
-    marginLeft: "auto",
-    transition: theme.transitions.create("transform", {
-      duration: theme.transitions.duration.shortest,
-    }),
-  },
-  expandOpen: {
-    transform: "rotate(180deg)",
-  },
-  bottomContent: {
-    marginTop: "auto",
-  },
-  techList: {
-    paddingTop: "0",
-    paddingBottom: "0",
   },
 }));
 
@@ -68,7 +52,7 @@ const BlogIndex = ({ data, location }) => {
 
   return (
     <Layout title={caps(title)}>
-      <Container className={classes.layout} maxWidth="lg">
+      <Container className={classes.layout} maxWidth="md">
         <Grid container item xs={12} className={classes.pageContainer}>
           <Grid
             container
@@ -84,39 +68,37 @@ const BlogIndex = ({ data, location }) => {
           </Grid>
         </Grid>
         <Grid container spacing={3} className={classes.blogContainer} item>
-          <ol style={{ listStyle: `none` }}>
+          <ul style={{ listStyle: `none` }}>
             {posts.map((post) => {
               const title = post.frontmatter.title || post.fields.slug;
 
               return (
-                <li key={post.fields.slug}>
-                  <article
-                    className="post-list-item"
-                    itemScope
-                    itemType="http://schema.org/Article"
-                  >
-                    <header>
-                      <h2>
-                        <Link to={post.fields.slug} itemProp="url">
-                          <span itemProp="headline">{title}</span>
-                        </Link>
-                      </h2>
-                      <small>{post.frontmatter.date}</small>
-                    </header>
-                    <section>
-                      <p
-                        dangerouslySetInnerHTML={{
-                          __html: post.frontmatter.description || post.excerpt,
-                        }}
-                        itemProp="description"
-                      />
-                    </section>
-                  </article>
+                <li key={post.fields.slug} className={classes.postListItem}>
+                  <Card>
+                    <CardContent>
+                      <Link
+                        className={classes.postHeading}
+                        to={post.fields.slug}
+                        itemProp="url"
+                      >
+                        <Typography variant="h5" component="h2">
+                          {title}
+                        </Typography>
+                      </Link>
+                      <Typography className={classes.pos} color="textSecondary">
+                        {post.frontmatter.date}
+                      </Typography>
+                      <br />
+                      <Typography variant="body2" component="p">
+                        {post.excerpt}
+                        <br />
+                      </Typography>
+                    </CardContent>
+                  </Card>
                 </li>
               );
             })}
-          </ol>
-          Loop through blogs and display them
+          </ul>
           {loading && (
             <Grid container justify="center">
               <CircularProgress disableShrink />

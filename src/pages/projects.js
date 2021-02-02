@@ -80,6 +80,7 @@ const useStyles = makeStyles((theme) => ({
 const Projects = ({ data }) => {
   const allProjects = data.allMarkdownRemark.nodes;
   const placeHolderImage = data.allImageSharp.nodes[0].fluid.srcWebp;
+
   const prodProjects = allProjects.filter((project) => {
     if (project.frontmatter.production === true) return project.frontmatter;
   });
@@ -88,20 +89,14 @@ const Projects = ({ data }) => {
   });
 
   const classes = useStyles();
-  const [expandId, setExpandId] = useState(-1);
   const [loading, setLoading] = useState(false);
   const [numProdProjects, setNumProdProjects] = useState(3);
   const [numSideProjects, setNumSideProjects] = useState(4);
   const [sideProjectPage, setSideProjectPage] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
-  const handleExpandClick = (index) => {
-    setExpandId(expandId === index ? -1 : index);
-  };
-
   const handleProductionProjectSwitch = async (event) => {
     removeInfiniteScrollListener();
-    setExpandId(-1);
     setSideProjectPage((sideProjectPage) => !sideProjectPage);
   };
 
@@ -219,8 +214,8 @@ const Projects = ({ data }) => {
                 key={idx}
                 index={idx}
                 item={project.frontmatter}
-                expandId={expandId}
-                handleExpandClick={handleExpandClick}
+                // expandId={expandId}
+                // handleExpandClick={handleExpandClick}
               />
             ))}
           {loading && (

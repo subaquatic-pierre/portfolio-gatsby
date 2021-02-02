@@ -1,20 +1,17 @@
 import React from "react";
-import clsx from "clsx";
 import {
   Grid,
-  ListItemText,
   Card,
   CardHeader,
   CardMedia,
   CardContent,
   Typography,
   CardActions,
-  Collapse,
+  Popover,
   List,
   ListItem,
   ListItemIcon,
-  Popover,
-  Button,
+  ListItemText,
 } from "@material-ui/core";
 import { IconButton } from "gatsby-theme-material-ui";
 import { makeStyles } from "@material-ui/core";
@@ -73,15 +70,15 @@ const useStyles = makeStyles((theme) => ({
     paddingTop: "0",
     paddingBottom: "0",
   },
+  actionArea: {
+    marginTop: "auto",
+  },
 }));
 
 const Project = (props) => {
-  const { handleExpandClick, item, index, expandId, placeholder } = props;
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const { item, index, placeholder } = props;
   const classes = useStyles();
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popover" : undefined;
+  const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -90,6 +87,8 @@ const Project = (props) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const open = Boolean(anchorEl);
 
   return (
     <Grid
@@ -117,32 +116,35 @@ const Project = (props) => {
             {item.text}
           </Typography>
         </CardContent>
-        <CardActions disableSpacing className={classes.bottomContent}>
+        <CardActions className={classes.actionArea}>
           {item.github && (
             <IconButton href={item.github} target="blank">
               <GitHubIcon />
             </IconButton>
           )}
-          {item.url != "none" && (
+          {item.url !== "none" && (
             <IconButton href={item.url} target="blank">
               <LanguageIcon />
             </IconButton>
           )}
-          <IconButton
-            aria-describedby={id}
-            className={clsx(classes.expand, {
-              [classes.expandOpen]: expandId === index,
-            })}
-            onClick={() => {
-              handleExpandClick(index);
-            }}
-            aria-expanded={expandId === index}
-            aria-label="show more"
-          >
+          <IconButton onClick={handleClick} aria-label="show more">
             <ExpandMoreIcon />
           </IconButton>
         </CardActions>
-        <Collapse in={expandId === index} timeout="auto" unmountOnExit>
+        <Popover
+          id={index}
+          open={open}
+          anchorEl={anchorEl}
+          onClose={handleClose}
+          anchorOrigin={{
+            vertical: "bottom",
+            horizontal: "center",
+          }}
+          transformOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
           <CardContent>
             <Typography paragraph>
               <b>Technologies:</b>
@@ -159,9 +161,8 @@ const Project = (props) => {
                 ))}
             </List>
           </CardContent>
-        </Collapse>
+        </Popover>
       </Card>
-      {/* {JSON.stringify(item)} */}
     </Grid>
   );
 };

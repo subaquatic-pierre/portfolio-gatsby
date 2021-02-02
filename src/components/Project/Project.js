@@ -13,6 +13,8 @@ import {
   List,
   ListItem,
   ListItemIcon,
+  Popover,
+  Button,
 } from "@material-ui/core";
 import { IconButton } from "gatsby-theme-material-ui";
 import { makeStyles } from "@material-ui/core";
@@ -74,19 +76,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Project = (props) => {
-  const { handleExpandClick, item, index, expandId } = props;
+  const { handleExpandClick, item, index, expandId, placeholder } = props;
+  const [anchorEl, setAnchorEl] = React.useState(null);
   const classes = useStyles();
 
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popover" : undefined;
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
-    <Grid key={index} item sm={4} className={classes.cardCol}>
+    <Grid
+      key={index}
+      item
+      sm={item.production ? 4 : 3}
+      className={classes.cardCol}
+    >
       <Card elevation={3} className={classes.cardRoot}>
         <CardHeader title={item.title} subheader={item.date} />
         <CardMedia
           component="a"
-          href={item.url}
+          href={item.url !== "none" ? item.url : undefined}
           target="blank"
           className={classes.media}
-          image={item.image && item.image.childImageSharp.fluid.srcWebp}
+          image={
+            item.image && item.image !== "none"
+              ? item.image.childImageSharp.fluid.srcWebp
+              : placeholder
+          }
           title={item.title}
         />
         <CardContent>
@@ -100,10 +123,13 @@ const Project = (props) => {
               <GitHubIcon />
             </IconButton>
           )}
-          <IconButton href={item.url} target="blank">
-            <LanguageIcon />
-          </IconButton>
+          {item.url != "none" && (
+            <IconButton href={item.url} target="blank">
+              <LanguageIcon />
+            </IconButton>
+          )}
           <IconButton
+            aria-describedby={id}
             className={clsx(classes.expand, {
               [classes.expandOpen]: expandId === index,
             })}

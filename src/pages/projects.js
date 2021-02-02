@@ -79,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects = ({ data }) => {
   const allProjects = data.allMarkdownRemark.nodes;
+  const placeHolderImage = data.allImageSharp.nodes[0].fluid.srcWebp;
   const prodProjects = allProjects.filter((project) => {
     if (project.frontmatter.production === true) return project.frontmatter;
   });
@@ -89,8 +90,8 @@ const Projects = ({ data }) => {
   const classes = useStyles();
   const [expandId, setExpandId] = useState(-1);
   const [loading, setLoading] = useState(false);
-  const [numProdProjects, setNumProdProjects] = useState(6);
-  const [numSideProjects, setNumSideProjects] = useState(3);
+  const [numProdProjects, setNumProdProjects] = useState(3);
+  const [numSideProjects, setNumSideProjects] = useState(4);
   const [sideProjectPage, setSideProjectPage] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
@@ -143,7 +144,7 @@ const Projects = ({ data }) => {
         // Check within data index
         if (numSideProjects < sideProjects.length) {
           setLoading(true);
-          setNumSideProjects((prev) => prev + 3);
+          setNumSideProjects((prev) => prev + 4);
         } else {
           setLoading(false);
         }
@@ -214,6 +215,7 @@ const Projects = ({ data }) => {
           {projectData &&
             projectData.map((project, idx) => (
               <Project
+                placeholder={placeHolderImage}
                 key={idx}
                 index={idx}
                 item={project.frontmatter}
@@ -258,6 +260,15 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+    allImageSharp(
+      filter: { fluid: { originalName: { eq: "project-placeholder.jpeg" } } }
+    ) {
+      nodes {
+        fluid {
+          srcWebp
         }
       }
     }

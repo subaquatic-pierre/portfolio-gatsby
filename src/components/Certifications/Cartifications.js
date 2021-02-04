@@ -21,7 +21,7 @@ import { makeStyles } from "@material-ui/core";
 import { fadeEffect } from "../../pages/about";
 import Divider from "../Divider";
 import CertCard from "../CertCard";
-import certData from "../../../certs/content/certData";
+import certData from "../../../content/certs/certData";
 
 const useStyles = makeStyles((theme) => ({
   content: {

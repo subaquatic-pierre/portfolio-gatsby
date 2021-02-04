@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   sidebarContent: {
-    paddingTop: "10px",``
+    paddingTop: "10px",
     margin: "auto 0",
     width: "100%",
   },

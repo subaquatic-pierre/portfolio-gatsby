@@ -14,5 +14,5 @@ title: Flask-SQLAlchemy,
 title: Bootstrap 4,
 title: JQuery,
 ]
-image: ./divesandybeach-flask.png
+imageName: divesandybeach-flask.png
 ---

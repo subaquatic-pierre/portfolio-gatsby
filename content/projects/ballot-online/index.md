@@ -13,5 +13,5 @@ title: GraphQL,
 title: Material UI,
 title: Apollo React,
 ]
-image: ./ballotonline.png
+imageName: ballotonline.png
 ---

@@ -13,5 +13,5 @@ title: Material UI,
 title: AWS CloudFront,
 title: AWS CodePipeLine,
 ]
-image: ./portfolio.png
+imageName: portfolio.png
 ---

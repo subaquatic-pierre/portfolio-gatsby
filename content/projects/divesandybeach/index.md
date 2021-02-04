@@ -13,5 +13,5 @@ title: AWS EC2,
 title: Django Crispy Forms,
 title: Django Re-Captcha,
 ]
-image: ./divesandybeach.png
+imageName: divesandybeach.png
 ---

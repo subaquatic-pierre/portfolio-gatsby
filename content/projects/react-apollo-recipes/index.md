@@ -14,5 +14,5 @@ title: Material UI,
 title: React Testing Library,
 title: Apollo React,
 ]
-image: ./recipes.png
+imageName: recipes.png
 ---

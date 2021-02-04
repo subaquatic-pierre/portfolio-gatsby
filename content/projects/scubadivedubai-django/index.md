@@ -14,5 +14,5 @@ title: Django Countries,
 title: MDBootstrap,
 title: Django Storages,
 ]
-image: ./scubadivedubai.png
+imageName: scubadivedubai.png
 ---

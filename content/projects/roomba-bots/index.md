@@ -1,5 +1,5 @@
 ---
-title: Ballot Online
+title: Roomba Bots
 date: "2021-01-25T22:12:03.284Z"
 type: project
 production: false
@@ -10,5 +10,5 @@ tech: [
 title: Typescript,
 title: React,
 ]
-image: ./roombaBots.png
+imageName: roombaBots.png
 ---

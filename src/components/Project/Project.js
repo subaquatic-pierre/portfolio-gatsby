@@ -75,8 +75,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Project = (props) => {
-  const { item, index, placeholder } = props;
+const Project = ({
+  projectData: {
+    index,
+    isProduction,
+    title,
+    date,
+    image,
+    text,
+    url,
+    github,
+    tech,
+  },
+}) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -94,36 +105,32 @@ const Project = (props) => {
     <Grid
       key={index}
       item
-      sm={item.production ? 4 : 3}
+      sm={isProduction ? 4 : 3}
       className={classes.cardCol}
     >
       <Card elevation={3} className={classes.cardRoot}>
-        <CardHeader title={item.title} subheader={item.date} />
+        <CardHeader title={title} subheader={date} />
         <CardMedia
           component="a"
-          href={item.url !== "none" ? item.url : undefined}
+          href={url}
           target="blank"
           className={classes.media}
-          image={
-            item.image && item.image !== "none"
-              ? item.image.childImageSharp.fluid.srcWebp
-              : placeholder
-          }
-          title={item.title}
+          image={image}
+          title={title}
         />
         <CardContent>
           <Typography variant="body1" color="textSecondary" component="p">
-            {item.text}
+            {text}
           </Typography>
         </CardContent>
         <CardActions className={classes.actionArea}>
-          {item.github && (
-            <IconButton href={item.github} target="blank">
+          {github && (
+            <IconButton href={github} target="blank">
               <GitHubIcon />
             </IconButton>
           )}
-          {item.url !== "none" && (
-            <IconButton href={item.url} target="blank">
+          {url && (
+            <IconButton href={url} target="blank">
               <LanguageIcon />
             </IconButton>
           )}
@@ -150,8 +157,8 @@ const Project = (props) => {
               <b>Technologies:</b>
             </Typography>
             <List className={classes.techList}>
-              {item.tech &&
-                item.tech.map((tech, index) => (
+              {tech &&
+                tech.map((tech, index) => (
                   <ListItem key={index}>
                     <ListItemIcon>
                       <ArrowForwardIosIcon color="secondary" />

@@ -79,7 +79,10 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects = ({ data }) => {
   const allProjects = data.allMarkdownRemark.nodes;
-  const placeHolderImage = data.allImageSharp.nodes[0].fluid.srcWebp;
+  const allImages = data.allImageSharp.nodes;
+  const placeHolderImage = allImages.find(
+    (image) => image.fluid.originalName === "project-placeholder.jpg"
+  );
 
   const prodProjects = allProjects.filter((project) => {
     if (project.frontmatter.production === true) return project.frontmatter;
@@ -155,6 +158,30 @@ const Projects = ({ data }) => {
     }
   };
 
+  const getProjectData = (project) => {
+    let image;
+    if (project.imageName !== "none") {
+      image = allImages.find(
+        (image) => image.fluid.originalName === project.imageName
+      );
+    } else {
+      image = placeHolderImage;
+    }
+
+    const url = project.url !== "none" ? project.url : undefined;
+
+    return {
+      isProduction: project.production,
+      title: project.title,
+      date: project.date,
+      github: project.github,
+      url: url,
+      image: image.fluid.srcWebp,
+      text: project.text,
+      tech: project.tech,
+    };
+  };
+
   useEffect(() => {
     updateProjects();
   }, [sideProjectPage]);
@@ -208,16 +235,16 @@ const Projects = ({ data }) => {
         </Grid>
         <Grid container spacing={3} className={classes.projectContainer} item>
           {projectData &&
-            projectData.map((project, idx) => (
-              <Project
-                placeholder={placeHolderImage}
-                key={idx}
-                index={idx}
-                item={project.frontmatter}
-                // expandId={expandId}
-                // handleExpandClick={handleExpandClick}
-              />
-            ))}
+            projectData.map((project, idx) => {
+              return (
+                <Project
+                  placeholder={placeHolderImage}
+                  key={idx}
+                  index={idx}
+                  projectData={getProjectData(project.frontmatter)}
+                />
+              );
+            })}
           {loading && (
             <Grid container justify="center">
               <CircularProgress disableShrink />
@@ -248,22 +275,15 @@ export const pageQuery = graphql`
           tech {
             title
           }
-          image {
-            childImageSharp {
-              fluid {
-                srcWebp
-              }
-            }
-          }
+          imageName
         }
       }
     }
-    allImageSharp(
-      filter: { fluid: { originalName: { eq: "project-placeholder.jpeg" } } }
-    ) {
+    allImageSharp {
       nodes {
         fluid {
           srcWebp
+          originalName
         }
       }
     }

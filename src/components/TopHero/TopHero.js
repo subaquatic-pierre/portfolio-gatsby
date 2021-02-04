@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
   },
   headingInfo: {
     fontSize: "1.3rem",
-    marginBottom: "2rem",
+    margin: "2rem auto",
+    padding: "0 2rem",
   },
   heroContainer: {
     minHeight: "75vh",
@@ -73,11 +74,11 @@ const TopHero = (props) => {
           </Typography>
         </Fade>
         <Divider color="secondary" space={2} width={20} />
-        <Typography variant="p" className={classes.headingInfo}>
+        <Typography className={classes.headingInfo}>
           Click the button below to check out the blog
         </Typography>
         <Button href="/blog" variant="contained" color="secondary">
-          To the Blog ...
+          To the Blog ->
         </Button>
       </Grid>
     </div>

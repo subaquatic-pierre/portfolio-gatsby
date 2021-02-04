@@ -8,6 +8,7 @@ import Layout from "../components/Layout";
 
 const useStyles = makeStyles((theme) => ({
   blogContainer: {
+    minHeight: "80vh",
     "& h1": {
       color: "red",
     },

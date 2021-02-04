@@ -79,7 +79,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects = ({ data }) => {
   const allProjects = data.allMarkdownRemark.nodes;
-  const allImages = data.allImageSharp.nodes;
+  // const allImages = data.allImageSharp.nodes;
+  const allImages = [];
   const placeHolderImage = allImages.find(
     (image) => image.fluid.originalName === "project-placeholder.jpg"
   );

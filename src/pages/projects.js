@@ -79,8 +79,13 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects = ({ data }) => {
   const allProjects = data.allMarkdownRemark.nodes;
-  // const allImages = data.allImageSharp.nodes;
-  const allImages = [];
+  let allImages = [];
+  try {
+    allImages = data.allImageSharp.nodes;
+  } catch (err) {
+    console.log(`Issue with allImageSharp, Data: ${data}`);
+  }
+  // const allImages = [];
   const placeHolderImage = allImages.find(
     (image) => image.fluid.originalName === "project-placeholder.jpg"
   );
@@ -177,7 +182,7 @@ const Projects = ({ data }) => {
       date: project.date,
       github: project.github,
       url: url,
-      image: image.fluid.srcWebp,
+      image: image && image.fluid.srcWebp,
       text: project.text,
       tech: project.tech,
     };

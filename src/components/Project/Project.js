@@ -72,6 +72,12 @@ const useStyles = makeStyles((theme) => ({
   },
   actionArea: {
     marginTop: "auto",
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  smallText: {
+    alignSelf: "end",
+    fontSize: "0.8rem",
   },
 }));
 
@@ -134,7 +140,12 @@ const Project = ({
               <LanguageIcon />
             </IconButton>
           )}
-          <IconButton onClick={handleClick} aria-label="show more">
+          <IconButton
+            onClick={handleClick}
+            className={classes.smallText}
+            aria-label="show more"
+          >
+            TECH
             <ExpandMoreIcon />
           </IconButton>
         </CardActions>

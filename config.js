@@ -22,10 +22,6 @@ module.exports = {
       path: "/toolbox",
     },
     {
-      name: "Blog",
-      path: "/blog",
-    },
-    {
       name: "About",
       path: "/about",
     },

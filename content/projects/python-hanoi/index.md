@@ -9,5 +9,5 @@ url: none
 tech: [
 title: Python,
 ]
-image: none
+imageName: none
 ---

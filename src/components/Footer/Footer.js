@@ -60,7 +60,7 @@ const Footer = () => {
           <span className={classes.copyRightText}>
             <CopyrightIcon />
             <Typography className={classes.footerText} align="center">
-              Ocean Holic 2020
+              Ocean Holic 2021
             </Typography>
           </span>
         </Grid>

@@ -74,12 +74,6 @@ const TopHero = (props) => {
           </Typography>
         </Fade>
         <Divider color="secondary" space={2} width={20} />
-        <Typography className={classes.headingInfo}>
-          Click the button below to check out the blog
-        </Typography>
-        <Button href="/blog" variant="contained" color="secondary">
-          To the Blog ->
-        </Button>
       </Grid>
     </div>
   );

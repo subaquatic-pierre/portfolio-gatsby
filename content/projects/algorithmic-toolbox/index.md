@@ -4,7 +4,7 @@ date: "2020-07-15T22:12:03.284Z"
 type: project
 production: false
 description: A collection of standard CS algorithms ranging from simple brute force to dynamic programming algorithms. All algorithms are written in Python
-github: cool
+github: https://github.com/subaquatic-pierre/algorithm-testing
 url: none
 tech: [
 title: Python,

@@ -106,6 +106,7 @@ const Project = ({
   };
 
   const open = Boolean(anchorEl);
+  const showGitHubIcon = github !== "none";
 
   return (
     <Grid
@@ -130,7 +131,7 @@ const Project = ({
           </Typography>
         </CardContent>
         <CardActions className={classes.actionArea}>
-          {github && (
+          {showGitHubIcon && (
             <IconButton href={github} target="blank">
               <GitHubIcon />
             </IconButton>

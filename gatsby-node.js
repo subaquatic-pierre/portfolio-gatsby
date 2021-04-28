@@ -103,13 +103,21 @@ exports.createSchemaCustomization = ({ actions }) => {
       fields: Fields
     }
 
-    type Frontmatter {
+    type Frontmatter @infer {
       title: String
       description: String
+      production: Boolean
       date: Date @dateformat
       github: String
       url: String
       imageName: String
+      tech: [Tech]
+      type: String
+      imageName: String
+    }
+
+    type Tech @dontInfer {
+      title: String
     }
 
     type Fields {

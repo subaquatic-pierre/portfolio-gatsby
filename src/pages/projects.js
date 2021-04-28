@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { graphql } from "gatsby";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   Typography,
@@ -183,7 +184,7 @@ const Projects = ({ data }) => {
       github: project.github,
       url: url,
       image: image && image.fluid.srcWebp,
-      text: project.text,
+      description: project.description,
       tech: project.tech,
     };
   };
@@ -275,7 +276,7 @@ export const pageQuery = graphql`
           title
           date(formatString: "DD MMMM, YYYY")
           production
-          text
+          description
           github
           url
           tech {

@@ -88,7 +88,7 @@ const Project = ({
     title,
     date,
     image,
-    text,
+    description,
     url,
     github,
     tech,
@@ -126,7 +126,7 @@ const Project = ({
         />
         <CardContent>
           <Typography variant="body1" color="textSecondary" component="p">
-            {text}
+            {description}
           </Typography>
         </CardContent>
         <CardActions className={classes.actionArea}>

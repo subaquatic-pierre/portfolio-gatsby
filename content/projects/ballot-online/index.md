@@ -3,8 +3,8 @@ title: Ballot Online
 date: "2020-06-10T22:12:03.284Z"
 type: project
 production: false
-text: An online voting platform, the project uses a Django back-end with an Apollo React Client front-end, JWT is used for user authentication. Models are transformed into a GraphQL schema with Graphene-Django.
-github: https://github.com/subaquatic-pierre/ballot-online
+description: An online voting platform, the project uses a Django back-end with an Apollo React Client front-end, JWT is used for user authentication. Models are transformed into a GraphQL schema with Graphene-Django.
+github: cool
 url: none
 tech: [
 title: Django,

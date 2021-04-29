@@ -11,5 +11,5 @@ title: ReactJS,
 title: TypeScript,
 title: Apollo Client,
 ]
-imageName: none
+imageName: todoapp.png
 ---

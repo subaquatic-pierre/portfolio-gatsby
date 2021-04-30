@@ -1,6 +1,6 @@
 const ITexperience = [
   {
-    position: "Freelance Web Developer",
+    position: "Web Developer",
     organization: "Sandy Beach Dive Centre",
     period: "November 2018 - Current",
   },

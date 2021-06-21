@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core";
 import { Grid, Typography, Fade, Card } from "@material-ui/core";
 import FormatQuoteIcon from "@material-ui/icons/FormatQuote";
 import { fadeEffect } from "../../pages/about";
-import PropTypes from "prop-types";
 
 import Divider from "../Divider";
 
@@ -116,10 +115,6 @@ const AboutMe = (props) => {
       </Grid>
     </Fade>
   );
-};
-
-AboutMe.propTypes = {
-  show: PropTypes.bool.isRequired,
 };
 
 export default AboutMe;

@@ -2,8 +2,6 @@ import React from 'react';
 import AboutMe from './';
 import { shallow } from 'enzyme'
 
-import PropTypes from 'prop-types'
-import { customCheckPropTypes } from '../../../test/helpers'
 
 let wrapper;
 const defaultProps = {

@@ -13,10 +13,10 @@ import {
 } from "@material-ui/core";
 import path from "path";
 
-import Layout from "../components/Layout";
-import Divider from "../components/Divider";
+import Layout from "../src/components/Layout";
+import Divider from "../src/components/Divider";
 
-import caps from "../utils/capitalize";
+import caps from "../src/utils/capitalize";
 
 const useStyles = makeStyles((theme) => ({
   layout: {

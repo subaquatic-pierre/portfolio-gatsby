@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core";
-import { Link } from "gatsby-link";
-import { navigate } from "gatsby";
+import { navigate, Link } from "gatsby";
 import {
   Grid,
   Typography,

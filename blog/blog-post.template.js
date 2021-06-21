@@ -4,7 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 import { Container, Typography } from "@material-ui/core";
 
-import Layout from "../components/Layout";
+import Layout from "../src/components/Layout";
 
 const useStyles = makeStyles((theme) => ({
   blogContainer: {

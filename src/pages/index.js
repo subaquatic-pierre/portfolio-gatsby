@@ -8,6 +8,8 @@ import TopHero from "../components/TopHero";
 import FeatureColumn from "../components/FeatureColumn";
 import { featureSection } from "../../content/homeFeatureData";
 import { graphql } from "gatsby";
+import { getImage, GatsbyImage } from "gatsby-plugin-image";
+import image from "../../static/images/underwater/coral.jpg";
 
 const featureSectionBreakpoint = "sm";
 
@@ -69,12 +71,9 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = ({ location, data }) => {
   const classes = useStyles();
-  const coralImg = data.allImageSharp.nodes.filter(
-    (node) => node.fluid.originalName === "coral.jpg"
-  )[0];
   return (
     <Layout location={location}>
-      <TopHero backgroundImage={coralImg.srcWebp} />
+      <TopHero backgroundImage={image} />
       <Container className={classes.featureSection} maxWidth="lg">
         {featureSection.map((section, index) => {
           const { leftCol, rightCol, mobile, desktop } = section;
@@ -137,15 +136,15 @@ const Home = ({ location, data }) => {
 
 export default Home;
 
-export const pageQuery = graphql`
-  query ImageQuery {
-    allImageSharp {
-      nodes {
-        fluid {
-          srcWebp
-          originalName
-        }
-      }
-    }
-  }
-`;
+// export const pageQuery = graphql`
+//   query ImageQuery {
+//     allImageSharp {
+//       nodes {
+//         fluid {
+//           srcWebp
+//           originalName
+//         }
+//       }
+//     }
+//   }
+// `;

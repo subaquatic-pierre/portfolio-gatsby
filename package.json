@@ -32,14 +32,15 @@
     "@material-ui/styles": "^4.11.4",
     "enzyme": "^3.11.0",
     "gatsby": "^3.7.2",
-    "gatsby-link": "^3.7.1",
     "gatsby-plugin-catch-links": "^3.7.1",
     "gatsby-plugin-client-side-redirect": "^1.1.0",
     "gatsby-plugin-google-analytics": "^3.7.1",
+    "gatsby-plugin-image": "^1.7.1",
     "gatsby-plugin-manifest": "^3.7.1",
     "gatsby-plugin-offline": "^4.7.1",
     "gatsby-plugin-optimize-svgs": "^1.0.5",
     "gatsby-plugin-react-helmet": "^4.7.1",
+    "gatsby-plugin-sharp": "^3.7.1",
     "gatsby-plugin-sitemap": "^4.3.1",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-remark-copy-linked-files": "^4.4.1",
@@ -52,6 +53,9 @@
     "gatsby-transformer-remark": "^4.4.1",
     "gatsby-transformer-sharp": "^3.7.1",
     "lottie-react-web": "^2.2.2",
+    "path": "^0.12.7",
+    "prismjs": "^1.23.0",
+    "process": "^0.11.10",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0"
@@ -61,6 +65,7 @@
     "babel-preset-gatsby": "^1.7.1",
     "jest": "^27.0.4",
     "prettier": "^2.3.1",
+    "react-app-env": "^1.2.3",
     "react-test-renderer": "^17.0.2"
   }
 }

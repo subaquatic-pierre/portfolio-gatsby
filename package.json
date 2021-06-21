@@ -1,59 +1,11 @@
 {
-  "name": "subaquatic-pierre-portfolio",
-  "private": true,
+  "name": "subaquatic-pierre.com",
+  "version": "0.1.1",
   "description": "Porfolio website for Pierre",
-  "version": "0.1.0",
-  "author": "Pierre du Toit <subaquatic.pierre@gmail.com>",
-  "dependencies": {
-    "@material-ui/core": "^4.9.14",
-    "@material-ui/icons": "^4.9.1",
-    "@material-ui/lab": "^4.0.0-alpha.56",
-    "@material-ui/styles": "^4.9.14",
-    "enzyme": "^3.11.0",
-    "gatsby": "^2.32.12",
-    "gatsby-image": "^2.4.4",
-    "gatsby-link": "^2.3.2",
-    "gatsby-plugin-catch-links": "^2.2.1",
-    "gatsby-plugin-client-side-redirect": "^1.1.0",
-    "gatsby-plugin-google-analytics": "^2.5.0",
-    "gatsby-plugin-manifest": "^2.4.5",
-    "gatsby-plugin-offline": "^3.2.3",
-    "gatsby-plugin-optimize-svgs": "^1.0.4",
-    "gatsby-plugin-react-helmet": "^3.3.1",
-    "gatsby-plugin-sharp": "^2.8.0",
-    "gatsby-plugin-sitemap": "^2.3.1",
-    "gatsby-plugin-web-font-loader": "^1.0.4",
-    "gatsby-remark-copy-linked-files": "^2.4.0",
-    "gatsby-remark-images": "^3.5.1",
-    "gatsby-remark-prismjs": "^3.12.0",
-    "gatsby-remark-responsive-iframe": "^2.5.0",
-    "gatsby-remark-smartypants": "^2.4.0",
-    "gatsby-source-filesystem": "^2.5.0",
-    "gatsby-theme-material-ui": "^1.0.9",
-    "gatsby-transformer-remark": "^2.15.0",
-    "gatsby-transformer-sharp": "^2.6.0",
-    "lottie-react-web": "^2.1.4",
-    "prismjs": "^1.23.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-helmet": "^6.0.0"
+  "main": "config.js",
+  "directories": {
+    "test": "test"
   },
-  "devDependencies": {
-    "@types/node": "^14.14.22",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "babel-jest": "^26.1.0",
-    "babel-preset-gatsby": "^0.5.1",
-    "enzyme-adapter-react-16": "^1.15.2",
-    "identity-obj-proxy": "^3.0.0",
-    "jest": "^26.1.0",
-    "prettier": "2.0.5",
-    "react-test-renderer": "^16.13.1"
-  },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -63,4 +15,52 @@
     "clean": "gatsby clean",
     "test": "jest --watch"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/subaquatic-pierre/pierre-portfolio-gatsby.git"
+  },
+  "author": "Pierre du Toit <subaquatic.pierre@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subaquatic-pierre/pierre-portfolio-gatsby/issues"
+  },
+  "homepage": "https://github.com/subaquatic-pierre/pierre-portfolio-gatsby#readme",
+  "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.58",
+    "@material-ui/styles": "^4.11.4",
+    "enzyme": "^3.11.0",
+    "gatsby": "^3.7.2",
+    "gatsby-link": "^3.7.1",
+    "gatsby-plugin-catch-links": "^3.7.1",
+    "gatsby-plugin-client-side-redirect": "^1.1.0",
+    "gatsby-plugin-google-analytics": "^3.7.1",
+    "gatsby-plugin-manifest": "^3.7.1",
+    "gatsby-plugin-offline": "^4.7.1",
+    "gatsby-plugin-optimize-svgs": "^1.0.5",
+    "gatsby-plugin-react-helmet": "^4.7.1",
+    "gatsby-plugin-sitemap": "^4.3.1",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
+    "gatsby-remark-copy-linked-files": "^4.4.1",
+    "gatsby-remark-images": "^5.4.1",
+    "gatsby-remark-prismjs": "^5.4.1",
+    "gatsby-remark-responsive-iframe": "^4.4.1",
+    "gatsby-remark-smartypants": "^4.4.1",
+    "gatsby-source-filesystem": "^3.7.1",
+    "gatsby-theme-material-ui": "^2.0.1",
+    "gatsby-transformer-remark": "^4.4.1",
+    "gatsby-transformer-sharp": "^3.7.1",
+    "lottie-react-web": "^2.2.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0"
+  },
+  "devDependencies": {
+    "babel-jest": "^27.0.2",
+    "babel-preset-gatsby": "^1.7.1",
+    "jest": "^27.0.4",
+    "prettier": "^2.3.1",
+    "react-test-renderer": "^17.0.2"
+  }
 }

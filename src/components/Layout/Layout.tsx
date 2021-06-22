@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { WindowLocation } from "reach__router";
+import { globalHistory as history } from "@reach/router";
 import { Helmet } from "react-helmet";
 import { makeStyles, CssBaseline } from "@material-ui/core";
 import { withPrefix } from "gatsby";
@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface IProps extends PageProps {
-  location: any;
   title?: string;
   description?: string;
   socialImage?: any;
@@ -40,9 +39,9 @@ const Layout: React.FC<IProps> = ({
   children,
   title,
   description,
-  location,
   socialImage,
 }) => {
+  const { location } = history;
   const [messages, setMessages] = useState([]);
   const classes = useStyles();
   const siteMetaData = useSiteMetadata();

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import clsx from "clsx";
+import { navigate } from "gatsby";
 import { globalHistory as history } from "@reach/router";
 
 import {
@@ -37,13 +38,13 @@ const useStyles = makeStyles((theme) => ({
 
 interface IProps {
   toggleTheme: any;
-  menuItems: any[];
+  menuItems: MenuItem[];
 }
 
 const Header: React.FC<IProps> = ({ toggleTheme, menuItems }) => {
   // State control for NavTabs
   // const location = "something";
-  {location} = history
+  const { location } = history;
   const [activeTab, setActiveTab] = useState(0);
   const [subMenuIndex, setSubMenuIndex] = useState(-1);
   const classes = useStyles();
@@ -63,53 +64,25 @@ const Header: React.FC<IProps> = ({ toggleTheme, menuItems }) => {
   const handleLogoClick = () => {
     setActiveTab(-1);
     setSubMenuIndex(-1);
-  };
-
-  const checkActiveSubMenuIndex = (tabIndex: number) => {
-    let isProjectMenuItem = false;
-    const path = location.pathname;
-    const projectMenuItems = menuItems[tabIndex].subMenuItems;
-    if (projectMenuItems !== undefined) {
-      projectMenuItems.forEach((item, index: number) => {
-        if (item.link === path) {
-          isProjectMenuItem = true;
-          setActiveTab(tabIndex);
-          setSubMenuIndex(index);
-        }
-      });
-    } else {
-      return isProjectMenuItem;
-    }
+    navigate("/");
   };
 
   // Check active Tab on url change
   const checkActiveTab = () => {
-    const path = location.pathname;
-    let menuItem = false;
-    menuItems.forEach((item, index) => {
-      if (checkActiveSubMenuIndex(index) === false && item.path === path) {
+    const { pathname } = location;
+    console.log(pathname);
+    menuItems.forEach((item: MenuItem, index) => {
+      if (item.path === pathname) {
         setActiveTab(index);
-        menuItem = true;
+      } else if (item.path === "contact") {
+        setActiveTab(-1);
       }
     });
-    if (!menuItem) {
-      setActiveTab(false);
-    }
-  };
-
-  const checkTheme = () => {
-    const path = location.pathname;
-    if (path === "/toolbox") {
-      toggleTheme("dark");
-    } else {
-      toggleTheme("light");
-    }
   };
 
   useEffect(() => {
     checkActiveTab();
-    checkTheme();
-  });
+  }, []);
 
   return (
     <>
@@ -123,7 +96,6 @@ const Header: React.FC<IProps> = ({ toggleTheme, menuItems }) => {
           <Button
             disableRipple
             onClick={handleLogoClick}
-            to="/"
             className={clsx(
               classes.appBar,
               shrinkTrigger ? classes.logoShrink : classes.logo
@@ -132,20 +104,9 @@ const Header: React.FC<IProps> = ({ toggleTheme, menuItems }) => {
             <img className={classes.logo} src={logo} alt="logo" />
           </Button>
           {navBreakPoint ? (
-            <NavTabs
-              activeTab={activeTab}
-              subMenuIndex={subMenuIndex}
-              setActiveTab={setActiveTab}
-              setSubMenuIndex={setSubMenuIndex}
-              checkActiveSubMenuIndex={checkActiveSubMenuIndex}
-              menuItems={menuItems}
-            />
+            <NavTabs activeTab={activeTab} menuItems={menuItems} />
           ) : (
-            <NavDrawer
-              shrinkTrigger={shrinkTrigger}
-              toggleTheme={toggleTheme}
-              menuItems={menuItems}
-            />
+            <NavDrawer shrinkTrigger={shrinkTrigger} menuItems={menuItems} />
           )}
         </Toolbar>
       </AppBar>

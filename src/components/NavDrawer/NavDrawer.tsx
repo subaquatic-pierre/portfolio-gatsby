@@ -76,7 +76,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface IProps extends PageProps {
+interface IProps {
   shrinkTrigger: any;
   menuItems: any[];
 }

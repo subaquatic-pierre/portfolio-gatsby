@@ -1,18 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React from "react";
 import clsx from "clsx";
-import { Link } from "gatsby";
-import {
-  Tab,
-  Paper,
-  Popper,
-  MenuItem,
-  MenuList,
-  Grow,
-  ClickAwayListener,
-  Button,
-  makeStyles,
-} from "@material-ui/core";
-import { PageProps } from "gatsby";
+import { navigate } from "gatsby";
+import { Button, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   menuStyle: {
@@ -65,170 +54,45 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface IProps extends PageProps {
+interface IProps {
   activeTab: any;
-  setActiveTab: any;
-  subMenuIndex: any;
-  setSubMenuIndex: any;
-  checkActiveSubMenuIndex: any;
   menuItems: any[];
 }
 
-const NavTabs: React.FC<IProps> = ({
-  activeTab,
-  setActiveTab,
-  subMenuIndex,
-  setSubMenuIndex,
-  checkActiveSubMenuIndex,
-  menuItems,
-}) => {
-  // Set achor ref for SubMenu
-  const anchorRef = useRef();
+const NavTabs: React.FC<IProps> = ({ activeTab, menuItems }) => {
   const classes = useStyles();
-  const [subMenuOpen, setSubMenuOpen] = useState(false);
-
-  const projectSubMenu = menuItems[2].subMenuItems;
 
   // Event handlers
-  const handleTabChange = (event, newActiveTab) => {
-    if (newActiveTab !== 1) {
-      setActiveTab(newActiveTab);
-      setSubMenuIndex(false);
-    } else {
-      checkActiveSubMenuIndex(newActiveTab);
-    }
+  const handleButtonClick = (path: string) => {
+    navigate(path);
   };
-
-  const handleSubMenuClick = (event, index) => {
-    setSubMenuIndex(index);
-    setActiveTab(1);
-  };
-
-  const handleSubMenuToggle = (e) => {
-    const prevSubMenuOpen = !subMenuOpen;
-    setSubMenuOpen(prevSubMenuOpen);
-  };
-
-  const handleSubMenuClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-    setSubMenuOpen(false);
-  };
-
-  const handleSubMenuKeyDown = (event) => {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      setSubMenuOpen(false);
-    }
-  };
-
-  // Check active tab on component change
-  useEffect(() => {
-    const path = window.location.pathname;
-    // Check active tab and set active tab index
-    menuItems.forEach((item, index) => {
-      if (checkActiveSubMenuIndex(index) === false && item.link === path) {
-        setActiveTab(index);
-      }
-    });
-  }, [menuItems, activeTab, setActiveTab, checkActiveSubMenuIndex]);
 
   return (
     <>
-      <div onChange={handleTabChange} className={classes.tabContainer}>
-        {menuItems.map((item, index) => {
-          if (item.subMenuItems !== undefined) {
-            return (
-              <Link key={index}>
-                <Tab
-                  ref={anchorRef}
-                  disableRipple
-                  aria-controls={subMenuOpen ? item.ariaControls : undefined}
-                  onClick={handleSubMenuToggle}
-                  aria-haspopup={item.hasPopup}
-                  className={classes.tab}
-                  label={item.name}
-                />
-              </Link>
-            );
-          } else {
-            return (
-              <Button
-                to={item.path}
-                key={index}
-                disableRipple
-                className={clsx(classes.tab, {
-                  [classes.activeTab]: index === activeTab,
-                })}
-              >
-                {item.name}
-              </Button>
-            );
-          }
+      <div className={classes.tabContainer}>
+        {menuItems.map((item: MenuItem, index: number) => {
+          return (
+            <Button
+              onClick={() => handleButtonClick(item.path)}
+              key={index}
+              disableRipple
+              className={clsx(classes.tab, {
+                [classes.activeTab]: index === activeTab,
+              })}
+            >
+              {item.name}
+            </Button>
+          );
         })}
       </div>
       <Button
-        onClick={(event) => {
-          handleTabChange(event, false);
-        }}
-        to="/contact"
+        onClick={() => handleButtonClick("contact")}
         variant="contained"
         color="secondary"
         className={classes.button}
       >
         Contact me
       </Button>
-      <Popper
-        open={subMenuOpen}
-        anchorEl={anchorRef.current}
-        role={undefined}
-        transition
-        disablePortal
-      >
-        {({ TransitionProps, placement }) => (
-          <Grow
-            {...TransitionProps}
-            style={{
-              transitionOrigin:
-                placement === "bottom" ? "center top" : "center bottom",
-            }}
-          >
-            <Paper classes={{ root: classes.menuStyle }} elevation={0}>
-              <ClickAwayListener onClickAway={handleSubMenuClose}>
-                <MenuList
-                  classes={{ root: classes.menuList }}
-                  autoFocusItem={subMenuOpen}
-                  id="menu-list-grow"
-                  onKeyDown={handleSubMenuKeyDown}
-                >
-                  {projectSubMenu &&
-                    projectSubMenu.map((option, index) => {
-                      return (
-                        <MenuItem
-                          key={index}
-                          classes={{
-                            root: classes.menuItem,
-                            selected: classes.selectedMenuItem,
-                          }}
-                          selected={index === subMenuIndex}
-                          component={Link}
-                          to={option.path}
-                          onClick={(event) => {
-                            handleSubMenuClose(event);
-                            handleSubMenuClick(event, index);
-                          }}
-                        >
-                          {option.name}
-                        </MenuItem>
-                      );
-                    })}
-                </MenuList>
-              </ClickAwayListener>
-            </Paper>
-          </Grow>
-        )}
-      </Popper>
     </>
   );
 };

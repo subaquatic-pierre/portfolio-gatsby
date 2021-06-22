@@ -70,7 +70,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Index: React.FC<PageProps> = ({ location, data }) => {
-  console.log(location);
   const classes = useStyles();
   return (
     <Layout title="Home" location={location}>

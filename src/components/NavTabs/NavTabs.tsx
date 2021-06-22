@@ -12,6 +12,7 @@ import {
   Button,
   makeStyles,
 } from "@material-ui/core";
+import { PageProps } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   menuStyle: {
@@ -64,21 +65,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavTabs = (props) => {
+interface IProps extends PageProps {
+  activeTab: any;
+  setActiveTab: any;
+  subMenuIndex: any;
+  setSubMenuIndex: any;
+  checkActiveSubMenuIndex: any;
+  menuItems: any[];
+}
+
+const NavTabs: React.FC<IProps> = ({
+  activeTab,
+  setActiveTab,
+  subMenuIndex,
+  setSubMenuIndex,
+  checkActiveSubMenuIndex,
+  menuItems,
+}) => {
   // Set achor ref for SubMenu
   const anchorRef = useRef();
   const classes = useStyles();
   const [subMenuOpen, setSubMenuOpen] = useState(false);
-
-  // State is controlled by parent
-  const {
-    activeTab,
-    setActiveTab,
-    subMenuIndex,
-    setSubMenuIndex,
-    checkActiveSubMenuIndex,
-    menuItems,
-  } = props;
 
   const projectSubMenu = menuItems[2].subMenuItems;
 

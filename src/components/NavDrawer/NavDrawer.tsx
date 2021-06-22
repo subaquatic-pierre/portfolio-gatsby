@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "gatsby";
+import { Link, PageProps } from "gatsby";
 import clsx from "clsx";
 import {
   List,
@@ -76,12 +76,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NavDrawer = (props) => {
-  const { shrinkTrigger, menuItems } = props;
+interface IProps extends PageProps {
+  shrinkTrigger: any;
+  menuItems: any[];
+}
+
+const NavDrawer: React.FC<IProps> = ({ shrinkTrigger, menuItems }) => {
   const [drawerAnchor, setDrawerAnchor] = useState(false);
   const classes = useStyles();
 
-  const toggleDrawer = (open) => (event) => {
+  const toggleDrawer = (open: any) => (event: any) => {
     if (
       event &&
       event.type === "keydown" &&

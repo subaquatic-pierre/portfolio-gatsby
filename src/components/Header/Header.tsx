@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { PageProps } from "gatsby";
 import clsx from "clsx";
 import {
   useScrollTrigger,
@@ -12,8 +13,8 @@ import {
 // import { globalHistory as history } from "@reach/router";
 
 import logo from "../../../static/svg/Oceanholic.svg";
-import NavDrawer from "../NavDrawer";
-import NavTabs from "../NavTabs";
+import { NavDrawer } from "../NavDrawer";
+import { NavTabs } from "../NavTabs";
 
 const useStyles = makeStyles((theme) => ({
   logoContainer: {
@@ -34,7 +35,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = ({ toggleTheme, menuItems }) => {
+interface IProps extends PageProps {
+  toggleTheme: any;
+  menuItems: any[];
+}
+
+const Header: React.FC<PageProps> = ({ toggleTheme, menuItems }) => {
   // State control for NavTabs
   //   const { location } = history;
   const location = "something";

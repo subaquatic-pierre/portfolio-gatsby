@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Helmet } from "react-helmet";
 import { makeStyles, CssBaseline } from "@material-ui/core";
 import { withPrefix } from "gatsby";
-
-import Header from "../Header";
-import Footer from "../Footer";
-import Message from "../Message";
-
-import useSiteMetadata from "../../hooks/use-site-metadata";
 import { PageProps } from "gatsby";
+
+import { Header } from "../Header";
+import { Footer } from "../Footer";
+import { Message } from "../Message";
+
+import { useSiteMetadata } from "../../hooks/use-site-metadata";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) => ({
 interface IProps extends PageProps {
   title: string;
   description: string;
-  location: any;
   socialImage: any;
 }
 
@@ -54,7 +53,7 @@ const Layout: React.FC<IProps> = ({
   };
 
   useEffect(() => {
-    const tmpMsg = [];
+    const tmpMsg: [] = [];
     if (
       location &&
       location.state &&

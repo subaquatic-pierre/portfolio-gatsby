@@ -1,6 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import { Grid, Container, makeStyles } from "@material-ui/core";
+import { PageProps } from "gatsby";
 
 import { Layout } from "../components/Layout";
 import { TopHero } from "../components/TopHero";
@@ -9,7 +10,6 @@ import { featureSection } from "../../content/homeFeatureData";
 import { graphql } from "gatsby";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import image from "../../static/images/underwater/coral.jpg";
-import { PageProps } from "gatsby";
 
 const featureSectionBreakpoint = "sm";
 

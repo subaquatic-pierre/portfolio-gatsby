@@ -1,0 +1,3 @@
+type SiteMetaData = {
+  [string]: any;
+};

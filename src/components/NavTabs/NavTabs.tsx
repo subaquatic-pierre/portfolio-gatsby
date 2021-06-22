@@ -86,7 +86,7 @@ const NavTabs: React.FC<IProps> = ({ activeTab, menuItems }) => {
         })}
       </div>
       <Button
-        onClick={() => handleButtonClick("contact")}
+        onClick={() => handleButtonClick("/contact")}
         variant="contained"
         color="secondary"
         className={classes.button}

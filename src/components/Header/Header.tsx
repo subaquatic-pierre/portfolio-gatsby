@@ -70,7 +70,8 @@ const Header: React.FC<IProps> = ({ toggleTheme, menuItems }) => {
     menuItems.forEach((item: MenuItem, index) => {
       if (item.path === pathname) {
         setActiveTab(index);
-      } else if (item.path === "contact") {
+      } else if (pathname === "/contact") {
+        console.log("We are on the contact page");
         setActiveTab(-1);
       }
     });

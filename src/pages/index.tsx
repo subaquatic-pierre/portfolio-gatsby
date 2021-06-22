@@ -6,9 +6,8 @@ import { PageProps } from "gatsby";
 import { Layout } from "../components/Layout";
 import { TopHero } from "../components/TopHero";
 import { FeatureColumn } from "../components/FeatureColumn";
+
 import { featureSection } from "../../content/homeFeatureData";
-import { graphql } from "gatsby";
-import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import image from "../../static/images/underwater/coral.jpg";
 
 const featureSectionBreakpoint = "sm";
@@ -69,10 +68,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Index: React.FC<PageProps> = ({ location, data }) => {
+const Index: React.FC<PageProps> = () => {
   const classes = useStyles();
   return (
-    <Layout title="Home" location={location}>
+    <Layout title="Home">
       <TopHero backgroundImage={image} />
       <Container className={classes.featureSection} maxWidth="lg">
         {featureSection.map((section: any, index: number) => {
@@ -134,16 +133,3 @@ const Index: React.FC<PageProps> = ({ location, data }) => {
 };
 
 export default Index;
-
-// export const pageQuery = graphql`
-//   query ImageQuery {
-//     allImageSharp {
-//       nodes {
-//         fluid {
-//           srcWebp
-//           originalName
-//         }
-//       }
-//     }
-//   }
-// `;

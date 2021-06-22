@@ -29,10 +29,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface IProps extends PageProps {
+interface IProps {
   title?: string;
   description?: string;
   socialImage?: any;
+  messages?: string[];
 }
 
 const Layout: React.FC<IProps> = ({

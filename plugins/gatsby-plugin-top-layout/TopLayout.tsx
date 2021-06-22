@@ -30,6 +30,8 @@ const TopLayout: React.FC<PageProps<IProps>> = (props) => {
           href="https://fonts.googleapis.com/css?family=Lato:400,500,700&display=swap"
           rel="stylesheet"
         />
+        <title>Home | Pierre Portfolio</title>
+        <meta name="description" content="Home of Pierre's portfolio" />
       </Helmet>
       <ThemeProvider theme={theme}>
         {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}

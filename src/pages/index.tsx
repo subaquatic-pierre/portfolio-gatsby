@@ -70,9 +70,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Index: React.FC<PageProps> = ({ location, data }) => {
+  console.log(location);
   const classes = useStyles();
   return (
-    <Layout location={location}>
+    <Layout title="Home" location={location}>
       <TopHero backgroundImage={image} />
       <Container className={classes.featureSection} maxWidth="lg">
         {featureSection.map((section: any, index: number) => {

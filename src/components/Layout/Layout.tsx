@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { WindowLocation } from "reach__router";
 import { Helmet } from "react-helmet";
 import { makeStyles, CssBaseline } from "@material-ui/core";
 import { withPrefix } from "gatsby";
@@ -28,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface IProps extends PageProps {
-  title: string;
-  description: string;
-  socialImage: any;
+interface IProps {
+  title?: string;
+  description?: string;
+  socialImage?: any;
 }
 
 const Layout: React.FC<IProps> = ({

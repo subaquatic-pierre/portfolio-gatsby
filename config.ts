@@ -5,7 +5,6 @@ module.exports = {
   title: "Pierre Porfolio",
   subtitle: "The home of subaquatic-pierre potfolio website.",
   copyright: "© All rights reserved.",
-  disqusShortname: "",
   postsPerPage: 4,
   googleAnalyticsId: "UA-73379983-2",
   menu: [
@@ -32,8 +31,8 @@ module.exports = {
     bio: "Web Developer | Cloud Architect | Scuba Instructor",
     contacts: {
       email: "subaquatic.pierre@gmail.com",
-      github: "#",
-      linkedin: "#",
+      github: "https://github.com/subaquatic-pierre",
+      linkedIn: "https://www.linkedin.com/in/pierre-du-toit-b66193a1/",
     },
   },
-};
+} as SiteMetaData;

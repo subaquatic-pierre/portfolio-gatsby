@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { PageProps } from "gatsby";
 import clsx from "clsx";
+import { globalHistory as history } from "@reach/router";
+
 import {
   useScrollTrigger,
   useMediaQuery,
@@ -10,7 +11,6 @@ import {
   AppBar,
   Toolbar,
 } from "@material-ui/core";
-// import { globalHistory as history } from "@reach/router";
 
 import logo from "../../../static/svg/Oceanholic.svg";
 import { NavDrawer } from "../NavDrawer";
@@ -35,17 +35,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface IProps extends PageProps {
+interface IProps {
   toggleTheme: any;
   menuItems: any[];
 }
 
-const Header: React.FC<PageProps> = ({ toggleTheme, menuItems }) => {
+const Header: React.FC<IProps> = ({ toggleTheme, menuItems }) => {
   // State control for NavTabs
-  //   const { location } = history;
-  const location = "something";
+  // const location = "something";
+  {location} = history
   const [activeTab, setActiveTab] = useState(0);
-  const [subMenuIndex, setSubMenuIndex] = useState(false);
+  const [subMenuIndex, setSubMenuIndex] = useState(-1);
   const classes = useStyles();
 
   // Media queries
@@ -61,16 +61,16 @@ const Header: React.FC<PageProps> = ({ toggleTheme, menuItems }) => {
   });
 
   const handleLogoClick = () => {
-    setActiveTab(false);
-    setSubMenuIndex(false);
+    setActiveTab(-1);
+    setSubMenuIndex(-1);
   };
 
-  const checkActiveSubMenuIndex = (tabIndex) => {
+  const checkActiveSubMenuIndex = (tabIndex: number) => {
     let isProjectMenuItem = false;
     const path = location.pathname;
     const projectMenuItems = menuItems[tabIndex].subMenuItems;
     if (projectMenuItems !== undefined) {
-      projectMenuItems.forEach((item, index) => {
+      projectMenuItems.forEach((item, index: number) => {
         if (item.link === path) {
           isProjectMenuItem = true;
           setActiveTab(tabIndex);

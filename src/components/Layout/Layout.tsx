@@ -29,7 +29,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-interface IProps {
+interface IProps extends PageProps {
+  location: any;
   title?: string;
   description?: string;
   socialImage?: any;
@@ -61,8 +62,8 @@ const Layout: React.FC<IProps> = ({
       location.state.messages &&
       location.state.messages.length > 0
     ) {
-      location.state.messages.forEach((msg) => {
-        tmpMsg.push(msg);
+      location.state.messages.forEach((msg: any) => {
+        tmpMsg.push(msg as never);
       });
     }
     setMessages(tmpMsg);

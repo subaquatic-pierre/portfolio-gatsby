@@ -5,6 +5,8 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import CopyrightIcon from "@material-ui/icons/Copyright";
 
+import { useSiteMetadata } from "../../hooks/use-site-metadata";
+
 const useStyles = makeStyles((theme) => ({
   footer: {
     borderRadius: "0",
@@ -53,6 +55,8 @@ const useStyles = makeStyles((theme) => ({
 const Footer: React.FC = () => {
   const classes = useStyles();
 
+  const siteMetaData = useSiteMetadata();
+
   return (
     <footer className={classes.footer}>
       <Grid container justify="center">
@@ -74,14 +78,14 @@ const Footer: React.FC = () => {
         >
           <Button
             target="blank"
-            href="https://github.com/subaquatic-pierre"
+            href={siteMetaData.author.contacts.github}
             disableRipple
           >
             <GitHubIcon />
           </Button>
           <Button
             target="blank"
-            href="https://www.linkedin.com/in/pierre-du-toit-b66193a1/"
+            href={siteMetaData.author.contacts.linkedIn}
             disableRipple
           >
             <LinkedInIcon />

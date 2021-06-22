@@ -1,12 +1,12 @@
-const siteConfig = require("./config.js");
+const siteMeta = require("./siteMeta.js");
 module.exports = {
   siteMetadata: {
-    title: siteConfig.title,
-    description: siteConfig.subtitle,
-    author: siteConfig.author,
-    url: siteConfig.url,
-    icon: siteConfig.icon,
-    menu: siteConfig.menu,
+    title: siteMeta.title,
+    description: siteMeta.subtitle,
+    author: siteMeta.author,
+    url: siteMeta.url,
+    icon: siteMeta.icon,
+    menu: siteMeta.menu,
   },
   plugins: [
     "gatsby-plugin-gatsby-cloud",

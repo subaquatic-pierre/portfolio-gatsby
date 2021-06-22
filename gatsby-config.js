@@ -15,6 +15,19 @@ module.exports = {
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-top-layout",
+    "gatsby-plugin-react-helmet",
+    {
+      resolve: "gatsby-plugin-material-ui",
+      // If you want to use styled components you should change the injection order.
+      options: {
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
+      },
+    },
+    // If you want to use styled components you should add the plugin here.
+    // 'gatsby-plugin-styled-components',
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
@@ -42,6 +55,38 @@ module.exports = {
         path: "./src/pages/",
       },
       __key: "pages",
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/static/images`,
+      },
+      __key: "static_images",
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `blog`,
+        path: `${__dirname}/content/blog`,
+      },
+      __key: "blog",
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `projects`,
+        path: `${__dirname}/content/projects`,
+      },
+      __key: "projects",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "assets",
+        path: `${__dirname}/static`,
+      },
+      __key: "static",
     },
   ],
 };

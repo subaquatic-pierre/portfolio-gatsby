@@ -1,15 +1,21 @@
+import React from "react";
+import { PageProps } from "gatsby";
+import { Helmet } from "react-helmet";
+import { ThemeProvider, CssBaseline } from "@material-ui/core";
+import theme from "../../src/theme";
 
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import  from '@material-ui/core/CssBaseline';
-import { ThemeProvider, CssBaseline } from '@material-ui/core';
-import theme from '../../src/theme';
+interface IProps {
+  children?: JSX.Element;
+}
 
-export default function TopLayout(props) {
+const TopLayout: React.FC<PageProps<IProps>> = (props) => {
   return (
     <React.Fragment>
       <Helmet>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta
+          name="viewport"
+          content="minimum-scale=1, initial-scale=1, width=device-width"
+        />
         <link
           href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap"
           rel="stylesheet"
@@ -22,8 +28,6 @@ export default function TopLayout(props) {
       </ThemeProvider>
     </React.Fragment>
   );
-}
-
-TopLayout.propTypes = {
-  children: PropTypes.node,
 };
+
+export default TopLayout;

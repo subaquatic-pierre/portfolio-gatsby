@@ -1,6 +1,12 @@
+const siteConfig = require("./config.js");
 module.exports = {
   siteMetadata: {
-    title: "subaquatic-pierre",
+    title: siteConfig.title,
+    description: siteConfig.subtitle,
+    author: siteConfig.author,
+    url: siteConfig.url,
+    icon: siteConfig.icon,
+    menu: siteConfig.menu,
   },
   plugins: [
     "gatsby-plugin-gatsby-cloud",

@@ -8,6 +8,7 @@ import Footer from "../Footer";
 import Message from "../Message";
 
 import useSiteMetadata from "../../hooks/use-site-metadata";
+import { PageProps } from "gatsby";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -27,28 +28,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Layout = ({ children, title, description, location, socialImage }) => {
-  // SET THEME STUFF
+interface IProps extends PageProps {
+  title: string;
+  description: string;
+  location: any;
+  socialImage: any;
+}
 
-  // const [stateTheme, setTheme] = useState(theme)
-
-  // const toggleTheme = (type) => {
-  //     if (type === 'dark') {
-  //         setTheme(themeDark)
-  //     } else if (type === 'light') {
-  //         setTheme(theme)
-  //     }
-  // }
-
-  // useEffect(() => {
-  //     const path = window.location.pathname
-  //     if (path === '/toolbox') {
-  //         toggleTheme('dark')
-  //     } else (
-  //         toggleTheme('light')
-  //     )
-  // })
-
+const Layout: React.FC<IProps> = ({
+  children,
+  title,
+  description,
+  location,
+  socialImage,
+}) => {
   const [messages, setMessages] = useState([]);
   const classes = useStyles();
   const siteMetaData = useSiteMetadata();

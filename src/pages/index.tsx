@@ -1,15 +1,15 @@
 import React from "react";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/core";
-import { Grid, Container } from "@material-ui/core";
+import { Grid, Container, makeStyles } from "@material-ui/core";
 
-import Layout from "../components/Layout";
-import TopHero from "../components/TopHero";
-import FeatureColumn from "../components/FeatureColumn";
+import { Layout } from "../components/Layout";
+import { TopHero } from "../components/TopHero";
+import { FeatureColumn } from "../components/FeatureColumn";
 import { featureSection } from "../../content/homeFeatureData";
 import { graphql } from "gatsby";
 import { getImage, GatsbyImage } from "gatsby-plugin-image";
 import image from "../../static/images/underwater/coral.jpg";
+import { PageProps } from "gatsby";
 
 const featureSectionBreakpoint = "sm";
 
@@ -69,13 +69,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Home = ({ location, data }) => {
+const Index: React.FC<PageProps> = ({ location, data }) => {
   const classes = useStyles();
   return (
     <Layout location={location}>
       <TopHero backgroundImage={image} />
       <Container className={classes.featureSection} maxWidth="lg">
-        {featureSection.map((section, index) => {
+        {featureSection.map((section: any, index: number) => {
           const { leftCol, rightCol, mobile, desktop } = section;
           return (
             <Grid
@@ -86,7 +86,6 @@ const Home = ({ location, data }) => {
               <Grid
                 className={clsx(
                   classes.featuresColLeft,
-                  classes.mobileColLeft,
                   mobile.reverse ? classes.mobileReverseLeft : null,
                   desktop.reverse ? classes.desktopReverseLeft : null
                 )}
@@ -134,7 +133,7 @@ const Home = ({ location, data }) => {
   );
 };
 
-export default Home;
+export default Index;
 
 // export const pageQuery = graphql`
 //   query ImageQuery {

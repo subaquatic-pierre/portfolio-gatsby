@@ -1,9 +1,9 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { makeStyles, Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import { Grid, Typography, Fade } from "@material-ui/core";
 
-import Divider from "../Divider";
+import { Divider } from "../Divider";
 
 const useStyles = makeStyles((theme) => ({
   heroBackground: {

@@ -2,7 +2,7 @@ import React from "react";
 import { PageProps } from "gatsby";
 import { Helmet } from "react-helmet";
 import { ThemeProvider, CssBaseline } from "@material-ui/core";
-import theme from "../../src/theme";
+import { theme } from "../../src/theme";
 
 interface IProps {
   children?: JSX.Element;

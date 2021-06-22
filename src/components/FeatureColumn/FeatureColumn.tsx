@@ -3,8 +3,8 @@ import clsx from "clsx";
 import { makeStyles } from "@material-ui/core";
 import { Typography, Grid, Fade, Button } from "@material-ui/core";
 
-import AnimationContainer from "../AnimationContainer";
-import Divider from "../Divider";
+import { AnimationContainer } from "../AnimationContainer";
+import { Divider } from "../Divider";
 
 const useStyles = makeStyles((theme) => ({
   featureContainer: {

@@ -35,4 +35,4 @@ module.exports = {
       linkedIn: "https://www.linkedin.com/in/pierre-du-toit-b66193a1/",
     },
   },
-} as SiteMetaData;
+};

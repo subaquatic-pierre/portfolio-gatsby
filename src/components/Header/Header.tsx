@@ -46,7 +46,6 @@ const Header: React.FC<IProps> = ({ toggleTheme, menuItems }) => {
   // const location = "something";
   const { location } = history;
   const [activeTab, setActiveTab] = useState(0);
-  const [subMenuIndex, setSubMenuIndex] = useState(-1);
   const classes = useStyles();
 
   // Media queries
@@ -62,15 +61,12 @@ const Header: React.FC<IProps> = ({ toggleTheme, menuItems }) => {
   });
 
   const handleLogoClick = () => {
-    setActiveTab(-1);
-    setSubMenuIndex(-1);
     navigate("/");
   };
 
   // Check active Tab on url change
   const checkActiveTab = () => {
     const { pathname } = location;
-    console.log(pathname);
     menuItems.forEach((item: MenuItem, index) => {
       if (item.path === pathname) {
         setActiveTab(index);

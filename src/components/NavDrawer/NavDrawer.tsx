@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, PageProps } from "gatsby";
+import { Link } from "gatsby";
 import clsx from "clsx";
 import {
   List,
@@ -11,15 +11,6 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
-
-// import {
-//     BottomNavigationAction,
-//     Button,
-//     CardActionArea,
-//     Fab,
-//     IconButton,
-//     Link,
-//   } from "gatsby-theme-material-ui";
 
 const useStyles = makeStyles((theme) => ({
   drawerPaper: {

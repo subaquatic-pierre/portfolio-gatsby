@@ -17,17 +17,7 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-top-layout",
     "gatsby-plugin-react-helmet",
-    {
-      resolve: "gatsby-plugin-material-ui",
-      // If you want to use styled components you should change the injection order.
-      options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
-      },
-    },
-    // If you want to use styled components you should add the plugin here.
-    // 'gatsby-plugin-styled-components',
+    "gatsby-plugin-material-ui",
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {
@@ -37,7 +27,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-manifest",
       options: {
-        icon: "static/icon.png",
+        icon: `${__dirname}/static/icon.png`,
       },
     },
     {
@@ -47,14 +37,6 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
       __key: "pages",
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: `${__dirname}/static/images`,
-      },
-      __key: "static_images",
     },
     {
       resolve: "gatsby-source-filesystem",
@@ -71,6 +53,14 @@ module.exports = {
         path: `${__dirname}/content/projects`,
       },
       __key: "projects",
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "images",
+        path: `${__dirname}/static/images`,
+      },
+      __key: "images",
     },
     {
       resolve: "gatsby-source-filesystem",

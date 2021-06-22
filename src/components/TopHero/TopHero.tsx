@@ -1,7 +1,9 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import { getImage, getSrc } from "gatsby-plugin-image";
 import { makeStyles } from "@material-ui/core";
 import { Grid, Typography, Fade } from "@material-ui/core";
+import image from "../../../static/images/underwater/coral.jpg";
 
 import { Divider } from "../Divider";
 
@@ -31,29 +33,21 @@ const useStyles = makeStyles((theme) => ({
 const TopHero = (props) => {
   const classes = useStyles();
   const data = useStaticQuery(graphql`
-    query galleryImages {
-      allFile(
-        filter: { sourceInstanceName: { eq: "images" }, name: { eq: "coral" } }
-      ) {
-        edges {
-          node {
-            childImageSharp {
-              fluid(quality: 50) {
-                src
-                originalImg
-              }
-            }
-          }
+    query MyQuery {
+      imageSharp(fluid: { originalName: { eq: "coral.jpg" } }) {
+        id
+        fluid {
+          originalImg
         }
       }
     }
   `);
 
-  const orgImage = data.allFile.edges[0].node.childImageSharp.fluid.originalImg;
-
   return (
     <div
-      style={{ backgroundImage: `url(${orgImage})` }}
+      style={{
+        backgroundImage: `url(${image})`,
+      }}
       className={classes.heroBackground}
     >
       <Grid

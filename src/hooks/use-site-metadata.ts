@@ -13,7 +13,7 @@ export const useSiteMetadata: SiteMetaDataHook = () => {
               bio
               photo
               contacts {
-                linkedin
+                linkedIn
                 github
                 email
               }

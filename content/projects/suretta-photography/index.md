@@ -11,5 +11,5 @@ title: Gatsby,
 title: React,
 title: Bootstrap 4,
 ]
-imageName: suretta.png
+image: suretta.png
 ---

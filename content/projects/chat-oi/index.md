@@ -12,5 +12,5 @@ title: Socket IO,
 title: HandleBars JS,
 title: Bootstrap 4,
 ]
-imageName: chatio.png
+image: chatio.png
 ---

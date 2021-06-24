@@ -10,5 +10,5 @@ tech: [
 title: NodeJS,
 title: Express JS,
 ]
-imageName: none
+image: none
 ---

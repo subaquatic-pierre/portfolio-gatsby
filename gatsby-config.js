@@ -15,6 +15,7 @@ module.exports = {
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-transformer-remark",
     "gatsby-plugin-top-layout",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-material-ui",

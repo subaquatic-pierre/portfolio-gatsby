@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PageProps } from "gatsby";
+import { getImage, getSrc, GatsbyImage } from "gatsby-plugin-image";
 
 import { graphql } from "gatsby";
 import { makeStyles } from "@material-ui/core/styles";
@@ -79,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Projects: React.FC<PageProps<any>> = ({ data }) => {
   const allProjects = data.allMarkdownRemark.nodes;
-  let allImages = [];
+  let allImages: any[] = [];
   try {
     allImages = data.allImageSharp.nodes;
   } catch (err) {
@@ -164,25 +165,25 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
     }
   };
 
-  const getProjectData = (project: Project) => {
-    let image;
-    if (project.imageName !== "none") {
-      image = allImages.find(
-        (image) => image.fluid.originalName === project.imageName
+  const getProjectData = (project: Project): Project => {
+    let imageSrc = getSrc(placeHolderImage);
+    if (project.image !== "none") {
+      const image = allImages.find(
+        (image) => image.fluid.originalName === project.image
       );
-    } else {
-      image = placeHolderImage;
+      imageSrc = getSrc(image);
     }
 
     const url = project.url !== "none" ? project.url : undefined;
 
     return {
-      isProduction: project.production,
+      type: project.type,
+      production: project.production,
       title: project.title,
       date: project.date,
       github: project.github,
       url: url,
-      image: image && image.fluid.srcWebp,
+      image: imageSrc,
       description: project.description,
       tech: project.tech,
     };
@@ -207,7 +208,6 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
         <Grid container item xs={12} className={classes.pageContainer}>
           <Grid
             container
-            className={classes.headingSection}
             direction="column"
             justify="center"
             alignItems="center"
@@ -240,12 +240,11 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
         </Grid>
         <Grid container spacing={3} className={classes.projectContainer} item>
           {projectData &&
-            projectData.map((project, idx) => {
+            projectData.map((project: ProjectNode, index: number) => {
               return (
                 <Project
-                  placeholder={placeHolderImage}
-                  key={idx}
-                  index={idx}
+                  key={index}
+                  index={index}
                   projectData={getProjectData(project.frontmatter)}
                 />
               );
@@ -280,14 +279,14 @@ export const pageQuery = graphql`
           tech {
             title
           }
-          imageName
+          image
         }
       }
     }
     allImageSharp {
       nodes {
+        gatsbyImageData
         fluid {
-          srcWebp
           originalName
         }
       }

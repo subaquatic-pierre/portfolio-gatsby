@@ -13,5 +13,5 @@ title: Vanilla JS,
 title: Crispy Forms,
 title: Handlebars JS,
 ]
-imageName: pizza.png
+image: pizza.png
 ---

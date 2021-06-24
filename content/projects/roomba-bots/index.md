@@ -10,5 +10,5 @@ tech: [
 title: Typescript,
 title: React,
 ]
-imageName: roombaBots.png
+image: roombaBots.png
 ---

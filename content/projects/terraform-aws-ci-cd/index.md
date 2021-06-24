@@ -10,5 +10,5 @@ tech: [
 title: Terraform,
 title: AWS,
 ]
-imageName: none
+image: none
 ---

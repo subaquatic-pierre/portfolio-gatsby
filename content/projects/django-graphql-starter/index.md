@@ -10,5 +10,5 @@ tech: [
 title: Django,
 title: GraphQL,
 ]
-imageName: none
+image: none
 ---

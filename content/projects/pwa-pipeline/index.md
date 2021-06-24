@@ -12,5 +12,5 @@ title: Gatsby,
 title: AWS CodePipeline,
 title: AWS CloudFront,
 ]
-imageName: none
+image: none
 ---

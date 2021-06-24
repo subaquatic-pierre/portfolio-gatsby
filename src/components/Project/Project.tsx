@@ -1,4 +1,5 @@
 import React from "react";
+import { getImage, getSrc, GatsbyImage } from "gatsby-plugin-image";
 import {
   Grid,
   Card,
@@ -81,10 +82,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Project: React.FC = ({
+interface IProps {
+  projectData: Project;
+  index: number;
+}
+
+const Project: React.FC<IProps> = ({
   projectData: {
-    index,
-    isProduction,
+    production,
     title,
     date,
     image,
@@ -93,11 +98,12 @@ const Project: React.FC = ({
     github,
     tech,
   },
+  index,
 }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const handleClick = (event) => {
+  const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -109,12 +115,7 @@ const Project: React.FC = ({
   const showGitHubIcon = github !== "none";
 
   return (
-    <Grid
-      key={index}
-      item
-      sm={isProduction ? 4 : 3}
-      className={classes.cardCol}
-    >
+    <Grid item sm={production ? 4 : 3} className={classes.cardCol}>
       <Card elevation={3} className={classes.cardRoot}>
         <CardHeader title={title} subheader={date} />
         <CardMedia
@@ -151,7 +152,7 @@ const Project: React.FC = ({
           </IconButton>
         </CardActions>
         <Popover
-          id={index}
+          id={index.toString()}
           open={open}
           anchorEl={anchorEl}
           onClose={handleClose}
@@ -170,7 +171,7 @@ const Project: React.FC = ({
             </Typography>
             <List className={classes.techList}>
               {tech &&
-                tech.map((tech, index) => (
+                tech.map((tech: ProjectTech, index: number) => (
                   <ListItem key={index}>
                     <ListItemIcon>
                       <ArrowForwardIosIcon color="secondary" />

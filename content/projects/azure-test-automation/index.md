@@ -13,5 +13,5 @@ title: JMeter,
 title: Newman,
 title: Terraform,
 ]
-imageName: none
+image: none
 ---

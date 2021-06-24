@@ -35,10 +35,10 @@ exports.createSchemaCustomization = ({ actions }) => {
         date: Date @dateformat
         github: String
         url: String
-        imageName: String
+        image: String
         tech: [Tech]
         type: String
-        imageName: String
+        image: String
       }
   
       type Tech @dontInfer {

@@ -14,5 +14,5 @@ title: Material UI,
 title: Apollo React,
 title: Terraform,
 ]
-imageName: diveschedule.png
+image: diveschedule.png
 ---

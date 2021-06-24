@@ -1,4 +1,4 @@
-interface Tech {
+interface ProjectTech {
   title: string;
 }
 
@@ -9,9 +9,9 @@ interface Project {
   production: boolean;
   description: string;
   github: string;
-  url: string;
-  tech: Tech[];
-  imageName?: string;
+  url?: string;
+  tech: ProjectTech[];
+  image?: string;
 }
 
 interface ProjectNode {

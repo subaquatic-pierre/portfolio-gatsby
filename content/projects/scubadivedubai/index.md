@@ -12,5 +12,5 @@ title: Saleor,
 title: React,
 title: Terraform,
 ]
-imageName: scubadivedubaiEcommerce.png
+image: scubadivedubaiEcommerce.png
 ---

@@ -17,8 +17,13 @@ const handleClick = () => {
   window.scroll({ top: 0, behavior: "smooth" });
 };
 
-const ScrollToTop: React.FC = (props) => {
-  const { color, size, trigger } = props;
+interface IProps {
+  color: any;
+  size: "medium" | "large" | "small" | undefined;
+  trigger: boolean;
+}
+
+const ScrollToTop: React.FC<IProps> = ({ color, size, trigger }) => {
   const classes = useStyles();
 
   return (

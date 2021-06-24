@@ -1,14 +1,14 @@
 import React from "react";
 import clsx from "clsx";
 import { Grid, Container, makeStyles } from "@material-ui/core";
-import { PageProps } from "gatsby";
+import { getSrc } from "gatsby-plugin-image";
+import { graphql, PageProps } from "gatsby";
 
 import { Layout } from "../components/Layout";
 import { TopHero } from "../components/TopHero";
 import { FeatureColumn } from "../components/FeatureColumn";
 
 import { featureSection } from "../../content/homeFeatureData";
-import image from "../../static/images/underwater/coral.jpg";
 
 const featureSectionBreakpoint = "sm";
 
@@ -68,11 +68,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Index: React.FC<PageProps> = () => {
+const Index: React.FC<PageProps<any>> = ({ data }) => {
   const classes = useStyles();
   return (
     <Layout title="Home">
-      <TopHero backgroundImage={image} />
+      <TopHero backgroundImage={getSrc(data.file)} />
       <Container className={classes.featureSection} maxWidth="lg">
         {featureSection.map((section: any, index: number) => {
           const { leftCol, rightCol, mobile, desktop } = section;
@@ -131,5 +131,15 @@ const Index: React.FC<PageProps> = () => {
     </Layout>
   );
 };
+
+export const pageQuery = graphql`
+  query TopHero {
+    file(relativePath: { eq: "underwater/coral.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FIXED)
+      }
+    }
+  }
+`;
 
 export default Index;

@@ -40,7 +40,12 @@ const useStyles = makeStyles((theme) => ({
   focusVisible: {},
 }));
 
-const ProjectSwitch: React.FC = (props) => {
+interface IProps {
+  checked: boolean;
+  onChange: (event: any) => void;
+}
+
+const ProjectSwitch: React.FC<IProps> = (props) => {
   const classes = useStyles();
   return (
     <Switch

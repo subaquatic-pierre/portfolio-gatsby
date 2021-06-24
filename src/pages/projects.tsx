@@ -79,35 +79,36 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Projects: React.FC<PageProps<any>> = ({ data }) => {
+  // Handle project data
   const allProjects = data.allMarkdownRemark.nodes;
+  const prodProjects = allProjects.filter((project: ProjectNode) => {
+    if (project.frontmatter.production === true) return project.frontmatter;
+  });
+  const githubProjects = allProjects.filter((project: ProjectNode) => {
+    if (project.frontmatter.production === false) return project.frontmatter;
+  });
+
+  // Handle image data
   let allImages: any[] = [];
   try {
     allImages = data.allImageSharp.nodes;
   } catch (err) {
     console.log(`Issue with allImageSharp, Data: ${data}`);
   }
-  // const allImages = [];
   const placeHolderImage = allImages.find(
     (image) => image.fluid.originalName === "project-placeholder.jpg"
   );
 
-  const prodProjects = allProjects.filter((project: ProjectNode) => {
-    if (project.frontmatter.production === true) return project.frontmatter;
-  });
-  const sideProjects = allProjects.filter((project: ProjectNode) => {
-    if (project.frontmatter.production === false) return project.frontmatter;
-  });
-
   const classes = useStyles();
   const [loading, setLoading] = useState(false);
   const [numProdProjects, setNumProdProjects] = useState(3);
-  const [numSideProjects, setNumSideProjects] = useState(4);
-  const [sideProjectPage, setSideProjectPage] = useState(false);
+  const [numGithubProjects, setNumGithubProjects] = useState(4);
+  const [githubProjectsPage, setGithubProjectsPage] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
-  const handleProductionProjectSwitch = async (event: any) => {
+  const handleProductionProjectSwitch = (event: any) => {
     removeInfiniteScrollListener();
-    setSideProjectPage((sideProjectPage) => !sideProjectPage);
+    setGithubProjectsPage((githubProjectsPage) => !githubProjectsPage);
   };
 
   // shrink app bar on scroll
@@ -116,19 +117,18 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
     threshold: 100,
   });
 
-  // Add or remove event listener
+  // Add or remove scroll event listener
   const addInfiniteScrollListener = () => {
     return window.addEventListener("scroll", handleInfiniteScroll);
   };
-
   const removeInfiniteScrollListener = () => {
     return window.removeEventListener("scroll", handleInfiniteScroll);
   };
 
   const updateProjects = () => {
     addInfiniteScrollListener();
-    if (sideProjectPage) {
-      setProjectData((prev) => sideProjects.slice(0, numSideProjects));
+    if (githubProjectsPage) {
+      setProjectData((prev) => githubProjects.slice(0, numGithubProjects));
     } else {
       setProjectData((prev) => prodProjects.slice(0, numProdProjects));
     }
@@ -145,11 +145,11 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
       document.body.offsetHeight + 100
     ) {
       removeInfiniteScrollListener();
-      if (sideProjectPage) {
+      if (githubProjectsPage) {
         // Check within data index
-        if (numSideProjects < sideProjects.length) {
+        if (numGithubProjects < githubProjects.length) {
           setLoading(true);
-          setNumSideProjects((prev) => prev + 4);
+          setNumGithubProjects((prev) => prev + 4);
         } else {
           setLoading(false);
         }
@@ -191,11 +191,11 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
 
   useEffect(() => {
     updateProjects();
-  }, [sideProjectPage]);
+  }, [githubProjectsPage]);
 
   useEffect(() => {
     scrollUpdate();
-  }, [numSideProjects, numProdProjects]);
+  }, [numGithubProjects, numProdProjects]);
 
   useEffect(() => {
     addInfiniteScrollListener();
@@ -221,15 +221,14 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
             <Typography variant="body1">
               Toggle between production projects and Github projects, not all
               Github projects are live. The source code for each project can be
-              found on the Github button on each project card, some source codes
-              have been omitted for security reasons.
+              found on the Github button on each project card.
             </Typography>
             <FormGroup>
               <br />
               <FormControlLabel
                 control={
                   <ProjectSwitch
-                    checked={sideProjectPage}
+                    checked={githubProjectsPage}
                     onChange={handleProductionProjectSwitch}
                   />
                 }

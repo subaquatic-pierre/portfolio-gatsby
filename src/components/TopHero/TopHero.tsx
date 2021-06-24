@@ -30,23 +30,18 @@ const useStyles = makeStyles((theme) => ({
     textShadow: theme.palette.shadows.large,
   },
 }));
-const TopHero: React.FC = (props) => {
+
+interface IProps {
+  backgroundImage?: string;
+}
+
+const TopHero: React.FC<IProps> = ({ backgroundImage }) => {
   const classes = useStyles();
-  const data = useStaticQuery(graphql`
-    query MyQuery {
-      imageSharp(fluid: { originalName: { eq: "coral.jpg" } }) {
-        id
-        fluid {
-          originalImg
-        }
-      }
-    }
-  `);
 
   return (
     <div
       style={{
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${backgroundImage})`,
       }}
       className={classes.heroBackground}
     >

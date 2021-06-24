@@ -102,8 +102,6 @@ const Project: React.FC<IProps> = ({
 }) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
-  console.log(title);
-  console.log(image);
 
   const handleClick = (event: any) => {
     setAnchorEl(event.currentTarget);

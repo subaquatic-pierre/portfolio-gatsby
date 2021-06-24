@@ -81,10 +81,10 @@ const useStyles = makeStyles((theme) => ({
 const Projects: React.FC<PageProps<any>> = ({ data }) => {
   // Handle project data
   const allProjects = data.allMarkdownRemark.nodes;
-  const prodProjects = allProjects.filter((project: ProjectNode) => {
+  const prodProjectsData = allProjects.filter((project: ProjectNode) => {
     if (project.frontmatter.production === true) return project.frontmatter;
   });
-  const githubProjects = allProjects.filter((project: ProjectNode) => {
+  const githubProjectsData = allProjects.filter((project: ProjectNode) => {
     if (project.frontmatter.production === false) return project.frontmatter;
   });
 
@@ -106,6 +106,13 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
   const [githubProjectsPage, setGithubProjectsPage] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
+  const [prodProjects, setProdProjects] = useState(
+    prodProjectsData.slice(0, 3)
+  );
+  const [githubProjects, setGithubProjects] = useState(
+    githubProjectsData.slice(0, 4)
+  );
+
   const handleProductionProjectSwitch = (event: any) => {
     removeInfiniteScrollListener();
     setGithubProjectsPage((githubProjectsPage) => !githubProjectsPage);
@@ -125,12 +132,12 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
     return window.removeEventListener("scroll", handleInfiniteScroll);
   };
 
-  const updateProjects = () => {
+  const updateProjects = (numProjects: number) => {
     addInfiniteScrollListener();
     if (githubProjectsPage) {
-      setProjectData((prev) => githubProjects.slice(0, numGithubProjects));
+      setGithubProjects((prev) => githubProjectsData.slice(0, numProjects));
     } else {
-      setProjectData((prev) => prodProjects.slice(0, numProdProjects));
+      setProdProjects((prev) => prodProjectsData.slice(0, numProjects));
     }
     setLoading(false);
   };
@@ -149,7 +156,11 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
         // Check within data index
         if (numGithubProjects < githubProjects.length) {
           setLoading(true);
-          setNumGithubProjects((prev) => prev + 4);
+          setNumGithubProjects((prev) => {
+            const newNum = prev + 4;
+            updateProjects(newNum);
+            return prev + 4;
+          });
         } else {
           setLoading(false);
         }
@@ -157,7 +168,11 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
         // Check within data index
         if (numProdProjects < prodProjects.length) {
           setLoading(true);
-          setNumProdProjects((prev) => prev + 3);
+          setNumProdProjects((prev) => {
+            const newNum = prev + 4;
+            updateProjects(newNum);
+            return prev + 4;
+          });
         } else {
           setLoading(false);
         }
@@ -190,17 +205,16 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
   };
 
   useEffect(() => {
-    updateProjects();
-  }, [githubProjectsPage]);
+    addInfiniteScrollListener();
+  }, []);
+
+  useEffect(() => {
+    updateProjects(3);
+  }, []);
 
   useEffect(() => {
     scrollUpdate();
   }, [numGithubProjects, numProdProjects]);
-
-  useEffect(() => {
-    addInfiniteScrollListener();
-    setProjectData(prodProjects.slice(0, numProdProjects));
-  }, []);
 
   return (
     <Layout title="Projects">
@@ -238,16 +252,29 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
           </Grid>
         </Grid>
         <Grid container spacing={3} className={classes.projectContainer} item>
-          {projectData &&
-            projectData.map((project: ProjectNode, index: number) => {
-              return (
-                <Project
-                  key={index}
-                  index={index}
-                  projectData={getProjectData(project.frontmatter)}
-                />
-              );
-            })}
+          {githubProjects && githubProjectsPage
+            ? githubProjects
+                .slice(0, numGithubProjects)
+                .map((project: ProjectNode, index: number) => {
+                  return (
+                    <Project
+                      key={index}
+                      index={index}
+                      projectData={getProjectData(project.frontmatter)}
+                    />
+                  );
+                })
+            : prodProjects
+                .slice(0, numProdProjects)
+                .map((project: ProjectNode, index: number) => {
+                  return (
+                    <Project
+                      key={index}
+                      index={index}
+                      projectData={getProjectData(project.frontmatter)}
+                    />
+                  );
+                })}
           {loading && (
             <Grid container justify="center">
               <CircularProgress disableShrink />

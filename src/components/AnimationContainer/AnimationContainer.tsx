@@ -1,6 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core";
-// import Lottie from 'lottie-react-web'
+import Lottie from "lottie-react-web";
 
 const useStyles = makeStyles((theme) => ({
   animationContainer: {
@@ -14,11 +14,11 @@ const AnimationContainer = (props) => {
 
   return (
     <div className={classes.animationContainer}>
-      {/* <Lottie
-                options={{
-                    animationData: data
-                }}
-            /> */}
+      <Lottie
+        options={{
+          animationData: data,
+        }}
+      />
     </div>
   );
 };

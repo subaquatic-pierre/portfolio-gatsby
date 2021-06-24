@@ -19,9 +19,13 @@ const useStyles = makeStyles({
   },
 });
 
-const CertCard: React.FC = (props) => {
+interface IProps {
+  cert: Certification;
+  subCourse?: boolean;
+}
+
+const CertCard: React.FC<IProps> = ({ cert, subCourse }) => {
   const classes = useStyles();
-  const { cert, subCourse } = props;
 
   return (
     <Card

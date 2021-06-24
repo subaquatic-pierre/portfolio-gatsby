@@ -60,9 +60,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const AboutMe: React.FC = (props) => {
-  const { show } = props;
+interface IProps {
+  show: boolean;
+}
 
+const AboutMe: React.FC<IProps> = ({ show }) => {
   const classes = useStyles();
   return (
     <Fade timeout={fadeEffect} in={show}>
@@ -89,26 +91,27 @@ const AboutMe: React.FC = (props) => {
               <Typography variant="caption">- Albert Einstein</Typography>
             </div>
             <Typography>
-              My name is Pierre, I'm a South African living in Dubai. I'm a full
-              stack Web Developer and Cloud Engineer. As a PADI Master
-              Instructor and Technical diving instructor, if I am not developing
-              awesome web applications I am underwater teaching scuba diving or
-              taking awesome underwater pictures.
+              My name is Pierre, I'm a self taught software engineer
+              specializing in Web Development and Cloud Engineering. I am
+              originally from South Africa currently living in the UAE. If I am
+              not developing awesome web applications I am underwater teaching
+              scuba diving or taking awesome underwater pictures.
             </Typography>
             <Typography>
-              Currently I am honing my OOP skills with a focus on design
-              patterns. I am an advocate of SOLID design principles, code should
-              speak for itself with the use of logical variable semantics and
-              code structure.
+              I am an advocate of SOLID design principles, test driven
+              development and automating application deployment processes using
+              DevOps and CI/CD along with agile methodologies. Well architected
+              code should speak for itself with the use of logical variable
+              semantics and code structure.
             </Typography>
             <Typography>
-              The internet is the future and its technologies are an enticing
-              feature of the development of civilization. I am intrigued by the
-              ever changing landscape of internet technologies, check out some
-              of my current favorites in the "Technologies" tab.
+              The internet is the future and its technologies are an exciting
+              feature of the development of civilization. It has brought the
+              world closer together and allowed wide access to information.
+              Check out some of my current favorites in the "Technologies" tab.
             </Typography>
             <Typography className={classes.title} color="textSecondary">
-              Updated: 7 September 2020
+              Updated: 10 June 2021
             </Typography>
           </Card>
         </Grid>

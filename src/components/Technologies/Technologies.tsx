@@ -59,9 +59,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Technologies: React.FC = (props) => {
-  const { show } = props;
+interface IProps {
+  show: boolean;
+}
 
+const Technologies: React.FC<IProps> = ({ show }) => {
   const classes = useStyles();
   return (
     <Fade timeout={fadeEffect} in={show}>

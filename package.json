@@ -36,6 +36,7 @@
     "gatsby-source-filesystem": "^3.7.1",
     "gatsby-transformer-remark": "^4.5.0",
     "gatsby-transformer-sharp": "^3.7.1",
+    "lottie-react-web": "^2.2.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0"

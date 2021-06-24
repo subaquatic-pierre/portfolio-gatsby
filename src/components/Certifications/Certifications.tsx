@@ -59,19 +59,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Row: React.FC = (props) => {
+interface IRowProps {
+  program: Certification;
+}
+
+const Row: React.FC<IProps> = ({ program }) => {
   const classes = useStyles();
-  const { program } = props;
   const [open, setOpen] = React.useState(false);
 
-  const subcourse =
+  const subCourse =
     program.courses && program.courses.length > 0 ? true : false;
 
   return (
     <React.Fragment>
       <TableRow>
         <TableCell>
-          {subcourse && (
+          {subCourse && (
             <IconButton
               aria-label="expand row"
               size="small"
@@ -108,7 +111,7 @@ const Row: React.FC = (props) => {
                 </TableHead>
                 <TableBody>
                   {program.courses &&
-                    program.courses.map((course) => (
+                    program.courses.map((course: Certification) => (
                       <TableRow key={course.title}>
                         <TableCell component="th" scope="row">
                           {course.title}
@@ -129,9 +132,12 @@ const Row: React.FC = (props) => {
   );
 };
 
-const Certifications: React.FC = (props) => {
+interface ICertProps {
+  show: boolean;
+}
+
+const Certifications: React.FC<ICertProps> = ({ show }) => {
   const classes = useStyles();
-  const { show } = props;
 
   return (
     <Fade timeout={fadeEffect} in={show}>
@@ -152,8 +158,8 @@ const Certifications: React.FC = (props) => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {certData.map((program, index) => (
-                  <Row key={program.title} program={program} />
+                {certData.map((program: Certification, index: number) => (
+                  <Row key={index} program={program} />
                 ))}
               </TableBody>
             </Table>

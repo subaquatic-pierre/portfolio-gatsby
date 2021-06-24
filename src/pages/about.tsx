@@ -1,8 +1,9 @@
-import { PageProps } from "gatsby";
 import React from "react";
 import clsx from "clsx";
 import { Drawer, Hidden } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core";
+import { graphql, PageProps } from "gatsby";
+import { getSrc } from "gatsby-plugin-image";
 
 import { Layout } from "../components/Layout";
 import { AboutSidebar } from "../components/AboutSidebar";
@@ -60,12 +61,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const About: React.FC<PageProps> = ({ children }) => {
+const About: React.FC<PageProps<any>> = ({ data }) => {
   const classes = useStyles();
   const [contentShow, setContentShow] = React.useState("About Me");
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
-  const handleAboutListClick = (contentID) => {
+  const handleAboutListClick = (contentID: string) => {
     setContentShow(contentID);
   };
 
@@ -85,6 +86,10 @@ const About: React.FC<PageProps> = ({ children }) => {
         break;
     }
   };
+
+  const profilePic = getSrc(data.file);
+  console.log(profilePic);
+
   return (
     <Layout title={"About"}>
       <div className={classes.root}>
@@ -100,20 +105,6 @@ const About: React.FC<PageProps> = ({ children }) => {
                 mobile
               />
             </Drawer>
-            <Drawer
-              variant="temporary"
-              anchor="left"
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-              ModalProps={{
-                keepMounted: true, // Better open performance on mobile.
-              }}
-            >
-              <AboutSidebar />
-            </Drawer>
           </Hidden>
           <Hidden xsDown>
             <Drawer
@@ -123,7 +114,10 @@ const About: React.FC<PageProps> = ({ children }) => {
               variant="permanent"
               open
             >
-              <AboutSidebar handleAboutListClick={handleAboutListClick} />
+              <AboutSidebar
+                handleAboutListClick={handleAboutListClick}
+                profilePic={profilePic}
+              />
             </Drawer>
           </Hidden>
         </nav>
@@ -132,5 +126,15 @@ const About: React.FC<PageProps> = ({ children }) => {
     </Layout>
   );
 };
+
+export const pageQuery = graphql`
+  query ProfilePic {
+    file(relativePath: { eq: "profile-pic.jpg" }) {
+      childImageSharp {
+        gatsbyImageData(layout: FIXED)
+      }
+    }
+  }
+`;
 
 export default About;

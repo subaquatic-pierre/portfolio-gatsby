@@ -10,8 +10,6 @@ import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import ImportantDevicesIcon from "@material-ui/icons/ImportantDevices";
 
-import profilePic from "../../../static/images/profile-pic.jpg";
-
 const useStyles = makeStyles((theme) => ({
   main: {
     backgroundColor: theme.palette.secondary.main,
@@ -75,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const getIcon = (index, classes) => {
+const getIcon = (index: number, classes: any) => {
   switch (index) {
     case 0:
       return <AccountCircleIcon />;
@@ -88,9 +86,20 @@ const getIcon = (index, classes) => {
   }
 };
 
-const AboutSidebar: React.FC = (props) => {
+interface IProps {
+  handleAboutListClick: (contentId: string) => void;
+  mobile?: boolean;
+  profilePic?: string;
+}
+
+const AboutSidebar: React.FC<IProps> = ({
+  handleAboutListClick,
+  mobile,
+  profilePic,
+}) => {
   const classes = useStyles();
-  const { handleAboutListClick, mobile } = props;
+
+  console.log(profilePic);
 
   return (
     <div className={classes.main}>

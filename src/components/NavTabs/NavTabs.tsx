@@ -55,8 +55,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface IProps {
-  activeTab: any;
-  menuItems: any[];
+  activeTab: number;
+  menuItems: MenuItem[];
 }
 
 const NavTabs: React.FC<IProps> = ({ activeTab, menuItems }) => {

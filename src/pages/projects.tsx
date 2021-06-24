@@ -14,6 +14,10 @@ import {
 } from "@material-ui/core";
 
 import { Layout } from "../components/Layout";
+import { ProjectSwitch } from "../components/ProjectSwitch";
+import { Divider } from "../components/Divider";
+import { Project } from "../components/Project";
+import { ScrollToTop } from "../components/ScrollToTop";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -86,11 +90,11 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
     (image) => image.fluid.originalName === "project-placeholder.jpg"
   );
 
-  const prodProjects = allProjects.filter((project) => {
+  const prodProjects = allProjects.filter((project: ProjectNode) => {
     if (project.frontmatter.production === true) return project.frontmatter;
   });
-  const sideProjects = allProjects.filter((project) => {
-    if (project.frontmatter.production === false) return project;
+  const sideProjects = allProjects.filter((project: ProjectNode) => {
+    if (project.frontmatter.production === false) return project.frontmatter;
   });
 
   const classes = useStyles();
@@ -100,7 +104,7 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
   const [sideProjectPage, setSideProjectPage] = useState(false);
   const [projectData, setProjectData] = useState([]);
 
-  const handleProductionProjectSwitch = async (event) => {
+  const handleProductionProjectSwitch = async (event: any) => {
     removeInfiniteScrollListener();
     setSideProjectPage((sideProjectPage) => !sideProjectPage);
   };
@@ -160,7 +164,7 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
     }
   };
 
-  const getProjectData = (project) => {
+  const getProjectData = (project: Project) => {
     let image;
     if (project.imageName !== "none") {
       image = allImages.find(
@@ -199,7 +203,61 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
 
   return (
     <Layout title="Projects">
-      <div>projects</div>;
+      <Container className={classes.layout} maxWidth="lg">
+        <Grid container item xs={12} className={classes.pageContainer}>
+          <Grid
+            container
+            className={classes.headingSection}
+            direction="column"
+            justify="center"
+            alignItems="center"
+          >
+            <Typography variant="h2" component="h1" align="center">
+              Projects
+            </Typography>
+            <Divider width={20} space={1.5} color="secondary" />
+          </Grid>
+          <Grid container className={classes.toggleSection} item xs={12} sm={8}>
+            <Typography variant="body1">
+              Toggle between production projects and Github projects, not all
+              Github projects are live. The source code for each project can be
+              found on the Github button on each project card, some source codes
+              have been omitted for security reasons.
+            </Typography>
+            <FormGroup>
+              <br />
+              <FormControlLabel
+                control={
+                  <ProjectSwitch
+                    checked={sideProjectPage}
+                    onChange={handleProductionProjectSwitch}
+                  />
+                }
+                label="Github Projects"
+              />
+            </FormGroup>
+          </Grid>
+        </Grid>
+        <Grid container spacing={3} className={classes.projectContainer} item>
+          {projectData &&
+            projectData.map((project, idx) => {
+              return (
+                <Project
+                  placeholder={placeHolderImage}
+                  key={idx}
+                  index={idx}
+                  projectData={getProjectData(project.frontmatter)}
+                />
+              );
+            })}
+          {loading && (
+            <Grid container justify="center">
+              <CircularProgress disableShrink />
+            </Grid>
+          )}
+        </Grid>
+      </Container>
+      <ScrollToTop trigger={shrinkTrigger} color="secondary" size="small" />
     </Layout>
   );
 };

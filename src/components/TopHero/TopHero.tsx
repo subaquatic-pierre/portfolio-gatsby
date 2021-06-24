@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
     textShadow: theme.palette.shadows.large,
   },
 }));
-const TopHero = (props) => {
+const TopHero: React.FC = (props) => {
   const classes = useStyles();
   const data = useStaticQuery(graphql`
     query MyQuery {

@@ -68,8 +68,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 interface IProps {
-  shrinkTrigger: any;
-  menuItems: any[];
+  shrinkTrigger: boolean;
+  menuItems: MenuItem[];
 }
 
 const NavDrawer: React.FC<IProps> = ({ shrinkTrigger, menuItems }) => {
@@ -97,26 +97,13 @@ const NavDrawer: React.FC<IProps> = ({ shrinkTrigger, menuItems }) => {
     >
       <List disablePadding>
         {menuItems.map((item, index) => {
-          if (item.subMenuItems !== undefined) {
-            return (
-              <ListItem
-                disableRipple
-                className={classes.drawerListItem}
-                button
-                key={index}
-              >
+          return (
+            <Link key={index} to={item.path}>
+              <ListItem className={classes.drawerListItem}>
                 <ListItemText primary={item.name} />
               </ListItem>
-            );
-          } else {
-            return (
-              <Link key={index} to={item.path}>
-                <ListItem className={classes.drawerListItem}>
-                  <ListItemText primary={item.name} />
-                </ListItem>
-              </Link>
-            );
-          }
+            </Link>
+          );
         })}
         <Divider />
         <Link to="/contact">
@@ -131,15 +118,6 @@ const NavDrawer: React.FC<IProps> = ({ shrinkTrigger, menuItems }) => {
   return (
     <>
       <div className={classes.menuIconContainer}>
-        {/* <IconButton
-                    disableRipple
-                    color="inherit"
-                    aria-label="toggle-theme"
-                    edge="start"
-                    onClick={}
-                >
-                    <Brightness4Icon className={classes.darkIcon} fontSize='large' />
-                </IconButton> */}
         <IconButton
           disableRipple
           color="inherit"

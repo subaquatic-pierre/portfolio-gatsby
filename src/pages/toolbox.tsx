@@ -79,17 +79,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+interface ToolboxNav {
+  [key: string]: React.RefObject<unknown>;
+}
+
 const Toolbox: React.FC<PageProps> = ({ children }) => {
   const classes = useStyles();
 
   // Create devSection to each developer section
-  const devSection = toolboxData.reduce((acc, value) => {
-    acc[value.link] = React.createRef();
-    return acc;
-  }, {});
+  const devSection = toolboxData.reduce(
+    (acc: ToolboxNav, value: TechCategory) => {
+      acc[value.link] = React.createRef();
+      return acc;
+    },
+    {}
+  );
 
   // side nav item click handler
-  const handleNavClick = (link) => {
+  const handleNavClick = (link: string) => {
     window.scrollTo(0, devSection[link].current.offsetTop);
     devSection[link].current.scrollIntoView();
   };
@@ -125,50 +132,56 @@ const Toolbox: React.FC<PageProps> = ({ children }) => {
                 Toolbox
               </Typography>
             </Grid>
-            {toolboxData.map((category, index) => {
-              const { title, link, tech } = category;
-              return (
-                <Grid
-                  ref={devSection[link]}
-                  key={index}
-                  direction="column"
-                  container
-                  className={classes.developerSection}
-                  item
-                  xs={12}
-                >
-                  <Typography variant="h4" component="h2">
-                    {title}
-                  </Typography>
-                  <MyDivider color="secondary" width={10} space={1} />
-                  <Grid container className={classes.cardSection} item xs={12}>
-                    {tech.map((item, index) => {
-                      return (
-                        <Grid
-                          className={classes.cardCol}
-                          key={index}
-                          item
-                          container
-                          alignItems="center"
-                          direction="column"
-                          xs={12}
-                          sm={12}
-                          md={4}
-                        >
-                          <ToolBoxCard
-                            resources={item.resources}
+            {toolboxData.map(
+              ({ title, link, tech }: TechCategory, index: number) => {
+                return (
+                  <Grid
+                    ref={devSection[link]}
+                    key={index}
+                    direction="column"
+                    container
+                    className={classes.developerSection}
+                    item
+                    xs={12}
+                  >
+                    <Typography variant="h4" component="h2">
+                      {title}
+                    </Typography>
+                    <MyDivider color="secondary" width={10} space={1} />
+                    <Grid
+                      container
+                      className={classes.cardSection}
+                      item
+                      xs={12}
+                    >
+                      {tech.map((item, index) => {
+                        return (
+                          <Grid
+                            className={classes.cardCol}
                             key={index}
-                            title={item.title}
-                            image={item.image}
-                            text={item.text}
-                          />
-                        </Grid>
-                      );
-                    })}
+                            item
+                            container
+                            alignItems="center"
+                            direction="column"
+                            xs={12}
+                            sm={12}
+                            md={4}
+                          >
+                            <ToolBoxCard
+                              resources={item.resources}
+                              key={index}
+                              title={item.title}
+                              image={item.image}
+                              text={item.text}
+                            />
+                          </Grid>
+                        );
+                      })}
+                    </Grid>
                   </Grid>
-                </Grid>
-              );
-            })}
+                );
+              }
+            )}
           </Container>
         </div>
         <nav
@@ -185,16 +198,16 @@ const Toolbox: React.FC<PageProps> = ({ children }) => {
               />
             </ListItem>
             <Divider />
-            {toolboxData.map((category, index) => {
+            {toolboxData.map(({ link, title }: TechCategory, index: number) => {
               return (
                 <ListItem
                   onClick={() => {
-                    handleNavClick(category.link);
+                    handleNavClick(link);
                   }}
                   key={index}
                   button
                 >
-                  <ListItemText primary={category.title} />
+                  <ListItemText primary={title} />
                 </ListItem>
               );
             })}

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { PageProps } from "gatsby";
-import { getImage, getSrc, GatsbyImage } from "gatsby-plugin-image";
 
 import { graphql } from "gatsby";
 import { makeStyles } from "@material-ui/core/styles";
@@ -19,6 +18,12 @@ import { ProjectSwitch } from "../components/ProjectSwitch";
 import { Divider } from "../components/Divider";
 import { Project } from "../components/Project";
 import { ScrollToTop } from "../components/ScrollToTop";
+
+import {
+  getProjectData,
+  getTotalNumProjects,
+  filterProjects,
+} from "../utils/projectPageUtils";
 
 const useStyles = makeStyles((theme) => ({
   layout: {
@@ -79,14 +84,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Projects: React.FC<PageProps<any>> = ({ data }) => {
+  const classes = useStyles();
+  const [loading, setLoading] = useState(false);
+  const [githubPageState, setGithubPageState] = React.useState(false);
+  const githubPage = React.useRef(false);
+
   // Handle project data
   const allProjects = data.allMarkdownRemark.nodes;
-  const prodProjectsData = allProjects.filter((project: ProjectNode) => {
-    if (project.frontmatter.production === true) return project.frontmatter;
-  });
-  const githubProjectsData = allProjects.filter((project: ProjectNode) => {
-    if (project.frontmatter.production === false) return project.frontmatter;
-  });
+  const [numProdProjects, setNumProdProjects] = useState(3);
+  const [numGithubProjects, setNumGithubProjects] = useState(4);
+  const [projects, setProjects] = useState<ProjectNode[]>(
+    filterProjects(allProjects, "production", numProdProjects)
+  );
 
   // Handle image data
   let allImages: any[] = [];
@@ -95,36 +104,13 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
   } catch (err) {
     console.log(`Issue with allImageSharp, Data: ${data}`);
   }
-  const placeHolderImage = allImages.find(
-    (image) => image.fluid.originalName === "project-placeholder.jpg"
-  );
 
-  const classes = useStyles();
-  const [loading, setLoading] = useState(false);
-  const [numProdProjects, setNumProdProjects] = useState(3);
-  const [numGithubProjects, setNumGithubProjects] = useState(4);
-  const [githubProjectsPage, setGithubProjectsPage] = useState(false);
-  const [projectData, setProjectData] = useState([]);
-
-  const [prodProjects, setProdProjects] = useState(
-    prodProjectsData.slice(0, 3)
-  );
-  const [githubProjects, setGithubProjects] = useState(
-    githubProjectsData.slice(0, 4)
-  );
-
-  const handleProductionProjectSwitch = (event: any) => {
-    removeInfiniteScrollListener();
-    setGithubProjectsPage((githubProjectsPage) => !githubProjectsPage);
-  };
-
-  // shrink app bar on scroll
+  // Shrink app bar on scroll
   const shrinkTrigger = useScrollTrigger({
     disableHysteresis: true,
     threshold: 100,
   });
 
-  // Add or remove scroll event listener
   const addInfiniteScrollListener = () => {
     return window.addEventListener("scroll", handleInfiniteScroll);
   };
@@ -132,89 +118,84 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
     return window.removeEventListener("scroll", handleInfiniteScroll);
   };
 
-  const updateProjects = (numProjects: number) => {
-    addInfiniteScrollListener();
-    if (githubProjectsPage) {
-      setGithubProjects((prev) => githubProjectsData.slice(0, numProjects));
-    } else {
-      setProdProjects((prev) => prodProjectsData.slice(0, numProjects));
-    }
-    setLoading(false);
-  };
-
-  const scrollUpdate = () => {
-    setTimeout(updateProjects, 2000);
-  };
-
   const handleInfiniteScroll = () => {
+    setLoading(true);
     if (
       window.innerHeight + window.scrollY >=
       document.body.offsetHeight + 100
     ) {
       removeInfiniteScrollListener();
-      if (githubProjectsPage) {
-        // Check within data index
-        if (numGithubProjects < githubProjects.length) {
-          setLoading(true);
-          setNumGithubProjects((prev) => {
-            const newNum = prev + 4;
-            updateProjects(newNum);
-            return prev + 4;
-          });
-        } else {
-          setLoading(false);
-        }
-      } else {
-        // Check within data index
-        if (numProdProjects < prodProjects.length) {
-          setLoading(true);
-          setNumProdProjects((prev) => {
-            const newNum = prev + 4;
-            updateProjects(newNum);
-            return prev + 4;
-          });
-        } else {
-          setLoading(false);
-        }
-      }
+      setTimeout(updateProjects, 2000);
     }
   };
 
-  const getProjectData = (project: Project): Project => {
-    let imageSrc = getSrc(placeHolderImage);
-    if (project.image !== "none") {
-      const image = allImages.find(
-        (image) => image.fluid.originalName === project.image
-      );
-      imageSrc = getSrc(image);
+  const updateProjects = () => {
+    // Check total number of each project type
+    const totalGithubProjects = getTotalNumProjects(allProjects, "github");
+    const totalProductionProjects = getTotalNumProjects(
+      allProjects,
+      "production"
+    );
+
+    // Check if github page
+    if (githubPage.current) {
+      // Update number of projects to display
+      setNumGithubProjects((prev) => {
+        const newNum = prev + 4;
+
+        // Set the current projects
+        setProjects(filterProjects(allProjects, "github", newNum));
+
+        // Add new scroll event if more projects to display
+        if (totalGithubProjects > newNum) {
+          addInfiniteScrollListener();
+        } else {
+          removeInfiniteScrollListener();
+        }
+        return newNum;
+      });
+
+      // Is production page
+    } else {
+      // Update number of projects to display
+      setNumProdProjects((prev) => {
+        const newNum = prev + 4;
+
+        // Set the current projects
+        setProjects(filterProjects(allProjects, "production", newNum));
+
+        // Add new scroll event if more projects to display
+        if (totalProductionProjects > newNum) {
+          addInfiniteScrollListener();
+        } else {
+          removeInfiniteScrollListener();
+        }
+        return newNum;
+      });
     }
-
-    const url = project.url !== "none" ? project.url : undefined;
-
-    return {
-      type: project.type,
-      production: project.production,
-      title: project.title,
-      date: project.date,
-      github: project.github,
-      url: url,
-      image: imageSrc,
-      description: project.description,
-      tech: project.tech,
-    };
+    setLoading(false);
   };
 
+  // Update page on GitHub switch change
   useEffect(() => {
     addInfiniteScrollListener();
-  }, []);
+    if (githubPageState) {
+      githubPage.current = true;
+    } else {
+      githubPage.current = false;
+    }
+    if (githubPage.current) {
+      setProjects(filterProjects(allProjects, "github", numGithubProjects));
+    } else {
+      setProjects(filterProjects(allProjects, "production", numProdProjects));
+    }
+  }, [githubPageState]);
 
+  // Add or remove scroll event listener on page load
   useEffect(() => {
-    updateProjects(3);
+    addInfiniteScrollListener();
+    return removeInfiniteScrollListener;
   }, []);
-
-  useEffect(() => {
-    scrollUpdate();
-  }, [numGithubProjects, numProdProjects]);
 
   return (
     <Layout title="Projects">
@@ -242,8 +223,8 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
               <FormControlLabel
                 control={
                   <ProjectSwitch
-                    checked={githubProjectsPage}
-                    onChange={handleProductionProjectSwitch}
+                    checked={githubPageState}
+                    onChange={() => setGithubPageState((prev) => !prev)}
                   />
                 }
                 label="Github Projects"
@@ -252,29 +233,12 @@ const Projects: React.FC<PageProps<any>> = ({ data }) => {
           </Grid>
         </Grid>
         <Grid container spacing={3} className={classes.projectContainer} item>
-          {githubProjects && githubProjectsPage
-            ? githubProjects
-                .slice(0, numGithubProjects)
-                .map((project: ProjectNode, index: number) => {
-                  return (
-                    <Project
-                      key={index}
-                      index={index}
-                      projectData={getProjectData(project.frontmatter)}
-                    />
-                  );
-                })
-            : prodProjects
-                .slice(0, numProdProjects)
-                .map((project: ProjectNode, index: number) => {
-                  return (
-                    <Project
-                      key={index}
-                      index={index}
-                      projectData={getProjectData(project.frontmatter)}
-                    />
-                  );
-                })}
+          {projects.map((project: ProjectNode, index: number) => {
+            const projectData = getProjectData(project.frontmatter, allImages);
+            return (
+              <Project key={index} index={index} projectData={projectData} />
+            );
+          })}
           {loading && (
             <Grid container justify="center">
               <CircularProgress disableShrink />
@@ -296,6 +260,7 @@ export const pageQuery = graphql`
       nodes {
         id
         frontmatter {
+          type
           title
           date(formatString: "DD MMMM, YYYY")
           production

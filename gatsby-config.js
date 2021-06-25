@@ -11,7 +11,6 @@ module.exports = {
   plugins: [
     "gatsby-plugin-gatsby-cloud",
     "gatsby-plugin-image",
-    "gatsby-plugin-sitemap",
     "gatsby-plugin-mdx",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -19,6 +18,26 @@ module.exports = {
     "gatsby-plugin-top-layout",
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-material-ui",
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+        }
+      `,
+        resolveSiteUrl: () => siteMeta.url,
+        resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+          return allPages.map((page) => {
+            return { ...page };
+          });
+        },
+      },
+    },
     {
       resolve: "gatsby-plugin-google-analytics",
       options: {

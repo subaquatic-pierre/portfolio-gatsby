@@ -64,7 +64,7 @@ const Footer: React.FC = () => {
           <span className={classes.copyRightText}>
             <CopyrightIcon />
             <Typography className={classes.footerText} align="center">
-              Ocean Holic 2021
+              {`Ocean Holic ${new Date().getFullYear()}`}
             </Typography>
           </span>
         </Grid>
